@@ -16,9 +16,10 @@
  */
 package org.lionart.starlingmvc.wings.command
 {
+    import starling.events.Event;
 
-    public interface ICommand
+    public interface IWingsCommand
     {
-
+        function execute( event : Event = null ) : void;
     }
 }
