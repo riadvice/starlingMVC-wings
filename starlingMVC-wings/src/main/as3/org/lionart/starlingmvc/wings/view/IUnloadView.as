@@ -25,6 +25,9 @@ package org.lionart.starlingmvc.wings.view
         //
         //--------------------------------------------------------------------------
 
+        /**
+         * Unloads the View.
+         */
         function unload() : void;
     }
 }

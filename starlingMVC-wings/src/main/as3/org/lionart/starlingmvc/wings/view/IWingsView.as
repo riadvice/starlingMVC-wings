@@ -27,5 +27,10 @@ package org.lionart.starlingmvc.wings.view
         //  Methods
         //
         //--------------------------------------------------------------------------
+        /**
+         * This method is used the place View elements in their
+         * initial position before they are displayed.
+         */
+        function placeElements() : void;
     }
 }

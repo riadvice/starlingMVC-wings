@@ -25,6 +25,9 @@ package org.lionart.starlingmvc.wings.view
         //
         //--------------------------------------------------------------------------
 
+        /**
+         * Loads the View.
+         */
         function load() : void;
     }
 }
