@@ -14,14 +14,29 @@
    You should have received a copy of the GNU General Public License
    along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.lionart.starlingmvc.wings.data
+package org.lionart.starlingmvc.wings.transfer
 {
 
     /**
-     * Basic Value object interface.
+     * Basic Tansfer object interface.
      */
-    public interface IValueObject
+    public interface ITransferObject
     {
+        //--------------------------------------------------------------------------
+        //
+        //  Properties
+        //
+        //--------------------------------------------------------------------------
+
+        //----------------------------------
+        //  instanceId
+        //----------------------------------
+
+        /**
+         * Unique instance ID used to identify the object between server and client.
+         */
+        function get instanceId() : int;
+        function set instanceId( value : int ) : void;
 
     }
 }
