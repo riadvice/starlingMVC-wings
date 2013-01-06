@@ -12,6 +12,7 @@
     <classEntry path="org.lionart.starlingmvc.wings.command.IWingsCommand"/>
     <classEntry path="org.lionart.starlingmvc.wings.view.IWingsView"/>
     <classEntry path="org.lionart.starlingmvc.wings.model.IWingsModel"/>
+    <classEntry path="org.lionart.starlingmvc.wings.command.WingsCommand"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
