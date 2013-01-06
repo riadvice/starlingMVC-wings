@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
-  <includeClasses/>
+  <includeClasses>
+    <classEntry path="org.lionart.starlingmvc.wings.application.IWingsApplication"/>
+    <classEntry path="org.lionart.starlingmvc.wings.view.IView"/>
+    <classEntry path="org.lionart.starlingmvc.wings.view.ILoadView"/>
+    <classEntry path="org.lionart.starlingmvc.wings.view.IUnloadView"/>
+    <classEntry path="org.lionart.starlingmvc.wings.command.ICommand"/>
+    <classEntry path="org.lionart.starlingmvc.wings.model.IModel"/>
+  </includeClasses>
   <includeResources/>
   <namespaceManifests/>
 </flexLibProperties>
