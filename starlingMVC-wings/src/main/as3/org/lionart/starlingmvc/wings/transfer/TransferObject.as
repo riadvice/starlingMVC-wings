@@ -26,7 +26,7 @@ package org.lionart.starlingmvc.wings.transfer
         //
         //--------------------------------------------------------------------------
 
-        private var _instanceId : int;
+        private var _instanceId : int = -1;
 
         //--------------------------------------------------------------------------
         //
