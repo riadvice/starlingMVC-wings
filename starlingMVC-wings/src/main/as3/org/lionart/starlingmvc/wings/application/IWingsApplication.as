@@ -19,6 +19,21 @@ package org.lionart.starlingmvc.wings.application
 
     public interface IWingsApplication
     {
+        //--------------------------------------------------------------------------
+        //
+        //  Properties
+        //
+        //--------------------------------------------------------------------------
 
+        //----------------------------------
+        //  mainScreen
+        //----------------------------------
+
+        function get mainScreen() : Class;
+
+        //----------------------------------
+        //  autoScale
+        //----------------------------------
+        function get autoScale() : Boolean;
     }
 }
