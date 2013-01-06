@@ -17,6 +17,9 @@
 package org.lionart.starlingmvc.wings.application
 {
 
+    /**
+     * The interface definition for a explicit starlingMVC-wings Application.
+     */
     public interface IWingsApplication
     {
         //--------------------------------------------------------------------------

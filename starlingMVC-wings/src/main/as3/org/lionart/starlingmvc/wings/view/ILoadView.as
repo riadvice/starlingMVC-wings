@@ -19,6 +19,12 @@ package org.lionart.starlingmvc.wings.view
 
     public interface ILoadView
     {
+        //--------------------------------------------------------------------------
+        //
+        //  Methods
+        //
+        //--------------------------------------------------------------------------
+
         function load() : void;
     }
 }

@@ -16,7 +16,9 @@
  */
 package org.lionart.starlingmvc.wings.view
 {
-
+    /**
+     * The interface definition for a common starlingMVC-wings View.
+     */
     public interface IView
     {
 

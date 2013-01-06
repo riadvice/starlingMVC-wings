@@ -17,6 +17,9 @@
 package org.lionart.starlingmvc.wings.model
 {
 
+    /**
+     * The interface definition for a common starlingMVC-wings Model.
+     */
     public interface IModel
     {
 

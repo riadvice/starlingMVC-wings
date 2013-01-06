@@ -14,21 +14,18 @@
    You should have received a copy of the GNU General Public License
    along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.lionart.starlingmvc.wings.command
+package org.lionart.starlingmvc.wings.view
 {
-    import starling.events.Event;
 
     /**
-     * The interface definition for a explicit starlingMVC-wings Command.
+     * The interface definition for a explicit starlingMVC-wings View.
      */
-    public interface IWingsCommand
+    public interface IWingsView
     {
         //--------------------------------------------------------------------------
         //
         //  Methods
         //
         //--------------------------------------------------------------------------
-
-        function execute( event : Event = null ) : void;
     }
 }

@@ -17,6 +17,9 @@
 package org.lionart.starlingmvc.wings.command
 {
 
+    /**
+     * The interface definition for a common starlingMVC-wings Command.
+     */
     public interface ICommand
     {
 
