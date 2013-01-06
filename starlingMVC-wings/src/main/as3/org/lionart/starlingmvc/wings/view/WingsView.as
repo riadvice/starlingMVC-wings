@@ -16,11 +16,62 @@
  */
 package org.lionart.starlingmvc.wings.view
 {
+    import starling.display.Sprite;
+    import starling.events.Event;
 
-    public class WingsView implements IView, IWingsView
+    public class WingsView extends Sprite implements IView, IWingsView, ILoadView, IUnloadView
     {
+
+        //--------------------------------------------------------------------------
+        //
+        //  Constructor
+        //
+        //--------------------------------------------------------------------------
+
         public function WingsView()
         {
+            addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
+        }
+
+        //--------------------------------------------------------------------------
+        //
+        //  Methods
+        //
+        //--------------------------------------------------------------------------
+
+        /**
+         * @inheritDoc
+         */
+        public function load() : void
+        {
+            placeElements();
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function unload() : void
+        {
+
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function placeElements() : void
+        {
+
+        }
+
+        //--------------------------------------------------------------------------
+        //
+        //  Event handlers
+        //
+        //--------------------------------------------------------------------------
+
+        protected function addedToStageHandler( event : Event ) : void
+        {
+            removeEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
         }
     }
 }
