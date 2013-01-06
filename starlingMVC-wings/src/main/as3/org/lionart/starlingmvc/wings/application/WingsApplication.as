@@ -23,7 +23,7 @@ package org.lionart.starlingmvc.wings.application
     import starling.core.Starling;
     import starling.events.Event;
 
-    public class Application extends Sprite implements IWingsApplication
+    public class WingsApplication extends Sprite implements IApplication, IWingsApplication
     {
         //--------------------------------------------------------------------------
         //
@@ -41,7 +41,7 @@ package org.lionart.starlingmvc.wings.application
         //
         //--------------------------------------------------------------------------
 
-        public function Application()
+        public function WingsApplication()
         {
             super();
             if (stage != null)
