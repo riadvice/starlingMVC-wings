@@ -22,6 +22,9 @@
     <classEntry path="org.lionart.starlingmvc.wings.model.ModelState"/>
     <classEntry path="org.lionart.starlingmvc.wings.core.Wings"/>
     <classEntry path="org.lionart.starlingmvc.wings.core.wings_internal"/>
+    <classEntry path="org.lionart.starlingmvc.wings.net.IResponder"/>
+    <classEntry path="org.lionart.starlingmvc.wings.net.IWingsResponder"/>
+    <classEntry path="org.lionart.starlingmvc.wings.net.WingsResponder"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
