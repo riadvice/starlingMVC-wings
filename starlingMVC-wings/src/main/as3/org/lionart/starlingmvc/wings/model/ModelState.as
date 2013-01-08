@@ -19,6 +19,12 @@ package org.lionart.starlingmvc.wings.model
 
     public class ModelState
     {
+        //--------------------------------------------------------------------------
+        //
+        //  Class constants
+        //
+        //--------------------------------------------------------------------------
+
         public static const INITIAL : int = 0;
         public static const FINAL : int = 1;
         public static const ACTIVE : int = 2;
