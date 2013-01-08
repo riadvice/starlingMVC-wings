@@ -20,6 +20,7 @@
     <classEntry path="org.lionart.starlingmvc.wings.transfer.ITransferObject"/>
     <classEntry path="org.lionart.starlingmvc.wings.transfer.TransferObject"/>
     <classEntry path="org.lionart.starlingmvc.wings.model.ModelState"/>
+    <classEntry path="org.lionart.starlingmvc.wings.core.Wings"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
