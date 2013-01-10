@@ -19,5 +19,14 @@ package org.lionart.starlingmvc.wings.core
 
     public class Wings
     {
+        /**
+         * Fly method takes and an XML configuration for the application
+         * and it will configure starling, starlingMVC beans, commands, remote
+         * configuration, app size...
+         */
+        public static function fly( xmlConfig : XML ) : void
+        {
+
+        }
     }
 }
