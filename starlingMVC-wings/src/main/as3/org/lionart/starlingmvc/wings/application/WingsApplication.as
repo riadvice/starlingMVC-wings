@@ -20,6 +20,9 @@ package org.lionart.starlingmvc.wings.application
     import flash.display.Sprite;
     import flash.events.Event;
 
+    import org.lionart.starlingmvc.wings.core.Wings;
+    import org.lionart.starlingmvc.wings.core.wings_internal;
+
     import starling.core.Starling;
     import starling.events.Event;
 
@@ -44,6 +47,9 @@ package org.lionart.starlingmvc.wings.application
         public function WingsApplication()
         {
             super();
+
+            Wings.wings_internal::registerApp(this);
+            
             if (stage != null)
             {
                 init();

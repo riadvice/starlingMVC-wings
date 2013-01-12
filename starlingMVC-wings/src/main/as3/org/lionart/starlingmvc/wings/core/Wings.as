@@ -16,9 +16,14 @@
  */
 package org.lionart.starlingmvc.wings.core
 {
+    import org.lionart.starlingmvc.wings.application.IApplication;
+
+    use namespace wings_internal;
 
     public class Wings
     {
+        private static var mainApp : IApplication;
+
         /**
          * Fly method takes and an XML configuration for the application
          * and it will configure starling, starlingMVC beans, commands, remote
@@ -28,5 +33,11 @@ package org.lionart.starlingmvc.wings.core
         {
 
         }
+
+        wings_internal static function registerApp( app : IApplication ) : void
+        {
+            mainApp = app;
+        }
+
     }
 }
