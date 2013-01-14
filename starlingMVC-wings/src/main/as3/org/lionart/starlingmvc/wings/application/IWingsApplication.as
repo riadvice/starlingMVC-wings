@@ -16,6 +16,7 @@
  */
 package org.lionart.starlingmvc.wings.application
 {
+    import starling.core.Starling;
 
     /**
      * The interface definition for a explicit starlingMVC-wings Application.
@@ -27,6 +28,26 @@ package org.lionart.starlingmvc.wings.application
         //  Properties
         //
         //--------------------------------------------------------------------------
+
+        //----------------------------------
+        //  xmlWings
+        //----------------------------------
+
+        /**
+         * The main application XML that will be used to build the entire application.
+         */
+        function get xmlWings() : XML;
+        function set xmlWings( value : XML ) : void;
+
+        //----------------------------------
+        //  starling
+        //----------------------------------
+
+        /**
+         * Starling instance.
+         */
+        function get starling() : Starling;
+        function set starling( value : Starling ) : void;
 
         //----------------------------------
         //  mainScreen

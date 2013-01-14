@@ -35,6 +35,7 @@ package org.lionart.starlingmvc.wings.application
         //--------------------------------------------------------------------------
 
         private var _starling : Starling;
+        private var _xmlWings : XML;
         private var _mainScreen : Class;
         private var _autoScale : Boolean;
 
@@ -49,7 +50,7 @@ package org.lionart.starlingmvc.wings.application
             super();
 
             Wings.wings_internal::registerApp(this);
-            
+
             if (stage != null)
             {
                 init();
@@ -67,15 +68,31 @@ package org.lionart.starlingmvc.wings.application
         //--------------------------------------------------------------------------
 
         //----------------------------------
+        //  xmlWings
+        //----------------------------------
+
+        public function get xmlWings() : XML
+        {
+            return _xmlWings;
+        }
+
+        public function set xmlWings( value : XML ) : void
+        {
+            _xmlWings = value;
+        }
+
+        //----------------------------------
         //  starling
         //----------------------------------
 
-        /**
-         * Starling instance.
-         */
         public function get starling() : Starling
         {
             return _starling;
+        }
+
+        public function set starling( value : Starling ) : void
+        {
+            _starling = value;
         }
 
         //----------------------------------
