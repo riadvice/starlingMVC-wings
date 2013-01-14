@@ -111,7 +111,7 @@ package org.lionart.starlingmvc.wings.view
         protected function addedToStageHandler( event : Event ) : void
         {
             removeEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
-            Wings.wings_internal::createViewElements(ClassUtils.forInstance(this));
+            Wings.wings_internal::createViewElements(beanId);
         }
     }
 }

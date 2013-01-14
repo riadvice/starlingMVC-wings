@@ -32,7 +32,10 @@ package org.lionart.starlingmvc.wings.core
     import org.lionart.starlingmvc.wings.ui.AssetLoader;
 
     import starling.core.Starling;
+    import starling.display.Button;
+    import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
+    import starling.display.Image;
 
     use namespace wings_internal;
 
@@ -213,9 +216,30 @@ package org.lionart.starlingmvc.wings.core
         //
         //--------------------------------------------------------------------------
 
-        wings_internal static function createViewElements( clazz : Class ) : void
+        wings_internal static function createViewElements( beanId : String ) : void
         {
+            var bean : Bean = starlingMVCContainer.starlingMVC.beans.getBeanById(beanId);
+            var viewNode : XMLList = wingsXML.views.view.(attribute("id") == beanId) as XMLList;
+            var node : XML;
+            var displayObject : DisplayObject;
+            for each (node in viewNode.children.element)
+            {
+                switch (node.@type.toString())
+                {
+                    case "image":
+                        displayObject = new Image(AssetLoader.getAtlas(node.@atlas).getTexture(node.@texture));
+                        displayObject.name = node.@name;
+                        break;
+                    case "button":
+                        displayObject = new Button(AssetLoader.getAtlas(node.@atlas).getTexture(node.@texture));
+                        displayObject.name = node.@name;
+                        break;
+                    default:
+                        break;
+                }
 
+                bean.instance.addChild(displayObject);
+            }
         }
 
     }
