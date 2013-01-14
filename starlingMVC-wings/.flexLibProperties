@@ -37,6 +37,9 @@
     <classEntry path="org.lionart.starlingmvc.wings.view.IWingsView"/>
     <classEntry path="org.lionart.starlingmvc.wings.view.WingsView"/>
     <classEntry path="org.lionart.starlingmvc.wings.net.IWingsDelegateResponder"/>
+    <classEntry path="org.lionart.starlingmvc.wings.net.IServiceProxy"/>
+    <classEntry path="org.lionart.starlingmvc.wings.net.IWingsServiceProxy"/>
+    <classEntry path="org.lionart.starlingmvc.wings.net.WingsServiceProxy"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
