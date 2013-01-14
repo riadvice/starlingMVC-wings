@@ -17,7 +17,10 @@
 package org.lionart.starlingmvc.wings.transfer
 {
 
-    public class TransferObject implements ITransferObject
+    /**
+     * See transfert object.
+     */
+    public class TransferObjectHeader
     {
 
         //--------------------------------------------------------------------------
@@ -26,26 +29,21 @@ package org.lionart.starlingmvc.wings.transfer
         //
         //--------------------------------------------------------------------------
 
-        private var _instanceId : int = -1;
-        private var _header : TransferObjectHeader;
+        private var _code : uint;
+        private var _message : String;
+        private var _stackTrace : String;
 
         //--------------------------------------------------------------------------
         //
-        //  Methods
+        //  Constructor
         //
-        //--------------------------------------------------------------------------
+        //--------------------------------------------------------------------------		
 
         /**
-         * give an header to the transfert object
-         * @param code internal error our succes code
-         * @param message human readable error or success message
+         * Creates a new TransferObjectHeader object.
          */
-        public function buildHeader( code : uint = 0, message : String = null ) : TransferObjectHeader
+        public function TransferObjectHeader()
         {
-            _header = new TransferObjectHeader();
-            _header.code = code;
-            _header.message = message;
-            return _header;
         }
 
         //--------------------------------------------------------------------------
@@ -55,35 +53,53 @@ package org.lionart.starlingmvc.wings.transfer
         //--------------------------------------------------------------------------
 
         //----------------------------------
-        //  instanceId
-        //----------------------------------
-
-        public function get instanceId() : int
-        {
-            return _instanceId;
-        }
-
-        public function set instanceId( value : int ) : void
-        {
-            _instanceId = value;
-        }
-
-        //----------------------------------
-        //  transferObjectHeader
+        //  code
         //----------------------------------
 
         /**
-         * The header of the transfer object.
+         * The TransferObjectHeader code.
          */
-        public function get transferObjectHeader() : TransferObjectHeader
+        public function get code() : int
         {
-            return _header;
+            return _code;
         }
 
-        public function set transferObjectHeader( h : TransferObjectHeader ) : void
+        public function set code( v : int ) : void
         {
-            _header = h;
+            _code = v;
+        }
+
+        //----------------------------------
+        //  message
+        //----------------------------------
+
+        /**
+         * The TransferObjectHeader message.
+         */
+        public function get message() : String
+        {
+            return _message;
+        }
+
+        public function set message( v : String ) : void
+        {
+            _message = v;
+        }
+
+        //----------------------------------
+        //  stackTrace
+        //----------------------------------
+
+        public function get stackTrace() : String
+        {
+            return _stackTrace;
+        }
+
+        public function set stackTrace( value : String ) : void
+        {
+            _stackTrace = value;
         }
 
     }
+
 }
