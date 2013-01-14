@@ -26,6 +26,7 @@ package org.lionart.starlingmvc.wings.core
 
     import org.as3commons.lang.ClassUtils;
     import org.lionart.starlingmvc.wings.application.IApplication;
+    import org.lionart.starlingmvc.wings.bean.IBean;
     import org.lionart.starlingmvc.wings.container.IWingsContainer;
     import org.lionart.starlingmvc.wings.net.WingsServiceProxy;
     import org.lionart.starlingmvc.wings.ui.AssetLoader;
@@ -118,6 +119,7 @@ package org.lionart.starlingmvc.wings.core
 
             // Main container bean
             starlingMVCContainer = container as IWingsContainer;
+            IBean(container).beanId = "container";
             beans.push(new Bean(container, "container"));
 
             nodeList = XMLList(wingsXML.beans.bean);
@@ -144,6 +146,10 @@ package org.lionart.starlingmvc.wings.core
                 for each (property in props)
                 {
                     beanInstance[property.@name.toString()] = property.@value.toString();
+                }
+                if (beanInstance is IBean)
+                {
+                    IBean(beanInstance).beanId = node.@id;
                 }
                 beans.push(new Bean(beanInstance, node.@id));
             }
