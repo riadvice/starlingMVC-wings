@@ -32,6 +32,7 @@ package org.lionart.starlingmvc.wings.net
         protected var _connection : WingsRemoteAMFConnection;
         protected var _gateway : String;
         protected var _endPoint : String;
+        protected var _glue : String;
         protected var _delegateResponder : IWingsDelegateResponder;
 
         //--------------------------------------------------------------------------
@@ -49,6 +50,20 @@ package org.lionart.starlingmvc.wings.net
         //  Properties
         //
         //--------------------------------------------------------------------------
+
+        //----------------------------------
+        //  glue
+        //----------------------------------
+
+        public function get glue() : String
+        {
+            return _glue;
+        }
+
+        public function set glue( value : String ) : void
+        {
+            _glue = value;
+        }
 
         //----------------------------------
         //  gateway
@@ -88,25 +103,26 @@ package org.lionart.starlingmvc.wings.net
 
         public function invoke( method : String, responder : IWingsResponder, ... args ) : void
         {
+            var serviceName : String = _endPoint + _glue + method;
             switch (args.length)
             {
                 case 0:
-                    _connection.call.apply(_connection, [[_endPoint, method].join("."), responder as Responder]);
+                    _connection.call.apply(_connection, [serviceName, responder as Responder]);
                     break;
                 case 1:
-                    _connection.call.apply(_connection, [[_endPoint, method].join("."), responder as Responder, args[0]]);
+                    _connection.call.apply(_connection, [serviceName, responder as Responder, args[0]]);
                     break;
                 case 2:
-                    _connection.call.apply(_connection, [[_endPoint, method].join("."), responder as Responder, args[0], args[1]]);
+                    _connection.call.apply(_connection, [serviceName, responder as Responder, args[0], args[1]]);
                     break;
                 case 3:
-                    _connection.call.apply(_connection, [[_endPoint, method].join("."), responder as Responder, args[0], args[1], args[2]]);
+                    _connection.call.apply(_connection, [serviceName, responder as Responder, args[0], args[1], args[2]]);
                     break;
                 case 4:
-                    _connection.call.apply(_connection, [[_endPoint, method].join("."), responder as Responder, args[0], args[1], args[2], args[3]]);
+                    _connection.call.apply(_connection, [serviceName, responder as Responder, args[0], args[1], args[2], args[3]]);
                     break;
                 case 5:
-                    _connection.call.apply(_connection, [[_endPoint, method].join("."), responder as Responder, args[0], args[1], args[2], args[3], args[4]]);
+                    _connection.call.apply(_connection, [serviceName, responder as Responder, args[0], args[1], args[2], args[3], args[4]]);
                     break;
             }
         }

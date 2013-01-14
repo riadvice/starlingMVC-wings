@@ -37,6 +37,12 @@ package org.lionart.starlingmvc.wings.net
         function get endPoint() : String;
         function set endPoint( value : String ) : void;
 
+        //----------------------------------
+        //  glue
+        //----------------------------------
+        function get glue() : String;
+        function set glue( value : String ) : void;
+
         //--------------------------------------------------------------------------
         //
         //  Methods
