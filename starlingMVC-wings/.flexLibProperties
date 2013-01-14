@@ -27,7 +27,10 @@
     <classEntry path="org.lionart.starlingmvc.wings.net.WingsResponder"/>
     <classEntry path="org.lionart.starlingmvc.wings.remoting.IRemotingConnection"/>
     <classEntry path="org.lionart.starlingmvc.wings.remoting.IWingsRemotingConnection"/>
-    <classEntry path="org.lionart.starlingmvc.wings.remoting.WingsRemoteAMFAconnection"/>
+    <classEntry path="org.lionart.starlingmvc.wings.remoting.WingsRemoteAMFConnection"/>
+    <classEntry path="org.lionart.starlingmvc.wings.container.IContainer"/>
+    <classEntry path="org.lionart.starlingmvc.wings.container.IWingsContainer"/>
+    <classEntry path="org.lionart.starlingmvc.wings.container.WingsContainer"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
