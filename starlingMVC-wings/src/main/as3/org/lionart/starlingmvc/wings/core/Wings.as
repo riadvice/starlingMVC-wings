@@ -24,6 +24,7 @@ package org.lionart.starlingmvc.wings.core
     import flash.display.Stage;
     import flash.utils.getDefinitionByName;
 
+    import org.as3commons.lang.ClassUtils;
     import org.lionart.starlingmvc.wings.application.IApplication;
 
     import starling.core.Starling;
@@ -107,12 +108,28 @@ package org.lionart.starlingmvc.wings.core
             var property : XML;
 
             // Main container bean
-            beans.push(container, "container");
+            beans.push(new Bean(container, "container"));
 
             nodeList = XMLList(wingsXML.beans.bean);
             for each (node in nodeList)
             {
-                beanInstance = new (getDefinitionByName(node.@type.toString()) as Class)();
+                var args : Array;
+                if (node.constructor)
+                {
+                    args = [];
+                    for each (var arg : XML in node.constructor.arg)
+                    {
+                        if (arg.@type == "bean")
+                        {
+                            args.push(beans.filter(function( obj : *, index : int, array : Array ) : Boolean {return arg.@id == Bean(obj).id})[0].instance);
+                        }
+                        else
+                        {
+                            args.push(arg.@value);
+                        }
+                    }
+                }
+                beanInstance = ClassUtils.newInstance(getDefinitionByName(node.@type.toString()) as Class, args);
                 props = node.properties.property;
                 for each (property in props)
                 {
