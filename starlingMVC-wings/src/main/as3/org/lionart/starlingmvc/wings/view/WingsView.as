@@ -16,11 +16,27 @@
  */
 package org.lionart.starlingmvc.wings.view
 {
+    import org.as3commons.lang.ClassUtils;
+    import org.as3commons.lang.StringUtils;
+    import org.lionart.starlingmvc.wings.bean.IBean;
+    import org.lionart.starlingmvc.wings.core.Wings;
+    import org.lionart.starlingmvc.wings.core.wings_internal;
+
     import starling.display.Sprite;
     import starling.events.Event;
 
-    public class WingsView extends Sprite implements IView, IWingsView, ILoadView, IUnloadView
+    use namespace wings_internal;
+
+    public class WingsView extends Sprite implements IView, IWingsView, ILoadView, IUnloadView, IBean
     {
+
+        //--------------------------------------------------------------------------
+        //
+        //  Variables
+        //
+        //--------------------------------------------------------------------------
+
+        private var _beanId : String;
 
         //--------------------------------------------------------------------------
         //
@@ -31,6 +47,29 @@ package org.lionart.starlingmvc.wings.view
         public function WingsView()
         {
             addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
+        }
+
+        //--------------------------------------------------------------------------
+        //
+        //  Properties
+        //
+        //--------------------------------------------------------------------------
+
+        //----------------------------------
+        //  beanId
+        //----------------------------------
+
+        public function get beanId() : String
+        {
+            return _beanId;
+        }
+
+        public function set beanId( value : String ) : void
+        {
+            if (StringUtils.isEmpty(_beanId))
+            {
+                _beanId = value;
+            }
         }
 
         //--------------------------------------------------------------------------
@@ -72,6 +111,7 @@ package org.lionart.starlingmvc.wings.view
         protected function addedToStageHandler( event : Event ) : void
         {
             removeEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
+            Wings.wings_internal::createViewElements(ClassUtils.forInstance(this));
         }
     }
 }

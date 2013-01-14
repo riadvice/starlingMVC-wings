@@ -40,6 +40,7 @@
     <classEntry path="org.lionart.starlingmvc.wings.net.IServiceProxy"/>
     <classEntry path="org.lionart.starlingmvc.wings.net.IWingsServiceProxy"/>
     <classEntry path="org.lionart.starlingmvc.wings.net.WingsServiceProxy"/>
+    <classEntry path="org.lionart.starlingmvc.wings.bean.IBean"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

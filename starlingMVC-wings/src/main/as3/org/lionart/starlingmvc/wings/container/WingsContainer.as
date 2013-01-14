@@ -17,17 +17,17 @@
 package org.lionart.starlingmvc.wings.container
 {
     import com.creativebottle.starlingmvc.StarlingMVC;
-    import com.creativebottle.starlingmvc.config.StarlingMVCConfig;
 
+    import org.as3commons.lang.StringUtils;
+    import org.lionart.starlingmvc.wings.bean.IBean;
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
 
-    import starling.display.DisplayObjectContainer;
     import starling.display.Sprite;
 
     use namespace wings_internal;
 
-    public class WingsContainer extends Sprite implements IContainer, IWingsContainer
+    public class WingsContainer extends Sprite implements IContainer, IWingsContainer, IBean
     {
 
         //--------------------------------------------------------------------------
@@ -37,6 +37,7 @@ package org.lionart.starlingmvc.wings.container
         //--------------------------------------------------------------------------
 
         private var _starlingMVC : StarlingMVC;
+        private var _beanId : String;
 
         //--------------------------------------------------------------------------
         //
@@ -70,10 +71,22 @@ package org.lionart.starlingmvc.wings.container
             _starlingMVC = value;
         }
 
-        //--------------------------------------------------------------------------
-        //
-        //  Methods
-        //
-        //--------------------------------------------------------------------------
+        //----------------------------------
+        //  beanId
+        //----------------------------------
+
+        public function get beanId() : String
+        {
+            return _beanId;
+        }
+
+        public function set beanId( value : String ) : void
+        {
+            if (StringUtils.isEmpty(_beanId))
+            {
+                _beanId = value;
+            }
+        }
+
     }
 }

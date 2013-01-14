@@ -17,10 +17,16 @@
 package org.lionart.starlingmvc.wings.net
 {
     import flash.net.Responder;
+    import flash.net.registerClassAlias;
 
+    import org.as3commons.lang.StringUtils;
+    import org.lionart.starlingmvc.wings.bean.IBean;
+    import org.lionart.starlingmvc.wings.data.ValueObject;
     import org.lionart.starlingmvc.wings.remoting.WingsRemoteAMFConnection;
+    import org.lionart.starlingmvc.wings.transfer.TransferObject;
+    import org.lionart.starlingmvc.wings.transfer.TransferObjectHeader;
 
-    public class WingsServiceProxy implements IServiceProxy, IWingsServiceProxy
+    public class WingsServiceProxy implements IServiceProxy, IWingsServiceProxy, IBean
     {
 
         //--------------------------------------------------------------------------
@@ -34,6 +40,8 @@ package org.lionart.starlingmvc.wings.net
         protected var _endPoint : String;
         protected var _glue : String;
         protected var _delegateResponder : IWingsDelegateResponder;
+
+        private var _beanId : String;
 
         //--------------------------------------------------------------------------
         //
@@ -94,6 +102,22 @@ package org.lionart.starlingmvc.wings.net
             _endPoint = value;
         }
 
+        //----------------------------------
+        //  beanId
+        //----------------------------------
+
+        public function get beanId() : String
+        {
+            return _beanId;
+        }
+
+        public function set beanId( value : String ) : void
+        {
+            if (StringUtils.isEmpty(_beanId))
+            {
+                _beanId = value;
+            }
+        }
 
         //--------------------------------------------------------------------------
         //
@@ -125,6 +149,18 @@ package org.lionart.starlingmvc.wings.net
                     _connection.call.apply(_connection, [serviceName, responder as Responder, args[0], args[1], args[2], args[3], args[4]]);
                     break;
             }
+        }
+
+        //--------------------------------------------------------------------------
+        //
+        //  Class Methods
+        //
+        //--------------------------------------------------------------------------
+        public static function registerRemoteClasses() : void
+        {
+            registerClassAlias("org.lionart.starlingmvc.wings.data.ValueObject", ValueObject);
+            registerClassAlias("org.lionart.starlingmvc.wings.transfer.TransferObject", TransferObject);
+            registerClassAlias("org.lionart.starlingmvc.wings.transfer.TransferObjectHeader", TransferObjectHeader);
         }
     }
 }

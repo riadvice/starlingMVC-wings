@@ -26,6 +26,8 @@ package org.lionart.starlingmvc.wings.core
 
     import org.as3commons.lang.ClassUtils;
     import org.lionart.starlingmvc.wings.application.IApplication;
+    import org.lionart.starlingmvc.wings.container.IWingsContainer;
+    import org.lionart.starlingmvc.wings.net.WingsServiceProxy;
     import org.lionart.starlingmvc.wings.ui.AssetLoader;
 
     import starling.core.Starling;
@@ -44,6 +46,7 @@ package org.lionart.starlingmvc.wings.core
         private static var mainApp : IApplication;
         private static var wingsXML : XML;
         private static var wingsConfig : WingsConfig;
+        private static var starlingMVCContainer : IWingsContainer;
 
         //--------------------------------------------------------------------------
         //
@@ -62,6 +65,8 @@ package org.lionart.starlingmvc.wings.core
             AssetLoader.setConfig(getDefinitionByNameOrNull(wingsXML.resources.textureClass),
                 getDefinitionByNameOrNull(wingsXML.resources.movieClipClass),
                 getDefinitionByNameOrNull(wingsXML.resources.soundClass));
+
+            WingsServiceProxy.registerRemoteClasses();
         }
 
         wings_internal static function registerApp( app : IApplication ) : void
@@ -112,6 +117,7 @@ package org.lionart.starlingmvc.wings.core
             var property : XML;
 
             // Main container bean
+            starlingMVCContainer = container as IWingsContainer;
             beans.push(new Bean(container, "container"));
 
             nodeList = XMLList(wingsXML.beans.bean);
@@ -193,6 +199,17 @@ package org.lionart.starlingmvc.wings.core
             }
 
             return null;
+        }
+
+        //--------------------------------------------------------------------------
+        //
+        //  Views processing methods
+        //
+        //--------------------------------------------------------------------------
+
+        wings_internal static function createViewElements( clazz : Class ) : void
+        {
+
         }
 
     }

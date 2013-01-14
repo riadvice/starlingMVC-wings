@@ -16,9 +16,19 @@
  */
 package org.lionart.starlingmvc.wings.net
 {
+    import org.as3commons.lang.StringUtils;
+    import org.lionart.starlingmvc.wings.bean.IBean;
 
-    public class WingsResponder implements IResponder, IWingsResponder
+    public class WingsResponder implements IResponder, IWingsResponder, IBean
     {
+        //--------------------------------------------------------------------------
+        //
+        //  Variables
+        //
+        //--------------------------------------------------------------------------
+
+        private var _beanId : String;
+
         //--------------------------------------------------------------------------
         //
         //  Constructor
@@ -27,6 +37,29 @@ package org.lionart.starlingmvc.wings.net
 
         public function WingsResponder()
         {
+        }
+
+        //--------------------------------------------------------------------------
+        //
+        //  Properties
+        //
+        //--------------------------------------------------------------------------
+
+        //----------------------------------
+        //  beanId
+        //----------------------------------
+
+        public function get beanId() : String
+        {
+            return _beanId;
+        }
+
+        public function set beanId( value : String ) : void
+        {
+            if (StringUtils.isEmpty(_beanId))
+            {
+                _beanId = value;
+            }
         }
 
         //--------------------------------------------------------------------------

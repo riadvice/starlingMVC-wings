@@ -16,8 +16,10 @@
  */
 package org.lionart.starlingmvc.wings.model
 {
+    import org.as3commons.lang.StringUtils;
+    import org.lionart.starlingmvc.wings.bean.IBean;
 
-    public class WingsModel implements IModel, IWingsModel
+    public class WingsModel implements IModel, IWingsModel, IBean
     {
 
         //--------------------------------------------------------------------------
@@ -27,6 +29,7 @@ package org.lionart.starlingmvc.wings.model
         //--------------------------------------------------------------------------
 
         private var _state : int;
+        private var _beanId : String;
 
         //--------------------------------------------------------------------------
         //
@@ -37,6 +40,30 @@ package org.lionart.starlingmvc.wings.model
         public function WingsModel()
         {
         }
+
+        //--------------------------------------------------------------------------
+        //
+        //  Properties
+        //
+        //--------------------------------------------------------------------------
+
+        //----------------------------------
+        //  beanId
+        //----------------------------------
+
+        public function get beanId() : String
+        {
+            return _beanId;
+        }
+
+        public function set beanId( value : String ) : void
+        {
+            if (StringUtils.isEmpty(_beanId))
+            {
+                _beanId = value;
+            }
+        }
+
 
         //--------------------------------------------------------------------------
         //
