@@ -26,6 +26,7 @@ package org.lionart.starlingmvc.wings.core
 
     import org.as3commons.lang.ClassUtils;
     import org.lionart.starlingmvc.wings.application.IApplication;
+    import org.lionart.starlingmvc.wings.ui.AssetLoader;
 
     import starling.core.Starling;
     import starling.display.DisplayObjectContainer;
@@ -58,6 +59,9 @@ package org.lionart.starlingmvc.wings.core
         public static function fly( xmlConfig : XML ) : void
         {
             wingsXML = xmlConfig;
+            AssetLoader.setConfig(getDefinitionByNameOrNull(wingsXML.resources.textureClass),
+                getDefinitionByNameOrNull(wingsXML.resources.movieClipClass),
+                getDefinitionByNameOrNull(wingsXML.resources.soundClass));
         }
 
         wings_internal static function registerApp( app : IApplication ) : void
@@ -160,16 +164,27 @@ package org.lionart.starlingmvc.wings.core
             return getDefinitionByName(wingsXML.application[0].@container) as Class;
         }
 
+        private static function getDefinitionByNameOrNull( name : XMLList ) : Class
+        {
+            try
+            {
+                return getDefinitionByName(name.text().toString()) as Class;
+            }
+            catch ( e : Error )
+            {
+                trace("AssetClass not found.");
+            }
+
+            return null;
+        }
+
         private static function getCommandClass( commandClassName : String ) : Class
         {
-            var commandClass : Class;
-
             for each (var pack : String in wingsConfig.commandPackages)
             {
                 try
                 {
-                    commandClass = Class(getDefinitionByName(pack + "." + commandClassName));
-                    return commandClass;
+                    return getDefinitionByName(pack + "." + commandClassName) as Class;
                 }
                 catch ( e : Error )
                 {
