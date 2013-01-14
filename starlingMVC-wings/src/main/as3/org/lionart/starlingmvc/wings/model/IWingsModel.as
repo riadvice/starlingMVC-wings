@@ -22,6 +22,13 @@ package org.lionart.starlingmvc.wings.model
      */
     public interface IWingsModel
     {
+        //--------------------------------------------------------------------------
+        //
+        //  Methods
+        //
+        //--------------------------------------------------------------------------
 
+        function setState( value : int ) : void
+        function getState() : int
     }
 }
