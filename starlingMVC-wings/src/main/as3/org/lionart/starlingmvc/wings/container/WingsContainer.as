@@ -17,9 +17,12 @@
 package org.lionart.starlingmvc.wings.container
 {
     import com.creativebottle.starlingmvc.StarlingMVC;
+    import com.creativebottle.starlingmvc.config.StarlingMVCConfig;
 
+    import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
 
+    import starling.display.DisplayObjectContainer;
     import starling.display.Sprite;
 
     use namespace wings_internal;
@@ -44,7 +47,7 @@ package org.lionart.starlingmvc.wings.container
         public function WingsContainer()
         {
             super();
-            wings_internal::initStarlingMVC();
+            _starlingMVC = Wings.wings_internal::initStarlingMVC(this);
         }
 
         //--------------------------------------------------------------------------
@@ -72,10 +75,5 @@ package org.lionart.starlingmvc.wings.container
         //  Methods
         //
         //--------------------------------------------------------------------------
-
-        wings_internal function initStarlingMVC() : void
-        {
-            // TODO load configuration and init beans
-        }
     }
 }

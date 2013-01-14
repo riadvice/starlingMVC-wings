@@ -19,10 +19,10 @@ package org.lionart.starlingmvc.wings.application
 
     import flash.display.Sprite;
     import flash.events.Event;
-
+    
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
-
+    
     import starling.core.Starling;
     import starling.events.Event;
 
@@ -127,7 +127,7 @@ package org.lionart.starlingmvc.wings.application
 
         protected function init() : void
         {
-            _starling = new Starling(_mainScreen, stage);
+            _starling = Wings.wings_internal::initStarling(stage);
             _starling.addEventListener(starling.events.Event.ROOT_CREATED, rootCreatedHandler);
             _starling.start();
         }
