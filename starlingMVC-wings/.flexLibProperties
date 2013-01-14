@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
   <includeClasses>
-    <classEntry path="org.lionart.starlingmvc.wings.application.IWingsApplication"/>
-    <classEntry path="org.lionart.starlingmvc.wings.view.IView"/>
-    <classEntry path="org.lionart.starlingmvc.wings.view.ILoadView"/>
-    <classEntry path="org.lionart.starlingmvc.wings.view.IUnloadView"/>
-    <classEntry path="org.lionart.starlingmvc.wings.command.ICommand"/>
-    <classEntry path="org.lionart.starlingmvc.wings.model.IModel"/>
-    <classEntry path="org.lionart.starlingmvc.wings.application.WingsApplication"/>
     <classEntry path="org.lionart.starlingmvc.wings.application.IApplication"/>
+    <classEntry path="org.lionart.starlingmvc.wings.application.IWingsApplication"/>
+    <classEntry path="org.lionart.starlingmvc.wings.application.WingsApplication"/>
+    <classEntry path="org.lionart.starlingmvc.wings.command.ICommand"/>
     <classEntry path="org.lionart.starlingmvc.wings.command.IWingsCommand"/>
-    <classEntry path="org.lionart.starlingmvc.wings.view.IWingsView"/>
-    <classEntry path="org.lionart.starlingmvc.wings.model.IWingsModel"/>
     <classEntry path="org.lionart.starlingmvc.wings.command.WingsCommand"/>
-    <classEntry path="org.lionart.starlingmvc.wings.model.WingsModel"/>
-    <classEntry path="org.lionart.starlingmvc.wings.view.WingsView"/>
+    <classEntry path="org.lionart.starlingmvc.wings.container.IContainer"/>
+    <classEntry path="org.lionart.starlingmvc.wings.container.IWingsContainer"/>
+    <classEntry path="org.lionart.starlingmvc.wings.container.WingsContainer"/>
+    <classEntry path="org.lionart.starlingmvc.wings.core.Wings"/>
+    <classEntry path="org.lionart.starlingmvc.wings.core.WingsConfig"/>
+    <classEntry path="org.lionart.starlingmvc.wings.core.wings_internal"/>
     <classEntry path="org.lionart.starlingmvc.wings.data.IValueObject"/>
     <classEntry path="org.lionart.starlingmvc.wings.data.ValueObject"/>
-    <classEntry path="org.lionart.starlingmvc.wings.transfer.ITransferObject"/>
-    <classEntry path="org.lionart.starlingmvc.wings.transfer.TransferObject"/>
+    <classEntry path="org.lionart.starlingmvc.wings.model.IModel"/>
+    <classEntry path="org.lionart.starlingmvc.wings.model.IWingsModel"/>
     <classEntry path="org.lionart.starlingmvc.wings.model.ModelState"/>
-    <classEntry path="org.lionart.starlingmvc.wings.core.Wings"/>
-    <classEntry path="org.lionart.starlingmvc.wings.core.wings_internal"/>
+    <classEntry path="org.lionart.starlingmvc.wings.model.WingsModel"/>
     <classEntry path="org.lionart.starlingmvc.wings.net.IResponder"/>
     <classEntry path="org.lionart.starlingmvc.wings.net.IWingsResponder"/>
     <classEntry path="org.lionart.starlingmvc.wings.net.WingsResponder"/>
     <classEntry path="org.lionart.starlingmvc.wings.remoting.IRemotingConnection"/>
     <classEntry path="org.lionart.starlingmvc.wings.remoting.IWingsRemotingConnection"/>
     <classEntry path="org.lionart.starlingmvc.wings.remoting.WingsRemoteAMFConnection"/>
-    <classEntry path="org.lionart.starlingmvc.wings.container.IContainer"/>
-    <classEntry path="org.lionart.starlingmvc.wings.container.IWingsContainer"/>
-    <classEntry path="org.lionart.starlingmvc.wings.container.WingsContainer"/>
-    <classEntry path="org.lionart.starlingmvc.wings.core.WingsConfig"/>
+    <classEntry path="org.lionart.starlingmvc.wings.transfer.ITransferObject"/>
+    <classEntry path="org.lionart.starlingmvc.wings.transfer.TransferObject"/>
+    <classEntry path="org.lionart.starlingmvc.wings.view.ILoadView"/>
+    <classEntry path="org.lionart.starlingmvc.wings.view.IUnloadView"/>
+    <classEntry path="org.lionart.starlingmvc.wings.view.IView"/>
+    <classEntry path="org.lionart.starlingmvc.wings.view.IWingsView"/>
+    <classEntry path="org.lionart.starlingmvc.wings.view.WingsView"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
