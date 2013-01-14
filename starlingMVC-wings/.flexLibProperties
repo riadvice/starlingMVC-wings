@@ -31,6 +31,7 @@
     <classEntry path="org.lionart.starlingmvc.wings.container.IContainer"/>
     <classEntry path="org.lionart.starlingmvc.wings.container.IWingsContainer"/>
     <classEntry path="org.lionart.starlingmvc.wings.container.WingsContainer"/>
+    <classEntry path="org.lionart.starlingmvc.wings.core.WingsConfig"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
