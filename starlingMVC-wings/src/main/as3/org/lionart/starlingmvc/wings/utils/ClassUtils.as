@@ -14,18 +14,24 @@
    You should have received a copy of the GNU General Public License
    along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.lionart.starlingmvc.wings.processors
+package org.lionart.starlingmvc.wings.utils
 {
-    import org.lionart.starlingmvc.wings.ui.AssetLoader;
-    import org.lionart.starlingmvc.wings.utils.ClassUtils;
+    import flash.utils.getDefinitionByName;
 
-    public class AssetProcessor
+    public class ClassUtils
     {
-        public function processResources( xml : XMLList ) : void
+        public static function getDefinitionByNameOrNull( name : XMLList ) : Class
         {
-            AssetLoader.setConfig(ClassUtils.getDefinitionByNameOrNull(xml.textureClass),
-                ClassUtils.getDefinitionByNameOrNull(xml.movieClipClass),
-                ClassUtils.getDefinitionByNameOrNull(xml.soundClass));
+            try
+            {
+                return getDefinitionByName(name.text().toString()) as Class;
+            }
+            catch ( e : Error )
+            {
+                trace("Class definition not found.");
+            }
+
+            return null;
         }
     }
 }

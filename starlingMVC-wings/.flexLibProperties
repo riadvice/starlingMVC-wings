@@ -52,6 +52,7 @@
     <classEntry path="org.lionart.starlingmvc.wings.processors.TweenProcessor"/>
     <classEntry path="org.lionart.starlingmvc.wings.processors.RemoteProcessor"/>
     <classEntry path="org.lionart.starlingmvc.wings.processors.AssetProcessor"/>
+    <classEntry path="org.lionart.starlingmvc.wings.utils.ClassUtils"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

@@ -20,18 +20,19 @@ package org.lionart.starlingmvc.wings.core
     import com.creativebottle.starlingmvc.beans.Bean;
     import com.creativebottle.starlingmvc.commands.Command;
     import com.creativebottle.starlingmvc.config.StarlingMVCConfig;
-    
+
     import flash.display.Stage;
     import flash.utils.getDefinitionByName;
-    
+
     import org.as3commons.lang.ClassUtils;
     import org.lionart.starlingmvc.wings.application.IApplication;
     import org.lionart.starlingmvc.wings.bean.IBean;
     import org.lionart.starlingmvc.wings.container.IWingsContainer;
     import org.lionart.starlingmvc.wings.net.WingsServiceProxy;
+    import org.lionart.starlingmvc.wings.processors.AssetProcessor;
     import org.lionart.starlingmvc.wings.processors.ConfigurationProcessor;
     import org.lionart.starlingmvc.wings.ui.AssetLoader;
-    
+
     import starling.core.Starling;
     import starling.display.Button;
     import starling.display.DisplayObject;
@@ -68,13 +69,13 @@ package org.lionart.starlingmvc.wings.core
         {
             wingsXML = xmlConfig;
 
-			var configProcessor : ConfigurationProcessor = new ConfigurationProcessor();
+            var configProcessor : ConfigurationProcessor = new ConfigurationProcessor();
             wingsConfig = configProcessor.processConfiguration(wingsXML.application);
-			configProcessor = null;
-			
-            AssetLoader.setConfig(getDefinitionByNameOrNull(wingsXML.resources.textureClass),
-                getDefinitionByNameOrNull(wingsXML.resources.movieClipClass),
-                getDefinitionByNameOrNull(wingsXML.resources.soundClass));
+            configProcessor = null;
+
+            var assetProcessor : AssetProcessor = new AssetProcessor();
+            assetProcessor.processResources(wingsXML.resources);
+            assetProcessor = null;
 
             WingsServiceProxy.registerRemoteClasses();
         }
@@ -183,19 +184,9 @@ package org.lionart.starlingmvc.wings.core
             return getDefinitionByName(wingsXML.application[0].@container) as Class;
         }
 
-        private static function getDefinitionByNameOrNull( name : XMLList ) : Class
-        {
-            try
-            {
-                return getDefinitionByName(name.text().toString()) as Class;
-            }
-            catch ( e : Error )
-            {
-                trace("AssetClass not found.");
-            }
 
-            return null;
-        }
+
+
 
         private static function getCommandClass( commandClassName : String ) : Class
         {
