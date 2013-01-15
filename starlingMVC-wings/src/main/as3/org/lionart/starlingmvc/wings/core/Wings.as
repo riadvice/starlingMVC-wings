@@ -20,17 +20,18 @@ package org.lionart.starlingmvc.wings.core
     import com.creativebottle.starlingmvc.beans.Bean;
     import com.creativebottle.starlingmvc.commands.Command;
     import com.creativebottle.starlingmvc.config.StarlingMVCConfig;
-
+    
     import flash.display.Stage;
     import flash.utils.getDefinitionByName;
-
+    
     import org.as3commons.lang.ClassUtils;
     import org.lionart.starlingmvc.wings.application.IApplication;
     import org.lionart.starlingmvc.wings.bean.IBean;
     import org.lionart.starlingmvc.wings.container.IWingsContainer;
     import org.lionart.starlingmvc.wings.net.WingsServiceProxy;
+    import org.lionart.starlingmvc.wings.processors.ConfigurationProcessor;
     import org.lionart.starlingmvc.wings.ui.AssetLoader;
-
+    
     import starling.core.Starling;
     import starling.display.Button;
     import starling.display.DisplayObject;
@@ -66,6 +67,11 @@ package org.lionart.starlingmvc.wings.core
         public static function fly( xmlConfig : XML ) : void
         {
             wingsXML = xmlConfig;
+
+			var configProcessor : ConfigurationProcessor = new ConfigurationProcessor();
+            wingsConfig = configProcessor.processConfiguration(wingsXML.application);
+			configProcessor = null;
+			
             AssetLoader.setConfig(getDefinitionByNameOrNull(wingsXML.resources.textureClass),
                 getDefinitionByNameOrNull(wingsXML.resources.movieClipClass),
                 getDefinitionByNameOrNull(wingsXML.resources.soundClass));
@@ -88,8 +94,6 @@ package org.lionart.starlingmvc.wings.core
         {
             var nodeList : XMLList;
             var node : XML;
-
-            wingsConfig = new WingsConfig;
 
             // commandPackages
             nodeList = XMLList(wingsXML.commandPackages.commandPackage).text();

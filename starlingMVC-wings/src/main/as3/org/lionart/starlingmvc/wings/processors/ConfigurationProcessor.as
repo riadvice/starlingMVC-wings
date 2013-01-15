@@ -16,11 +16,16 @@
  */
 package org.lionart.starlingmvc.wings.processors
 {
+    import org.lionart.starlingmvc.wings.core.WingsConfig;
 
     public class ConfigurationProcessor
     {
-        public function ConfigurationProcessor()
+        public function processConfiguration( xml : XMLList ) : WingsConfig
         {
+            var config : WingsConfig = new WingsConfig();
+            config.appHeight = parseFloat(xml.@height);
+            config.appWidht = parseFloat(xml.@width);
+            return config;
         }
     }
 }
