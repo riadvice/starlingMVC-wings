@@ -17,9 +17,9 @@
 package org.lionart.starlingmvc.wings.processors
 {
 
-    public class NetworkProcessor
+    public class AssetProcessor
     {
-        public function NetworkProcessor()
+        public function AssetProcessor()
         {
         }
     }

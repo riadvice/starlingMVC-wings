@@ -50,7 +50,8 @@
     <classEntry path="org.lionart.starlingmvc.wings.processors.TriggerProcessor"/>
     <classEntry path="org.lionart.starlingmvc.wings.processors.StarlingProcessor"/>
     <classEntry path="org.lionart.starlingmvc.wings.processors.TweenProcessor"/>
-    <classEntry path="org.lionart.starlingmvc.wings.processors.NetworkProcessor"/>
+    <classEntry path="org.lionart.starlingmvc.wings.processors.RemoteProcessor"/>
+    <classEntry path="org.lionart.starlingmvc.wings.processors.AssetProcessor"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
