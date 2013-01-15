@@ -41,6 +41,16 @@
     <classEntry path="org.lionart.starlingmvc.wings.net.IWingsServiceProxy"/>
     <classEntry path="org.lionart.starlingmvc.wings.net.WingsServiceProxy"/>
     <classEntry path="org.lionart.starlingmvc.wings.bean.IBean"/>
+    <classEntry path="org.lionart.starlingmvc.wings.processors.ConfigurationProcessor"/>
+    <classEntry path="org.lionart.starlingmvc.wings.processors.ViewProcessor"/>
+    <classEntry path="org.lionart.starlingmvc.wings.processors.SecurityProcessor"/>
+    <classEntry path="org.lionart.starlingmvc.wings.processors.StyleProcessor"/>
+    <classEntry path="org.lionart.starlingmvc.wings.processors.CommandProcessor"/>
+    <classEntry path="org.lionart.starlingmvc.wings.processors.BeanProcessor"/>
+    <classEntry path="org.lionart.starlingmvc.wings.processors.TriggerProcessor"/>
+    <classEntry path="org.lionart.starlingmvc.wings.processors.StarlingProcessor"/>
+    <classEntry path="org.lionart.starlingmvc.wings.processors.TweenProcessor"/>
+    <classEntry path="org.lionart.starlingmvc.wings.processors.NetworkProcessor"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
