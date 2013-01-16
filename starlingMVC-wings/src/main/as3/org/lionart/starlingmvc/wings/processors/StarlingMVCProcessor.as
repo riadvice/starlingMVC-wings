@@ -61,17 +61,17 @@ package org.lionart.starlingmvc.wings.processors
                     args = [];
                     for each (var arg : XML in node.constructor.arg)
                     {
-                        if (arg.@type == "bean")
+                        if (arg.attribute("type") == "bean")
                         {
-                            args.push(beans.filter(function( obj : *, index : int, array : Array ) : Boolean {return arg.@id == Bean(obj).id})[0].instance);
+                            args.push(beans.filter(function( obj : *, index : int, array : Array ) : Boolean {return arg.@id.toString() == Bean(obj).id})[0].instance);
                         }
                         else
                         {
-                            args.push(arg.@value);
+                            args.push(arg.@value.toString());
                         }
                     }
                 }
-                beanInstance = ClassUtils.newInstance(getDefinitionByName(node.@type.toString()) as Class, args);
+                beanInstance = ClassUtils.newInstance(getDefinitionByName(node.attribute("class").toString()) as Class, args);
                 props = node.properties.property;
                 for each (property in props)
                 {
@@ -88,7 +88,7 @@ package org.lionart.starlingmvc.wings.processors
             var clazz : Class = getDefinitionByName(xmlCommands.@eventsClass) as Class;
             for each (node in xmlCommands.command)
             {
-                beans.push(new Command(clazz[node.@event], Wings.wings_internal::getCommandClass(node.@type), node.@oneTime));
+                beans.push(new Command(clazz[node.@event], Wings.wings_internal::getCommandClass(node.attribute("class")), node.@oneTime));
             }
         }
     }
