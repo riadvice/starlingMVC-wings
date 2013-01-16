@@ -31,13 +31,9 @@ package org.lionart.starlingmvc.wings.core
     import org.lionart.starlingmvc.wings.processors.ConfigurationProcessor;
     import org.lionart.starlingmvc.wings.processors.StarlingMVCProcessor;
     import org.lionart.starlingmvc.wings.processors.ViewProcessor;
-    import org.lionart.starlingmvc.wings.ui.AssetLoader;
 
     import starling.core.Starling;
-    import starling.display.Button;
-    import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
-    import starling.display.Image;
 
     use namespace wings_internal;
 
@@ -53,7 +49,7 @@ package org.lionart.starlingmvc.wings.core
         private static var wingsXML : XML;
         private static var wingsConfig : WingsConfig;
         private static var starlingMVCContainer : IWingsContainer;
-        private static var viewProcessor : ViewProcessor;
+        private static var viewProcessor : ViewProcessor = new ViewProcessor();
 
         //--------------------------------------------------------------------------
         //
@@ -82,17 +78,27 @@ package org.lionart.starlingmvc.wings.core
             WingsServiceProxy.registerRemoteClasses();
         }
 
+
+        /**
+         * Registers the main application.
+         */
         wings_internal static function registerApp( app : IApplication ) : void
         {
             mainApp = app;
         }
 
+        /**
+         * Initialises Starling.
+         */
         wings_internal static function initStarling( stage : Stage ) : Starling
         {
             var starlingInstance : Starling = new Starling(getContainerClass(), stage);
             return starlingInstance;
         }
 
+        /**
+         * Initialises StarlingMVC.
+         */
         wings_internal static function initStarlingMVC( container : DisplayObjectContainer ) : StarlingMVC
         {
             var starlingMVCProcessor : StarlingMVCProcessor = new StarlingMVCProcessor();
@@ -122,6 +128,14 @@ package org.lionart.starlingmvc.wings.core
             return new StarlingMVC(container, config, beans);
         }
 
+        /**
+         * Wings application configuration.
+         */
+        wings_internal static function get config() : WingsConfig
+        {
+            return wingsConfig;
+        }
+
         //--------------------------------------------------------------------------
         //
         //  XML processing methods
@@ -146,7 +160,6 @@ package org.lionart.starlingmvc.wings.core
                     trace("CommandClass not found in package. Checking next package.");
                 }
             }
-
             return null;
         }
 
@@ -158,8 +171,12 @@ package org.lionart.starlingmvc.wings.core
 
         wings_internal static function createViewElements( beanId : String ) : void
         {
-            viewProcessor ||= new ViewProcessor();
             viewProcessor.createElements(starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance as DisplayObjectContainer, wingsXML.views.view.(attribute("id") == beanId) as XMLList);
+        }
+
+        wings_internal static function applyElementsStyle( beanId : String ) : void
+        {
+            viewProcessor.applyStyles(starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance as DisplayObjectContainer, wingsXML.views.view.(attribute("id") == beanId) as XMLList);
         }
 
     }

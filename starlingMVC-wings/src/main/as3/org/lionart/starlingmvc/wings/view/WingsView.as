@@ -16,7 +16,6 @@
  */
 package org.lionart.starlingmvc.wings.view
 {
-    import org.as3commons.lang.ClassUtils;
     import org.as3commons.lang.StringUtils;
     import org.lionart.starlingmvc.wings.bean.IBean;
     import org.lionart.starlingmvc.wings.core.Wings;
@@ -99,7 +98,7 @@ package org.lionart.starlingmvc.wings.view
          */
         public function placeElements() : void
         {
-
+            Wings.wings_internal::applyElementsStyle(beanId);
         }
 
         //--------------------------------------------------------------------------
