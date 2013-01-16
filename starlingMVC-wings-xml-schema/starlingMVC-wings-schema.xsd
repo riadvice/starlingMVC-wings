@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wings:schema elementFormDefault="qualified" xmlns:wings="http://www.w3.org/2001/XMLSchema">
+    <wings:element name="wings">
+        <wings:complexType>
+            <wings:sequence>
+                <wings:element maxOccurs="1" minOccurs="1" name="application">
+                    <wings:complexType>
+                        <wings:attribute name="width" use="required" type="wings:float"/>
+                        <wings:attribute name="height" use="required" type="wings:float"/>
+                        <wings:attribute name="container" type="wings:string" use="required"/>
+                    </wings:complexType>
+                </wings:element>
+                <wings:element minOccurs="0" name="eventPackages"/>
+                <wings:element maxOccurs="1" minOccurs="0" name="viewPackages"/>
+                <wings:element minOccurs="0" name="commandPackages"/>
+                <wings:element minOccurs="0" name="beans"/>
+                <wings:element maxOccurs="1" minOccurs="0" name="commands"/>
+                <wings:element minOccurs="0" name="triggers"/>
+                <wings:element minOccurs="0" name="transitions"/>
+                <wings:element minOccurs="0" name="resources"/>
+                <wings:element minOccurs="0" name="security"/>
+                <wings:element minOccurs="0" name="remoteClasses"/>
+            </wings:sequence>
+        </wings:complexType>
+    </wings:element>
+</wings:schema>
