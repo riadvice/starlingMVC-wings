@@ -53,6 +53,7 @@
     <classEntry path="org.lionart.starlingmvc.wings.processors.AssetProcessor"/>
     <classEntry path="org.lionart.starlingmvc.wings.utils.ClassUtils"/>
     <classEntry path="org.lionart.starlingmvc.wings.style.Styles"/>
+    <classEntry path="org.lionart.starlingmvc.wings.utils.XMLUtils"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
