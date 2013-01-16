@@ -49,6 +49,6 @@ package org.lionart.starlingmvc.wings.style
         public static const LEFT : String = "left";
         public static const RIGHT : String = "right";
         public static const TOP : String = "top";
-        public static const VALIGNs : String = "vAlign";
+        public static const VALIGN : String = "vAlign";
     }
 }
