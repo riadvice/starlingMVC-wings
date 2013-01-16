@@ -30,6 +30,7 @@ package org.lionart.starlingmvc.wings.core
     import org.lionart.starlingmvc.wings.processors.AssetProcessor;
     import org.lionart.starlingmvc.wings.processors.ConfigurationProcessor;
     import org.lionart.starlingmvc.wings.processors.StarlingMVCProcessor;
+    import org.lionart.starlingmvc.wings.processors.TweenProcessor;
     import org.lionart.starlingmvc.wings.processors.ViewProcessor;
 
     import starling.core.Starling;
@@ -50,6 +51,7 @@ package org.lionart.starlingmvc.wings.core
         private static var wingsConfig : WingsConfig;
         private static var starlingMVCContainer : IWingsContainer;
         private static var viewProcessor : ViewProcessor = new ViewProcessor();
+        private static var tweenProcessor : TweenProcessor = new TweenProcessor();
 
         //--------------------------------------------------------------------------
         //
@@ -177,6 +179,12 @@ package org.lionart.starlingmvc.wings.core
         wings_internal static function applyElementsStyle( beanId : String ) : void
         {
             viewProcessor.applyStyles(starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance as DisplayObjectContainer, wingsXML.views.view.(attribute("id") == beanId) as XMLList);
+        }
+
+        wings_internal static function playTransition( beanId : String, type : String ) : void
+        {
+            var transitionName : String = wingsXML.views.view.(attribute("id") == beanId).@loadTransition.toString();
+            tweenProcessor.playTweens(starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance as DisplayObjectContainer, wingsXML.transitions.transition.(attribute("id") == transitionName).children());
         }
 
     }
