@@ -16,11 +16,41 @@
  */
 package org.lionart.starlingmvc.wings.processors
 {
+    import org.lionart.starlingmvc.wings.ui.AssetLoader;
+
+    import starling.display.Button;
+    import starling.display.DisplayObject;
+    import starling.display.DisplayObjectContainer;
+    import starling.display.Image;
 
     public class ViewProcessor
     {
-        public function ViewProcessor()
+        public function createElements( view : DisplayObjectContainer, xmlElements : XMLList ) : void
         {
+            var displayObject : DisplayObject;
+            var node : XML;
+            for each (node in xmlElements.children.element)
+            {
+                switch (node.@type.toString())
+                {
+                    case "image":
+                        displayObject = new Image(AssetLoader.getAtlas(node.@atlas).getTexture(node.@texture));
+                        displayObject.name = node.@name;
+                        break;
+                    case "button":
+                        displayObject = new Button(AssetLoader.getAtlas(node.@atlas).getTexture(node.@texture));
+                        displayObject.name = node.@name;
+                        break;
+                    default:
+                        break;
+                }
+                view.addChild(displayObject);
+            }
+        }
+
+        public function applyStyles() : void
+        {
+
         }
     }
 }
