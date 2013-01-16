@@ -46,7 +46,7 @@
     <classEntry path="org.lionart.starlingmvc.wings.processors.SecurityProcessor"/>
     <classEntry path="org.lionart.starlingmvc.wings.processors.StyleProcessor"/>
     <classEntry path="org.lionart.starlingmvc.wings.processors.CommandProcessor"/>
-    <classEntry path="org.lionart.starlingmvc.wings.processors.BeanProcessor"/>
+    <classEntry path="org.lionart.starlingmvc.wings.processors.StarlingMVCProcessor"/>
     <classEntry path="org.lionart.starlingmvc.wings.processors.TriggerProcessor"/>
     <classEntry path="org.lionart.starlingmvc.wings.processors.StarlingProcessor"/>
     <classEntry path="org.lionart.starlingmvc.wings.processors.TweenProcessor"/>

@@ -18,19 +18,18 @@ package org.lionart.starlingmvc.wings.core
 {
     import com.creativebottle.starlingmvc.StarlingMVC;
     import com.creativebottle.starlingmvc.beans.Bean;
-    import com.creativebottle.starlingmvc.commands.Command;
     import com.creativebottle.starlingmvc.config.StarlingMVCConfig;
 
     import flash.display.Stage;
     import flash.utils.getDefinitionByName;
 
-    import org.as3commons.lang.ClassUtils;
     import org.lionart.starlingmvc.wings.application.IApplication;
     import org.lionart.starlingmvc.wings.bean.IBean;
     import org.lionart.starlingmvc.wings.container.IWingsContainer;
     import org.lionart.starlingmvc.wings.net.WingsServiceProxy;
     import org.lionart.starlingmvc.wings.processors.AssetProcessor;
     import org.lionart.starlingmvc.wings.processors.ConfigurationProcessor;
+    import org.lionart.starlingmvc.wings.processors.StarlingMVCProcessor;
     import org.lionart.starlingmvc.wings.ui.AssetLoader;
 
     import starling.core.Starling;
@@ -73,6 +72,7 @@ package org.lionart.starlingmvc.wings.core
             wingsConfig = configProcessor.processConfiguration(wingsXML.application);
             configProcessor = null;
 
+            // TODO : update for Starling 1.3 using AssetManager
             var assetProcessor : AssetProcessor = new AssetProcessor();
             assetProcessor.processResources(wingsXML.resources);
             assetProcessor = null;
@@ -93,6 +93,8 @@ package org.lionart.starlingmvc.wings.core
 
         wings_internal static function initStarlingMVC( container : DisplayObjectContainer ) : StarlingMVC
         {
+            var starlingMVCProcessor : StarlingMVCProcessor = new StarlingMVCProcessor();
+
             var nodeList : XMLList;
             var node : XML;
 
@@ -103,72 +105,17 @@ package org.lionart.starlingmvc.wings.core
                 wingsConfig.commandPackages.push(node.toString());
             }
 
-            var config : StarlingMVCConfig = new StarlingMVCConfig();
-
-            // eventPackages
-            nodeList = XMLList(wingsXML.eventPackages.eventPackage).text();
-            for each (node in nodeList)
-            {
-                config.eventPackages.push(node.toString());
-            }
-
-            // eventPackages
-            nodeList = XMLList(wingsXML.viewPackages.viewPackage).text();
-            for each (node in nodeList)
-            {
-                config.viewPackages.push(node.toString());
-            }
+            var config : StarlingMVCConfig = starlingMVCProcessor.processConfig(wingsXML.eventPackages.eventPackage, wingsXML.viewPackages.viewPackage);
 
             // beans
             var beans : Array = [];
-            var beanInstance : *;
-            var props : XMLList;
-            var property : XML;
 
             // Main container bean
             starlingMVCContainer = container as IWingsContainer;
             IBean(container).beanId = "container";
             beans.push(new Bean(container, "container"));
 
-            nodeList = XMLList(wingsXML.beans.bean);
-            for each (node in nodeList)
-            {
-                var args : Array;
-                if (node.constructor)
-                {
-                    args = [];
-                    for each (var arg : XML in node.constructor.arg)
-                    {
-                        if (arg.@type == "bean")
-                        {
-                            args.push(beans.filter(function( obj : *, index : int, array : Array ) : Boolean {return arg.@id == Bean(obj).id})[0].instance);
-                        }
-                        else
-                        {
-                            args.push(arg.@value);
-                        }
-                    }
-                }
-                beanInstance = ClassUtils.newInstance(getDefinitionByName(node.@type.toString()) as Class, args);
-                props = node.properties.property;
-                for each (property in props)
-                {
-                    beanInstance[property.@name.toString()] = property.@value.toString();
-                }
-                if (beanInstance is IBean)
-                {
-                    IBean(beanInstance).beanId = node.@id;
-                }
-                beans.push(new Bean(beanInstance, node.@id));
-            }
-
-            // commands
-            var clazz : Class = getDefinitionByName(wingsXML.commands.@eventsClass) as Class;
-            nodeList = XMLList(wingsXML.commands.command);
-            for each (node in nodeList)
-            {
-                beans.push(new Command(clazz[node.@event], getCommandClass(node.@type), node.@oneTime));
-            }
+            starlingMVCProcessor.processBeans(wingsXML.beans.bean, wingsXML.commands, beans);
 
             return new StarlingMVC(container, config, beans);
         }
@@ -184,11 +131,7 @@ package org.lionart.starlingmvc.wings.core
             return getDefinitionByName(wingsXML.application[0].@container) as Class;
         }
 
-
-
-
-
-        private static function getCommandClass( commandClassName : String ) : Class
+        wings_internal static function getCommandClass( commandClassName : String ) : Class
         {
             for each (var pack : String in wingsConfig.commandPackages)
             {
