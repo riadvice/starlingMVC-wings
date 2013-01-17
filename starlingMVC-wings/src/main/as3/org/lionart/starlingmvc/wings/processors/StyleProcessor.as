@@ -19,24 +19,44 @@ package org.lionart.starlingmvc.wings.processors
     import org.as3commons.lang.StringUtils;
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
+    import org.lionart.starlingmvc.wings.style.Align;
+    import org.lionart.starlingmvc.wings.utils.XMLUtils;
 
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
-    import starling.utils.HAlign;
-    import starling.utils.VAlign;
     import starling.utils.deg2rad;
 
     public class StyleProcessor
     {
 
-        private const STYLE_PROPS_BOOLEAN : Array = ["alpha", "touchable", "useHandCursor", "visible"];
-        private const STYLE_PROPS_NUMBER : Array = ["height", "pivotX", "pivotY", "scaleX", "scaleY", "skewX", "skewY", "width", "x", "y"];
+        //--------------------------------------------------------------------------
+        //
+        //  Class constants
+        //
+        //--------------------------------------------------------------------------
+
+        private const STYLE_PROPS_BOOLEAN : Array = ["touchable", "useHandCursor", "visible"];
+        private const STYLE_PROPS_NUMBER : Array = ["alpha", "height", "pivotX", "pivotY", "scaleX", "scaleY", "skewX", "skewY", "width", "x", "y"];
         private const STYLE_PROPS_GEOMETRY : Array = ["rotation"];
         private const STYLE_PROPS_STRING : Array = ["blendMode"];
-        private const STYLE_PROPS_WINGS : Array = ["bottom", "hAlign", "left", "pivotToCenter", "right", "top", "vAlign"];
+        private const STYLE_PROPS_WINGS : Array = ["bottom", "hAlign", "left", "pivot", "right", "scale", "top", "vAlign"];
+
+        private const NON_STYLE_ATTRIBUTES : Array = ["atlas", "name", "texture", "type"];
+
+        //--------------------------------------------------------------------------
+        //
+        //  Variables
+        //
+        //--------------------------------------------------------------------------
 
         private var currentContainer : DisplayObjectContainer;
         private var currentElement : DisplayObject;
+
+        //--------------------------------------------------------------------------
+        //
+        //  Methods
+        //
+        //--------------------------------------------------------------------------
 
         public function applyStyles( view : DisplayObjectContainer, xmlElements : XMLList ) : void
         {
@@ -47,60 +67,206 @@ package org.lionart.starlingmvc.wings.processors
             for each (node in xmlElements.children.element)
             {
                 currentElement = view.getChildByName(node.@name);
-                for each (style in STYLE_PROPS_NUMBER)
+                var styles : Object = XMLUtils.xmlToObject(XMLUtils.cleanFromAttributes(node, NON_STYLE_ATTRIBUTES));
+                for (var property : String in styles)
                 {
-                    if (node.attribute(style).length() > 0)
-                    {
-                        currentElement[style] = parseFloat(node.attribute(style).toString());
-                    }
-                }
-                for each (style in STYLE_PROPS_BOOLEAN)
-                {
-                    if (node.attribute(style).length() > 0)
-                    {
-                        currentElement[style] = node.attribute(style).toString() == "true";
-                    }
-                }
-                for each (style in STYLE_PROPS_STRING)
-                {
-                    if (node.attribute(style).length() > 0)
-                    {
-                        currentElement[style] = node.attribute(style).toString();
-                    }
-                }
-                for each (style in STYLE_PROPS_GEOMETRY)
-                {
-                    if (node.attribute(style).length() > 0)
-                    {
-                        currentElement[style] = deg2rad(parseFloat(node.attribute(style).toString()));
-                    }
-                }
-
-                for each (style in STYLE_PROPS_WINGS)
-                {
-                    if (node.attribute(style).length() > 0)
-                    {
-                        var value : String = node.attribute(style).toString();
-                        this["apply" + StringUtils.capitalize(style)](value);
-                    }
+                    this["apply" + StringUtils.capitalize(property)](node["@" + property]);
                 }
             }
         }
+
+        //----------------------------------
+        //  starling numeric objects styles
+        //----------------------------------
+
+        /**
+         * Applies alpha attribute.
+         */
+        private function applyAlpha( value : String ) : void
+        {
+            currentElement.alpha = parseFloat(value);
+        }
+
+        /**
+         * Applies height property.
+         */
+        private function applyHeight( value : String ) : void
+        {
+            currentElement.height = parseFloat(value);
+        }
+
+        /**
+         * Applies pivotX property.
+         */
+        private function applyPivotX( value : String ) : void
+        {
+            if (StringUtils.isNumeric(value))
+            {
+                currentElement.pivotX = parseFloat(value);
+            }
+            else
+            {
+                switch (value)
+                {
+                    case Align.CENTER:
+                        currentElement.pivotX = currentElement.width * 0.5;
+                        break;
+
+                    case Align.LEFT:
+                        currentElement.pivotX = 0;
+                        break;
+
+                    case Align.RIGHT:
+                        currentElement.pivotX = currentElement.width;
+                        break;
+                }
+            }
+
+        }
+
+        /**
+         * Applies pivotY property.
+         */
+        private function applyPivotY( value : String ) : void
+        {
+            if (StringUtils.isNumeric(value))
+            {
+                currentElement.pivotY = parseFloat(value);
+            }
+            else
+            {
+                switch (value)
+                {
+                    case Align.CENTER:
+                        currentElement.pivotY = currentElement.height * 0.5;
+                        break;
+
+                    case Align.TOP:
+                        currentElement.pivotY = 0;
+                        break;
+
+                    case Align.BOTTOM:
+                        currentElement.pivotY = currentElement.height;
+                        break;
+                }
+            }
+        }
+
+        /**
+         * Applies scaleX property.
+         */
+        private function applyScaleX( value : String ) : void
+        {
+            currentElement.scaleX = parseFloat(value);
+        }
+
+        /**
+         * Applies scaleY property.
+         */
+        private function applyScaleY( value : String ) : void
+        {
+            currentElement.scaleY = parseFloat(value);
+        }
+
+        /**
+         * Applies skewX property.
+         */
+        private function applySkewX( value : String ) : void
+        {
+            currentElement.scaleX = parseFloat(value);
+        }
+
+        /**
+         * Applies skewY property.
+         */
+        private function applySkewY( value : String ) : void
+        {
+            currentElement.skewY = parseFloat(value);
+        }
+
+        /**
+         * Applies height property.
+         */
+        private function applyWidth( value : String ) : void
+        {
+            currentElement.height = parseFloat(value);
+        }
+
+        /**
+         * Applies x position.
+         */
+        private function applyX( value : String ) : void
+        {
+            currentElement.x = parseFloat(value);
+        }
+
+        /**
+         * Applies y position.
+         */
+        private function applyY( value : String ) : void
+        {
+            currentElement.y = parseFloat(value);
+        }
+
+        //----------------------------------
+        //  starling boolean objects styles
+        //----------------------------------
+
+        /**
+         * Applies touchable property.
+         */
+        private function applyTouchable( value : String ) : void
+        {
+            currentElement.touchable = value == "true";
+        }
+
+        /**
+         * Applies useHandCursor property.
+         */
+        private function applyUseHandCursor( value : String ) : void
+        {
+            currentElement.useHandCursor = value == "true";
+        }
+
+        /**
+         * Applies visible property.
+         */
+        private function applyVisible( value : String ) : void
+        {
+            currentElement.visible = value == "true";
+        }
+
+
+        //----------------------------------
+        //  raduis object styles
+        //----------------------------------
+
+        /**
+         * Applies rotation property.
+         */
+        private function applyRotation( value : String ) : void
+        {
+            currentElement.rotation = deg2rad(parseFloat(value));
+        }
+
+        //----------------------------------
+        //  custom wings styles
+        //----------------------------------
 
         /**
          * Applies hAlign style.
          */
         private function applyHAlign( value : String ) : void
         {
-            if (value == HAlign.CENTER)
+            if (value == Align.CENTER)
             {
                 currentElement.x = int((Wings.wings_internal::config.appWidht - currentElement.width) * 0.5);
             }
-            else if (value == HAlign.LEFT)
+            else if (value == Align.LEFT)
             {
                 currentElement.x = 0;
             }
-            else if (value == HAlign.RIGHT)
+            else if (value == Align.RIGHT)
             {
                 currentElement.x = int(Wings.wings_internal::config.appWidht - currentElement.width);
             }
@@ -111,15 +277,15 @@ package org.lionart.starlingmvc.wings.processors
          */
         private function applyVAlign( value : String ) : void
         {
-            if (value == VAlign.CENTER)
+            if (value == Align.CENTER)
             {
                 currentElement.y = int((Wings.wings_internal::config.appHeight - currentElement.height) * 0.5);
             }
-            else if (value == VAlign.TOP)
+            else if (value == Align.TOP)
             {
                 currentElement.y = 0;
             }
-            else if (value == VAlign.BOTTOM)
+            else if (value == Align.BOTTOM)
             {
                 currentElement.y = int(Wings.wings_internal::config.appHeight - currentElement.height);
             }
@@ -183,7 +349,15 @@ package org.lionart.starlingmvc.wings.processors
             {
                 currentElement.x = Wings.wings_internal::config.appWidht;
             }
+        }
 
+        /**
+         * Applies scale style.
+         */
+        private function applyScale( value : String ) : void
+        {
+            currentElement.scaleX = parseFloat(value);
+            currentElement.scaleY = parseFloat(value);
         }
     }
 }

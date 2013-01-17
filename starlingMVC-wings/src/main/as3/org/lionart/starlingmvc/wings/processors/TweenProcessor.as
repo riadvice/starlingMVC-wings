@@ -33,8 +33,7 @@ package org.lionart.starlingmvc.wings.processors
             {
                 target = view.getChildByName(node.@target);
                 time = node.@time;
-                delete node.@target;
-                delete node.@time;
+                node = XMLUtils.cleanFromAttributes(node, ["target", "time"]);
                 var props : Object = XMLUtils.xmlToObject(node);
                 for (var prop : String in props)
                 {

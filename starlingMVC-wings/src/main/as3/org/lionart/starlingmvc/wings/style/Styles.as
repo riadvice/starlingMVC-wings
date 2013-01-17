@@ -20,12 +20,12 @@ package org.lionart.starlingmvc.wings.style
     public class Styles
     {
         // Boolean style properties
-        public static const ALPHA : String = "alpha";
         public static const TOUCHABLE : String = "touchable";
         public static const USE_HAND_CURSOR : String = "useHandCursor";
         public static const VISIBLE : String = "visible";
 
         // Number style properties
+        public static const ALPHA : String = "alpha";
         public static const HEIGHT : String = "height";
         public static const PIVOT_X : String = "pivotX";
         public static const PIVOT_Y : String = "pivotY";
@@ -48,6 +48,7 @@ package org.lionart.starlingmvc.wings.style
         public static const HALIGN : String = "hAlign";
         public static const LEFT : String = "left";
         public static const RIGHT : String = "right";
+        public static const PIVOT : String = "pivot";
         public static const TOP : String = "top";
         public static const VALIGN : String = "vAlign";
     }
