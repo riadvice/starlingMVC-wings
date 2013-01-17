@@ -130,7 +130,14 @@ package org.lionart.starlingmvc.wings.processors
          */
         private function applyTop( value : String ) : void
         {
-            currentElement.y = parseFloat(value);
+            if (StringUtils.isNumeric(value))
+            {
+                currentElement.y = parseFloat(value);
+            }
+            else if (value == "out")
+            {
+                currentElement.y = -currentElement.height;
+            }
         }
 
         /**
@@ -138,7 +145,14 @@ package org.lionart.starlingmvc.wings.processors
          */
         private function applyBottom( value : String ) : void
         {
-            currentElement.y = Wings.wings_internal::config.appHeight - currentElement.height - parseFloat(value);
+            if (StringUtils.isNumeric(value))
+            {
+                currentElement.y = Wings.wings_internal::config.appHeight - currentElement.height - parseFloat(value);
+            }
+            else if (value == "out")
+            {
+                currentElement.y = Wings.wings_internal::config.appHeight;
+            }
         }
 
         /**
@@ -146,7 +160,14 @@ package org.lionart.starlingmvc.wings.processors
          */
         private function applyLeft( value : String ) : void
         {
-            currentElement.x = parseFloat(value);
+            if (StringUtils.isNumeric(value))
+            {
+                currentElement.x = parseFloat(value);
+            }
+            else if (value == "out")
+            {
+                currentElement.x = -currentElement.width;
+            }
         }
 
         /**
@@ -154,7 +175,15 @@ package org.lionart.starlingmvc.wings.processors
          */
         private function applyRight( value : String ) : void
         {
-            currentElement.x = Wings.wings_internal::config.appWidht - currentElement.width - parseFloat(value);
+            if (StringUtils.isNumeric(value))
+            {
+                currentElement.x = Wings.wings_internal::config.appWidht - currentElement.width - parseFloat(value);
+            }
+            else if (value == "out")
+            {
+                currentElement.x = Wings.wings_internal::config.appWidht;
+            }
+
         }
     }
 }
