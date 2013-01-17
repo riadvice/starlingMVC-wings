@@ -19,6 +19,7 @@ package org.lionart.starlingmvc.wings.processors
     import org.lionart.starlingmvc.wings.utils.XMLUtils;
 
     import starling.core.Starling;
+    import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
 
     public class TweenProcessor
@@ -26,15 +27,23 @@ package org.lionart.starlingmvc.wings.processors
         public function playTweens( view : DisplayObjectContainer, tweens : XMLList ) : void
         {
             var node : XML;
-            var target : String;
+            var target : DisplayObject;
             var time : String;
             for each (node in tweens)
             {
-                target = node.@target;
+                target = view.getChildByName(node.@target);
                 time = node.@time;
                 delete node.@target;
                 delete node.@time;
-                Starling.juggler.tween(view.getChildByName(target), parseFloat(time), XMLUtils.xmlToObject(node));
+                var props : Object = XMLUtils.xmlToObject(node);
+                for (var prop : String in props)
+                {
+                    if (target.hasOwnProperty(prop) && typeof(target[prop] == "number"))
+                    {
+                        props[prop] = parseFloat(props[prop]);
+                    }
+                }
+                Starling.juggler.tween(target, parseFloat(time), props);
             }
         }
     }
