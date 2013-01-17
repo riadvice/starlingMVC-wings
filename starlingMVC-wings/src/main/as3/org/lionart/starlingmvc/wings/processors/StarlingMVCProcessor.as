@@ -63,7 +63,7 @@ package org.lionart.starlingmvc.wings.processors
                     {
                         if (arg.attribute("type") == "bean")
                         {
-                            args.push(beans.filter(function( obj : *, index : int, array : Array ) : Boolean {return arg.@id.toString() == Bean(obj).id})[0].instance);
+                            args.push(beans.filter(function( obj : *, index : int, array : Array ) : Boolean {return arg.@value.toString() == Bean(obj).id})[0].instance);
                         }
                         else
                         {
