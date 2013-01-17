@@ -32,5 +32,14 @@ package org.lionart.starlingmvc.wings.utils
             }
             return result;
         }
+
+        public static function cleanFromAttributes( xml : XML, attributes : Array ) : XML
+        {
+            for each (var value : String in attributes)
+            {
+                delete xml["@" + value];
+            }
+            return xml;
+        }
     }
 }
