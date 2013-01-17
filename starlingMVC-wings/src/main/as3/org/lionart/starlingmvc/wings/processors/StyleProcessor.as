@@ -94,7 +94,7 @@ package org.lionart.starlingmvc.wings.processors
          */
         private function applyPivotX( value : String ) : void
         {
-            if (StringUtils.isNumeric(value))
+            if (!StringUtils.isAlpha(value))
             {
                 currentElement.pivotX = parseFloat(value);
             }
@@ -123,7 +123,7 @@ package org.lionart.starlingmvc.wings.processors
          */
         private function applyPivotY( value : String ) : void
         {
-            if (StringUtils.isNumeric(value))
+            if (!StringUtils.isAlpha(value))
             {
                 currentElement.pivotY = parseFloat(value);
             }
@@ -290,7 +290,7 @@ package org.lionart.starlingmvc.wings.processors
          */
         private function applyTop( value : String ) : void
         {
-            if (StringUtils.isNumeric(value))
+            if (!StringUtils.isAlpha(value))
             {
                 currentElement.y = parseFloat(value);
             }
@@ -305,7 +305,7 @@ package org.lionart.starlingmvc.wings.processors
          */
         private function applyBottom( value : String ) : void
         {
-            if (StringUtils.isNumeric(value))
+            if (!StringUtils.isAlpha(value))
             {
                 currentElement.y = Wings.wings_internal::config.appHeight - currentElement.height - parseFloat(value);
             }
@@ -320,7 +320,7 @@ package org.lionart.starlingmvc.wings.processors
          */
         private function applyLeft( value : String ) : void
         {
-            if (StringUtils.isNumeric(value))
+            if (!StringUtils.isAlpha(value))
             {
                 currentElement.x = parseFloat(value);
             }
@@ -335,7 +335,7 @@ package org.lionart.starlingmvc.wings.processors
          */
         private function applyRight( value : String ) : void
         {
-            if (StringUtils.isNumeric(value))
+            if (!StringUtils.isAlpha(value))
             {
                 currentElement.x = Wings.wings_internal::config.appWidht - currentElement.width - parseFloat(value);
             }
