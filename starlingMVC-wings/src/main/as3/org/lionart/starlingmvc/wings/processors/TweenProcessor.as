@@ -16,6 +16,9 @@
  */
 package org.lionart.starlingmvc.wings.processors
 {
+    import org.as3commons.lang.StringUtils;
+    import org.lionart.starlingmvc.wings.core.Wings;
+    import org.lionart.starlingmvc.wings.core.wings_internal;
     import org.lionart.starlingmvc.wings.utils.XMLUtils;
 
     import starling.core.Starling;
@@ -35,15 +38,87 @@ package org.lionart.starlingmvc.wings.processors
                 time = node.@time;
                 node = XMLUtils.cleanFromAttributes(node, ["target", "time"]);
                 var props : Object = XMLUtils.xmlToObject(node);
+                var tweenParams : Object = {};
                 for (var prop : String in props)
                 {
-                    if (target.hasOwnProperty(prop) && typeof(target[prop] == "number"))
+                    if (!StringUtils.isAlpha(props[prop]) && target.hasOwnProperty(prop))
                     {
-                        props[prop] = parseFloat(props[prop]);
+                        if (target.hasOwnProperty(prop) && typeof(target[prop] == "number"))
+                        {
+                            tweenParams[prop] = parseFloat(props[prop]);
+                        }
+                    }
+                    else
+                    {
+                        this["apply" + StringUtils.capitalize(prop)](tweenParams, props[prop], target);
                     }
                 }
-                Starling.juggler.tween(target, parseFloat(time), props);
+                Starling.juggler.tween(target, parseFloat(time), tweenParams);
             }
+        }
+
+        private function applyRight( object : Object, value : String, target : DisplayObject ) : void
+        {
+            if (!StringUtils.isAlpha(value))
+            {
+                object.x = Wings.wings_internal::config.appWidht - target.width - parseFloat(value);
+            }
+            else if (value == "out")
+            {
+                object.x = Wings.wings_internal::config.appWidht;
+            }
+        }
+
+        private function applyLeft( object : Object, value : String, target : DisplayObject ) : void
+        {
+            if (!StringUtils.isAlpha(value))
+            {
+                object.x = parseFloat(value);
+            }
+            else if (value == "out")
+            {
+                object.x = -target.width;
+            }
+        }
+
+        /**
+         * Applies top style.
+         */
+        private function applyTop( object : Object, value : String, target : DisplayObject ) : void
+        {
+            if (!StringUtils.isAlpha(value))
+            {
+                object.y = parseFloat(value);
+            }
+            else if (value == "out")
+            {
+                object.y = -target.height;
+            }
+        }
+
+        /**
+         * Applies bottom style.
+         */
+        private function applyBottom( object : Object, value : String, target : DisplayObject ) : void
+        {
+            if (!StringUtils.isAlpha(value))
+            {
+                object.y = Wings.wings_internal::config.appHeight - target.height - parseFloat(value);
+            }
+            else if (value == "out")
+            {
+                object.y = Wings.wings_internal::config.appHeight;
+            }
+        }
+
+        private function applyTransition( object : Object, value : String, target : DisplayObject ) : void
+        {
+            object.transition = value;
+        }
+
+        private function applyDelay( object : Object, value : String, target : DisplayObject ) : void
+        {
+            object.delay = parseFloat(value);
         }
     }
 }
