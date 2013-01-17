@@ -10,13 +10,177 @@
                         <wings:attribute name="container" type="wings:string" use="required"/>
                     </wings:complexType>
                 </wings:element>
-                <wings:element minOccurs="0" name="eventPackages"/>
-                <wings:element maxOccurs="1" minOccurs="0" name="viewPackages"/>
-                <wings:element minOccurs="0" name="commandPackages"/>
-                <wings:element minOccurs="0" name="beans"/>
-                <wings:element maxOccurs="1" minOccurs="0" name="commands"/>
-                <wings:element minOccurs="0" name="triggers"/>
-                <wings:element minOccurs="0" name="transitions"/>
+                <wings:element minOccurs="0" name="eventPackages">
+                    <wings:complexType>
+                        <wings:sequence>
+                            <wings:element fixed="" form="qualified" maxOccurs="unbounded"
+                                minOccurs="0" name="eventPackage" nillable="false"
+                                type="wings:string"/>
+                        </wings:sequence>
+                    </wings:complexType>
+                </wings:element>
+                <wings:element maxOccurs="1" minOccurs="0" name="viewPackages">
+                    <wings:complexType>
+                        <wings:sequence>
+                            <wings:element maxOccurs="unbounded" minOccurs="0" name="viewPackage"
+                                type="wings:string"/>
+                        </wings:sequence>
+                    </wings:complexType>
+                </wings:element>
+                <wings:element minOccurs="0" name="commandPackages">
+                    <wings:complexType>
+                        <wings:sequence>
+                            <wings:element maxOccurs="unbounded" minOccurs="0" name="commandPackage"
+                                type="wings:string"/>
+                        </wings:sequence>
+                    </wings:complexType>
+                </wings:element>
+                <wings:element minOccurs="0" name="beans">
+                    <wings:complexType>
+                        <wings:sequence>
+                            <wings:element maxOccurs="unbounded" minOccurs="0" name="bean">
+                                <wings:complexType>
+                                    <wings:sequence>
+                                        <wings:element form="qualified" maxOccurs="1" minOccurs="0"
+                                            name="properties" nillable="false">
+                                            <wings:complexType>
+                                                <wings:sequence>
+                                                  <wings:element maxOccurs="unbounded" minOccurs="0"
+                                                  name="property">
+                                                  <wings:complexType>
+                                                  <wings:attribute form="unqualified" name="name"
+                                                  type="wings:string" use="required"/>
+                                                  <wings:attribute name="value" type="wings:string"
+                                                  use="required"/>
+                                                  </wings:complexType>
+                                                  </wings:element>
+                                                </wings:sequence>
+                                            </wings:complexType>
+                                        </wings:element>
+                                        <wings:element maxOccurs="1" minOccurs="0"
+                                            name="constructor">
+                                            <wings:complexType>
+                                                <wings:sequence>
+                                                  <wings:element maxOccurs="unbounded" minOccurs="0"
+                                                  name="arg">
+                                                  <wings:complexType>
+                                                  <wings:attribute form="unqualified" name="type"
+                                                  type="wings:string" use="required"/>
+                                                  <wings:attribute name="value" type="wings:string"
+                                                  use="required"/>
+                                                  </wings:complexType>
+                                                  </wings:element>
+                                                </wings:sequence>
+                                            </wings:complexType>
+                                        </wings:element>
+                                    </wings:sequence>
+                                    <wings:attribute name="class" type="wings:string" use="required"/>
+                                    <wings:attribute name="id" type="wings:string" use="required"/>
+                                </wings:complexType>
+                            </wings:element>
+                        </wings:sequence>
+                    </wings:complexType>
+                </wings:element>
+                <wings:element maxOccurs="1" minOccurs="0" name="commands">
+                    <wings:complexType>
+                        <wings:sequence>
+                            <wings:element maxOccurs="unbounded" minOccurs="0" name="command">
+                                <wings:complexType>
+                                    <wings:attribute name="class" type="wings:string" use="required"/>
+                                    <wings:attribute form="unqualified" name="event"
+                                        type="wings:string" use="required"/>
+                                    <wings:attribute name="oneTime" type="wings:string"
+                                        use="optional"/>
+                                </wings:complexType>
+                            </wings:element>
+                        </wings:sequence>
+                        <wings:attribute name="eventClass" type="wings:string" use="optional"/>
+                    </wings:complexType>
+                </wings:element>
+                <wings:element minOccurs="0" name="triggers">
+                    <wings:complexType>
+                        <wings:sequence>
+                            <wings:element maxOccurs="unbounded" minOccurs="0" name="trigger">
+                                <wings:complexType>
+                                    <wings:attribute name="button" type="wings:string"
+                                        use="required"/>
+                                    <wings:attribute name="event" type="wings:string" use="required"
+                                    />
+                                </wings:complexType>
+                            </wings:element>
+                        </wings:sequence>
+                        <wings:attribute name="eventClass" type="wings:string" use="optional"/>
+                    </wings:complexType>
+                </wings:element>
+                <wings:element maxOccurs="1" minOccurs="0" name="views">
+                    <wings:complexType>
+                        <wings:sequence>
+                            <wings:element maxOccurs="unbounded" minOccurs="0" name="view">
+                                <wings:complexType>
+                                    <wings:sequence>
+                                        <wings:element maxOccurs="1" minOccurs="0" name="children">
+                                            <wings:complexType>
+                                                <wings:sequence>
+                                                  <wings:element name="element">
+                                                  <wings:complexType>
+                                                  <wings:attribute name="type" type="wings:string"
+                                                  use="required"/>
+                                                  <wings:attribute name="name" type="wings:string"/>
+                                                  <wings:attribute name="atlas" type="wings:string"/>
+                                                  <wings:attribute name="texture"
+                                                  type="wings:string"/>
+                                                  <wings:attribute name="align" type="wings:string"/>
+                                                  <wings:attribute name="top" type="wings:float"/>
+                                                  <wings:attribute name="left" type="wings:float"/>
+                                                  <wings:attribute name="right" type="wings:float"/>
+                                                  <wings:attribute name="bottom" type="wings:float"/>
+                                                  <wings:attribute name="width" type="wings:float"/>
+                                                  <wings:attribute name="height" type="wings:float"/>
+                                                  <wings:attribute name="x" type="wings:float"/>
+                                                  <wings:attribute name="y" type="wings:float"/>
+                                                  <wings:attribute name="scaleX" type="wings:float"/>
+                                                  <wings:attribute name="scaleY" type="wings:float"/>
+                                                  <wings:attribute name="skewX" type="wings:float"/>
+                                                  <wings:attribute name="skewY" type="wings:float"/>
+                                                  <wings:attribute name="alpha" type="wings:boolean"/>
+                                                  <wings:attribute name="touchable"
+                                                  type="wings:boolean"/>
+                                                  <wings:attribute name="useHandCursor"
+                                                  type="wings:boolean"/>
+                                                  <wings:attribute name="visible"
+                                                  type="wings:boolean"/>
+                                                  </wings:complexType>
+                                                  </wings:element>
+                                                </wings:sequence>
+                                            </wings:complexType>
+                                        </wings:element>
+                                    </wings:sequence>
+                                    <wings:attribute name="id" type="wings:string" use="required"/>
+                                    <wings:attribute default="" name="loadTransition"
+                                        type="wings:string"/>
+                                    <wings:attribute name="unloadTransition" type="wings:string"/>
+                                </wings:complexType>
+                            </wings:element>
+                        </wings:sequence>
+                    </wings:complexType>
+                </wings:element>
+                <wings:element minOccurs="0" name="transitions">
+                    <wings:complexType>
+                        <wings:sequence>
+                            <wings:element maxOccurs="unbounded" minOccurs="0" name="transition">
+                                <wings:complexType>
+                                    <wings:sequence>
+                                        <wings:element name="animation">
+                                            <wings:complexType>
+                                                <wings:attribute name="newAttribute"/>
+                                            </wings:complexType>
+                                        </wings:element>
+                                    </wings:sequence>
+                                </wings:complexType>
+                            </wings:element>
+                        </wings:sequence>
+                    </wings:complexType>
+                </wings:element>
                 <wings:element minOccurs="0" name="resources"/>
                 <wings:element minOccurs="0" name="security"/>
                 <wings:element minOccurs="0" name="remoteClasses"/>
