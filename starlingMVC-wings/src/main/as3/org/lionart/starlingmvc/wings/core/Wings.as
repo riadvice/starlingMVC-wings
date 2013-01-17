@@ -36,7 +36,6 @@ package org.lionart.starlingmvc.wings.core
     import org.lionart.starlingmvc.wings.processors.ViewProcessor;
 
     import starling.core.Starling;
-    import starling.display.Button;
     import starling.display.DisplayObjectContainer;
     import starling.events.Event;
 
@@ -187,6 +186,7 @@ package org.lionart.starlingmvc.wings.core
 
         private static function triggerEventHandler( event : Event ) : void
         {
+            starlingMVCContainer.preTriggerExecution();
             var trigger : XMLList = wingsXML.triggers.trigger.(@button == event.target.name);
             if (!StringUtils.isEmpty(trigger.@event.toString()))
             {
