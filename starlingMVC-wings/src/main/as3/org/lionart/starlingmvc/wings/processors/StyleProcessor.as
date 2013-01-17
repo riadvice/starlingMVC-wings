@@ -35,12 +35,6 @@ package org.lionart.starlingmvc.wings.processors
         //
         //--------------------------------------------------------------------------
 
-        private const STYLE_PROPS_BOOLEAN : Array = ["touchable", "useHandCursor", "visible"];
-        private const STYLE_PROPS_NUMBER : Array = ["alpha", "height", "pivotX", "pivotY", "scaleX", "scaleY", "skewX", "skewY", "width", "x", "y"];
-        private const STYLE_PROPS_GEOMETRY : Array = ["rotation"];
-        private const STYLE_PROPS_STRING : Array = ["blendMode"];
-        private const STYLE_PROPS_WINGS : Array = ["bottom", "hAlign", "left", "pivot", "right", "scale", "top", "vAlign"];
-
         private const NON_STYLE_ATTRIBUTES : Array = ["atlas", "name", "texture", "type"];
 
         //--------------------------------------------------------------------------
