@@ -18,6 +18,8 @@ package org.lionart.starlingmvc.wings.container
 {
     import com.creativebottle.starlingmvc.StarlingMVC;
 
+    import starling.events.Event;
+
     public interface IWingsContainer
     {
         //--------------------------------------------------------------------------
@@ -35,5 +37,20 @@ package org.lionart.starlingmvc.wings.container
          */
         function get starlingMVC() : StarlingMVC;
         function set starlingMVC( value : StarlingMVC ) : void;
+
+        //--------------------------------------------------------------------------
+        //
+        //  Methods
+        //
+        //--------------------------------------------------------------------------
+
+        function addEventListener( type : String, listener : Function ) : void
+        function dispatchEventWith( type : String, bubbles : Boolean = false, data : Object = null ) : void
+
+        //----------------------------------
+        //  eventHandlers
+        //----------------------------------
+
+        function triggerEventHandler( event : Event ) : void
     }
 }

@@ -24,6 +24,7 @@ package org.lionart.starlingmvc.wings.container
     import org.lionart.starlingmvc.wings.core.wings_internal;
 
     import starling.display.Sprite;
+    import starling.events.Event;
 
     use namespace wings_internal;
 
@@ -49,6 +50,7 @@ package org.lionart.starlingmvc.wings.container
         {
             super();
             _starlingMVC = Wings.wings_internal::initStarlingMVC(this);
+            Wings.wings_internal::mapCommandEvents();
         }
 
         //--------------------------------------------------------------------------
@@ -86,6 +88,17 @@ package org.lionart.starlingmvc.wings.container
             {
                 _beanId = value;
             }
+        }
+
+        //--------------------------------------------------------------------------
+        //
+        //  Event Handlers
+        //
+        //--------------------------------------------------------------------------
+
+        public function triggerEventHandler( event : Event ) : void
+        {
+
         }
 
     }

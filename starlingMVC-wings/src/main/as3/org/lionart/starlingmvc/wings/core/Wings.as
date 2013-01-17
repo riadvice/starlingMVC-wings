@@ -23,6 +23,7 @@ package org.lionart.starlingmvc.wings.core
     import flash.display.Stage;
     import flash.utils.getDefinitionByName;
 
+    import org.as3commons.lang.StringUtils;
     import org.lionart.starlingmvc.wings.application.IApplication;
     import org.lionart.starlingmvc.wings.bean.IBean;
     import org.lionart.starlingmvc.wings.container.IWingsContainer;
@@ -35,7 +36,9 @@ package org.lionart.starlingmvc.wings.core
     import org.lionart.starlingmvc.wings.processors.ViewProcessor;
 
     import starling.core.Starling;
+    import starling.display.Button;
     import starling.display.DisplayObjectContainer;
+    import starling.events.Event;
 
     use namespace wings_internal;
 
@@ -100,6 +103,11 @@ package org.lionart.starlingmvc.wings.core
             return starlingInstance;
         }
 
+        wings_internal static function mapCommandEvents() : void
+        {
+            starlingMVCContainer.addEventListener(Event.TRIGGERED, triggerEventHandler);
+        }
+
         /**
          * Initialises StarlingMVC.
          */
@@ -116,6 +124,10 @@ package org.lionart.starlingmvc.wings.core
             {
                 wingsConfig.commandPackages.push(node.toString());
             }
+
+            // commandsEventClass
+            wingsConfig.commandsEventClass = getDefinitionByName(wingsXML.commands.@eventClass) as Class;
+            wingsConfig.triggersEventClass = getDefinitionByName(wingsXML.triggers.@eventClass) as Class;
 
             var config : StarlingMVCConfig = starlingMVCProcessor.processConfig(wingsXML.eventPackages.eventPackage, wingsXML.viewPackages.viewPackage);
 
@@ -165,6 +177,25 @@ package org.lionart.starlingmvc.wings.core
                 }
             }
             return null;
+        }
+
+        //--------------------------------------------------------------------------
+        //
+        //  Global event handlers
+        //
+        //--------------------------------------------------------------------------
+
+        private static function triggerEventHandler( event : Event ) : void
+        {
+            var trigger : XMLList = wingsXML.triggers.trigger.(@button == event.target.name);
+            if (!StringUtils.isEmpty(trigger.@event.toString()))
+            {
+                starlingMVCContainer.dispatchEventWith(wingsConfig.triggersEventClass[trigger.@event]);
+            }
+            else
+            {
+                starlingMVCContainer.triggerEventHandler(event);
+            }
         }
 
         //--------------------------------------------------------------------------

@@ -85,7 +85,7 @@ package org.lionart.starlingmvc.wings.processors
             }
 
             // commands
-            var clazz : Class = getDefinitionByName(xmlCommands.@eventsClass) as Class;
+            var clazz : Class = getDefinitionByName(xmlCommands.@eventClass) as Class;
             for each (node in xmlCommands.command)
             {
                 beans.push(new Command(clazz[node.@event], Wings.wings_internal::getCommandClass(node.attribute("class")), node.@oneTime));
