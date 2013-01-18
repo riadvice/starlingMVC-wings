@@ -39,7 +39,7 @@ package org.lionart.starlingmvc.wings.net
 
         public function WingsResponder( result : Function = null, status : Function = null )
         {
-            super(result, status);
+            super(this.result, this.fault);
         }
 
         //--------------------------------------------------------------------------
