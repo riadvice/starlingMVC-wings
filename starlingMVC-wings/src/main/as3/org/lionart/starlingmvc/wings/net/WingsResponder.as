@@ -16,10 +16,12 @@
  */
 package org.lionart.starlingmvc.wings.net
 {
+    import flash.net.Responder;
+
     import org.as3commons.lang.StringUtils;
     import org.lionart.starlingmvc.wings.bean.IBean;
 
-    public class WingsResponder implements IResponder, IWingsResponder, IBean
+    public class WingsResponder extends Responder implements IResponder, IWingsResponder, IBean
     {
         //--------------------------------------------------------------------------
         //
@@ -35,8 +37,9 @@ package org.lionart.starlingmvc.wings.net
         //
         //--------------------------------------------------------------------------
 
-        public function WingsResponder()
+        public function WingsResponder( result : Function = null, status : Function = null )
         {
+            super(result, status);
         }
 
         //--------------------------------------------------------------------------
