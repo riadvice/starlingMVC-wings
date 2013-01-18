@@ -19,6 +19,7 @@ package org.lionart.starlingmvc.wings.processors
     import org.as3commons.lang.StringUtils;
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
+    import org.lionart.starlingmvc.wings.utils.JugglerUtils;
     import org.lionart.starlingmvc.wings.utils.XMLUtils;
 
     import starling.core.Starling;
@@ -53,7 +54,7 @@ package org.lionart.starlingmvc.wings.processors
                         this["apply" + StringUtils.capitalize(prop)](tweenParams, props[prop], target);
                     }
                 }
-                Starling.juggler.tween(target, parseFloat(time), tweenParams);
+                Starling.juggler.add(JugglerUtils.createTween(target, parseFloat(time), tweenParams));
             }
         }
 
