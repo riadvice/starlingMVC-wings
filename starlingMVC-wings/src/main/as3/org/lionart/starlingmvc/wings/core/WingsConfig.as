@@ -29,7 +29,7 @@ package org.lionart.starlingmvc.wings.core
         public var appWidht : Number;
         public var appHeight : Number;
 
-        public var commandsEventClass : Class;
-        public var triggersEventClass : Class;
+        public var eventClass : Class;
+        public var textClass : Class;
     }
 }

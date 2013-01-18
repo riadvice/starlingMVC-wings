@@ -35,6 +35,7 @@ package org.lionart.starlingmvc.wings.core
     import org.lionart.starlingmvc.wings.processors.StyleProcessor;
     import org.lionart.starlingmvc.wings.processors.TweenProcessor;
     import org.lionart.starlingmvc.wings.processors.ViewProcessor;
+    import org.lionart.starlingmvc.wings.utils.ClassUtils;
 
     import starling.core.Starling;
     import starling.display.DisplayObjectContainer;
@@ -75,6 +76,8 @@ package org.lionart.starlingmvc.wings.core
 
             var configProcessor : ConfigurationProcessor = new ConfigurationProcessor();
             wingsConfig = configProcessor.processConfiguration(wingsXML.application);
+            wingsConfig.eventClass = ClassUtils.getDefinitionByNameOrNull(wingsXML.resources.eventClass);
+            wingsConfig.textClass = ClassUtils.getDefinitionByNameOrNull(wingsXML.resources.textClass);
             configProcessor = null;
 
             // TODO : update for Starling 1.3 using AssetManager
@@ -126,10 +129,6 @@ package org.lionart.starlingmvc.wings.core
                 wingsConfig.commandPackages.push(node.toString());
             }
 
-            // commandsEventClass
-            wingsConfig.commandsEventClass = getDefinitionByName(wingsXML.commands.@eventClass) as Class;
-            wingsConfig.triggersEventClass = getDefinitionByName(wingsXML.triggers.@eventClass) as Class;
-
             var config : StarlingMVCConfig = starlingMVCProcessor.processConfig(wingsXML.eventPackages.eventPackage, wingsXML.viewPackages.viewPackage);
 
             // beans
@@ -177,7 +176,7 @@ package org.lionart.starlingmvc.wings.core
             var trigger : XMLList = wingsXML.triggers.trigger.(@button == event.target.name);
             if (!StringUtils.isEmpty(trigger.@event.toString()))
             {
-                starlingMVCContainer.dispatchEventWith(wingsConfig.triggersEventClass[trigger.@event]);
+                starlingMVCContainer.dispatchEventWith(wingsConfig.eventClass[trigger.@event]);
             }
             else
             {

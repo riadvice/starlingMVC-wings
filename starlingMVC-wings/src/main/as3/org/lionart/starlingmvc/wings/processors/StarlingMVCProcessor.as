@@ -19,9 +19,9 @@ package org.lionart.starlingmvc.wings.processors
     import com.creativebottle.starlingmvc.beans.Bean;
     import com.creativebottle.starlingmvc.commands.Command;
     import com.creativebottle.starlingmvc.config.StarlingMVCConfig;
-
+    
     import flash.utils.getDefinitionByName;
-
+    
     import org.as3commons.lang.ClassUtils;
     import org.lionart.starlingmvc.wings.bean.IBean;
     import org.lionart.starlingmvc.wings.core.Wings;
@@ -85,11 +85,9 @@ package org.lionart.starlingmvc.wings.processors
                 beans.push(new Bean(beanInstance, node.@id));
             }
 
-            // commands
-            var clazz : Class = getDefinitionByName(xmlCommands.@eventClass) as Class;
             for each (node in xmlCommands.command)
             {
-                beans.push(new Command(clazz[node.@event], org.lionart.starlingmvc.wings.utils.ClassUtils.findClassInPackages(node.attribute("class"), Wings.wings_internal::config.commandPackages), node.@oneTime));
+                beans.push(new Command(Wings.wings_internal::config.eventClass[node.@event], org.lionart.starlingmvc.wings.utils.ClassUtils.findClassInPackages(node.attribute("class"), Wings.wings_internal::config.commandPackages), node.@oneTime));
             }
         }
     }

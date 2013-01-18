@@ -17,8 +17,10 @@
 package org.lionart.starlingmvc.wings.processors
 {
     import org.as3commons.lang.StringUtils;
+    import org.lionart.starlingmvc.wings.core.Wings;
+    import org.lionart.starlingmvc.wings.core.wings_internal;
     import org.lionart.starlingmvc.wings.ui.AssetLoader;
-
+    
     import starling.display.Button;
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
@@ -45,7 +47,7 @@ package org.lionart.starlingmvc.wings.processors
                         displayObject.name = node.@name;
                         break;
                     case "textField":
-                        displayObject = new TextField(parseInt(node.@width), parseInt(node.@height), node.@text, node.@fontName, parseFloat(node.@fontSize), parseInt(node.@color.toString().replace(/0x|#/g, ""), 16), node.@bold == "true");
+                        displayObject = new TextField(parseInt(node.@width), parseInt(node.@height), Wings.wings_internal::config.textClass[node.@text], node.@fontName, parseFloat(node.@fontSize), parseInt(node.@color.toString().replace(/0x|#/g, ""), 16), node.@bold == "true");
                         displayObject.name = node.@name;
                         break;
                     default:

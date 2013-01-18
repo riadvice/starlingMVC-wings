@@ -70,7 +70,7 @@ package org.lionart.starlingmvc.wings.processors
                         {
                             currentElement[property] = parseFloat(node["@" + property])
                         }
-                        else if (typeof(currentElement[property]) == "string")
+                        else if (typeof(currentElement[property]) == "string" && property != "text")
                         {
                             currentElement[property] = node["@" + property].toString();
                         }
