@@ -19,6 +19,7 @@ package org.lionart.starlingmvc.wings.processors
     import org.as3commons.lang.StringUtils;
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
+    import org.lionart.starlingmvc.wings.style.Align;
     import org.lionart.starlingmvc.wings.utils.JugglerUtils;
     import org.lionart.starlingmvc.wings.utils.XMLUtils;
 
@@ -116,6 +117,41 @@ package org.lionart.starlingmvc.wings.processors
             else if (value == "out")
             {
                 object.y = Wings.wings_internal::config.appHeight;
+            }
+        }
+
+        private function applyHAlign( object : Object, value : String, target : DisplayObject ) : void
+        {
+            if (value == Align.CENTER)
+            {
+                object.x = int((Wings.wings_internal::config.appWidht - target.width) * 0.5);
+            }
+            else if (value == Align.LEFT)
+            {
+                object.x = 0;
+            }
+            else if (value == Align.RIGHT)
+            {
+                object.x = int(Wings.wings_internal::config.appWidht - target.width);
+            }
+        }
+
+        /**
+         * Applies hAlign style.
+         */
+        private function applyVAlign( object : Object, value : String, target : DisplayObject ) : void
+        {
+            if (value == Align.CENTER)
+            {
+                object.y = int((Wings.wings_internal::config.appHeight - target.height) * 0.5);
+            }
+            else if (value == Align.TOP)
+            {
+                object.y = 0;
+            }
+            else if (value == Align.BOTTOM)
+            {
+                object.y = int(Wings.wings_internal::config.appHeight - target.height);
             }
         }
 
