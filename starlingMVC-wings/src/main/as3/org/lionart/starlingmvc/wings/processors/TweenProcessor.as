@@ -155,6 +155,16 @@ package org.lionart.starlingmvc.wings.processors
             }
         }
 
+        private function applyReverse( object : Object, value : String, target : DisplayObject ) : void
+        {
+            object.reverse = value == "true";
+        }
+
+        private function applyRepeatCount( object : Object, value : String, target : DisplayObject ) : void
+        {
+            object.repeatCount = parseInt(value);
+        }
+
         private function applyTransition( object : Object, value : String, target : DisplayObject ) : void
         {
             object.transition = value;
