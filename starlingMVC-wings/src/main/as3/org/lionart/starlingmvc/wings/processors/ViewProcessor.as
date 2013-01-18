@@ -16,12 +16,14 @@
  */
 package org.lionart.starlingmvc.wings.processors
 {
+    import org.as3commons.lang.StringUtils;
     import org.lionart.starlingmvc.wings.ui.AssetLoader;
 
     import starling.display.Button;
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
     import starling.display.Image;
+    import starling.text.TextField;
 
     public class ViewProcessor
     {
@@ -40,6 +42,10 @@ package org.lionart.starlingmvc.wings.processors
                         break;
                     case "button":
                         displayObject = new Button(AssetLoader.getAtlas(node.@atlas).getTexture(node.@texture));
+                        displayObject.name = node.@name;
+                        break;
+                    case "textField":
+                        displayObject = new TextField(parseInt(node.@width), parseInt(node.@height), node.@text, node.@fontName, parseFloat(node.@fontSize), parseInt(node.@color.toString().replace(/0x|#/g, ""), 16), node.@bold == "true");
                         displayObject.name = node.@name;
                         break;
                     default:

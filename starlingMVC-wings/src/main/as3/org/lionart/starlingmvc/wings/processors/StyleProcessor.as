@@ -64,7 +64,25 @@ package org.lionart.starlingmvc.wings.processors
                 var styles : Object = XMLUtils.xmlToObject(XMLUtils.cleanFromAttributes(node, NON_STYLE_ATTRIBUTES));
                 for (var property : String in styles)
                 {
-                    this["apply" + StringUtils.capitalize(property)](node["@" + property]);
+                    if (currentElement.hasOwnProperty(property))
+                    {
+                        if (typeof(currentElement[property]) == "number")
+                        {
+                            currentElement[property] = parseFloat(node["@" + property])
+                        }
+                        else if (typeof(currentElement[property]) == "string")
+                        {
+                            currentElement[property] = node["@" + property].toString();
+                        }
+                        else if (typeof(currentElement[property]) == "boolean")
+                        {
+                            currentElement[property] = node["@" + property].toString() == "true";
+                        }
+                    }
+                    else
+                    {
+                        this["apply" + StringUtils.capitalize(property)](node["@" + property]);
+                    }
                 }
             }
         }
@@ -343,6 +361,11 @@ package org.lionart.starlingmvc.wings.processors
             {
                 currentElement.x = Wings.wings_internal::config.appWidht;
             }
+        }
+
+        private function applyText( value : String ) : void
+        {
+            currentElement["text"] = value;
         }
 
         /**
