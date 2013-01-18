@@ -164,21 +164,6 @@ package org.lionart.starlingmvc.wings.core
             return getDefinitionByName(wingsXML.application[0].@container) as Class;
         }
 
-        wings_internal static function getCommandClass( commandClassName : String ) : Class
-        {
-            for each (var pack : String in wingsConfig.commandPackages)
-            {
-                try
-                {
-                    return getDefinitionByName(pack + "." + commandClassName) as Class;
-                }
-                catch ( e : Error )
-                {
-                    trace("CommandClass not found in package. Checking next package.");
-                }
-            }
-            return null;
-        }
 
         //--------------------------------------------------------------------------
         //

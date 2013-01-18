@@ -26,6 +26,7 @@ package org.lionart.starlingmvc.wings.processors
     import org.lionart.starlingmvc.wings.bean.IBean;
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
+    import org.lionart.starlingmvc.wings.utils.ClassUtils;
 
     public class StarlingMVCProcessor
     {
@@ -71,7 +72,7 @@ package org.lionart.starlingmvc.wings.processors
                         }
                     }
                 }
-                beanInstance = ClassUtils.newInstance(getDefinitionByName(node.attribute("class").toString()) as Class, args);
+                beanInstance = org.as3commons.lang.ClassUtils.newInstance(getDefinitionByName(node.attribute("class").toString()) as Class, args);
                 props = node.properties.property;
                 for each (property in props)
                 {
@@ -88,7 +89,7 @@ package org.lionart.starlingmvc.wings.processors
             var clazz : Class = getDefinitionByName(xmlCommands.@eventClass) as Class;
             for each (node in xmlCommands.command)
             {
-                beans.push(new Command(clazz[node.@event], Wings.wings_internal::getCommandClass(node.attribute("class")), node.@oneTime));
+                beans.push(new Command(clazz[node.@event], org.lionart.starlingmvc.wings.utils.ClassUtils.findClassInPackages(node.attribute("class"), Wings.wings_internal::config.commandPackages), node.@oneTime));
             }
         }
     }

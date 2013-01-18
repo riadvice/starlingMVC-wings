@@ -28,9 +28,25 @@ package org.lionart.starlingmvc.wings.utils
             }
             catch ( e : Error )
             {
-                trace("Class definition not found.");
+                trace("Class " + name.text().toString() + " definition not found.");
             }
 
+            return null;
+        }
+
+        public static function findClassInPackages( className : String, packages : Array ) : Class
+        {
+            for each (var pack : String in packages)
+            {
+                try
+                {
+                    return getDefinitionByName(pack + "." + className) as Class;
+                }
+                catch ( e : Error )
+                {
+                    trace("Class " + className + " not found in package " + pack + " . Checking next package.");
+                }
+            }
             return null;
         }
     }
