@@ -16,6 +16,7 @@
  */
 package org.lionart.starlingmvc.wings.net
 {
+    import flash.events.NetStatusEvent;
     import flash.net.Responder;
     import flash.net.registerClassAlias;
 
@@ -86,6 +87,7 @@ package org.lionart.starlingmvc.wings.net
         {
             _gateway = value;
             _connection = new WingsRemoteAMFConnection(_gateway);
+            _connection.addEventListener(NetStatusEvent.NET_STATUS, netStatusEventHandler);
         }
 
         //----------------------------------
@@ -149,6 +151,17 @@ package org.lionart.starlingmvc.wings.net
                     _connection.call.apply(_connection, [serviceName, responder as Responder, args[0], args[1], args[2], args[3], args[4]]);
                     break;
             }
+        }
+
+        //--------------------------------------------------------------------------
+        //
+        //  Event Handlers
+        //
+        //--------------------------------------------------------------------------
+
+        protected function netStatusEventHandler( event : NetStatusEvent ) : void
+        {
+            // Override me
         }
 
         //--------------------------------------------------------------------------
