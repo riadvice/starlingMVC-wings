@@ -35,7 +35,14 @@ package org.lionart.starlingmvc.wings.processors
             var time : String;
             for each (node in tweens)
             {
-                target = view.getChildByName(node.@target);
+                if (node.@target != "self")
+                {
+                    target = view.getChildByName(node.@target);
+                }
+                else
+                {
+                    target = view;
+                }
                 time = node.@time;
                 node = XMLUtils.cleanFromAttributes(node, ["target", "time"]);
                 var props : Object = XMLUtils.xmlToObject(node);
