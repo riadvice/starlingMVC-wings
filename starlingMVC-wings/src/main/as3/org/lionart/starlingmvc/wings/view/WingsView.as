@@ -20,7 +20,7 @@ package org.lionart.starlingmvc.wings.view
     import org.lionart.starlingmvc.wings.bean.IBean;
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
-    
+
     import starling.display.Sprite;
     import starling.events.Event;
 
@@ -83,7 +83,7 @@ package org.lionart.starlingmvc.wings.view
         public function load() : void
         {
             placeElements();
-			Wings.wings_internal::playTransition( beanId, "load" );
+            Wings.wings_internal::playTransition(beanId, "load");
         }
 
         /**
@@ -91,7 +91,7 @@ package org.lionart.starlingmvc.wings.view
          */
         public function unload() : void
         {
-			Wings.wings_internal::playTransition( beanId, "unload" );
+            Wings.wings_internal::playTransition(beanId, "unload");
         }
 
         /**

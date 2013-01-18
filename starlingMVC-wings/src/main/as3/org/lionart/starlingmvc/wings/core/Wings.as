@@ -214,7 +214,7 @@ package org.lionart.starlingmvc.wings.core
 
         wings_internal static function playTransition( beanId : String, type : String ) : void
         {
-            var transitionName : String = wingsXML.views.view.(attribute("id") == beanId).@loadTransition.toString();
+            var transitionName : String = wingsXML.views.view.(attribute("id") == beanId)["@" + type + "Transition"].toString();
             tweenProcessor.playTweens(starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance as DisplayObjectContainer, wingsXML.transitions.transition.(attribute("id") == transitionName).children());
         }
 
