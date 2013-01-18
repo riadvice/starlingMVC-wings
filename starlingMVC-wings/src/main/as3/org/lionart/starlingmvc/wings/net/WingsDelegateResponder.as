@@ -18,7 +18,7 @@ package org.lionart.starlingmvc.wings.net
 {
 
     import flash.utils.Dictionary;
-    
+
     import org.lionart.starlingmvc.wings.errors.ServiceErrors;
     import org.lionart.starlingmvc.wings.net.WingsResponder;
     import org.lionart.starlingmvc.wings.transfer.TransferObject;

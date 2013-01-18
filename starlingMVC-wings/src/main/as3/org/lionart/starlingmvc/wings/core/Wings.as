@@ -21,6 +21,7 @@ package org.lionart.starlingmvc.wings.core
     import com.creativebottle.starlingmvc.config.StarlingMVCConfig;
 
     import flash.display.Stage;
+    import flash.net.registerClassAlias;
     import flash.utils.getDefinitionByName;
 
     import org.as3commons.lang.StringUtils;
@@ -82,6 +83,7 @@ package org.lionart.starlingmvc.wings.core
             assetProcessor = null;
 
             WingsServiceProxy.registerRemoteClasses();
+            wings_internal::registerRemoteClasses();
         }
 
 
@@ -195,6 +197,17 @@ package org.lionart.starlingmvc.wings.core
             else
             {
                 starlingMVCContainer.triggerEventHandler(event);
+            }
+        }
+
+        wings_internal static function registerRemoteClasses() : void
+        {
+            var remoteClass : Class;
+            var node : XML;
+            for each (node in wingsXML.remoteClasses.remoteClass)
+            {
+                remoteClass = getDefinitionByName(node.text().toString()) as Class;
+                registerClassAlias(node.text().toString(), remoteClass);
             }
         }
 
