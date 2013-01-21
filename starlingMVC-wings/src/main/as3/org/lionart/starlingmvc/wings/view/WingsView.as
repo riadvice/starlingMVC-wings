@@ -36,6 +36,7 @@ package org.lionart.starlingmvc.wings.view
         //--------------------------------------------------------------------------
 
         private var _beanId : String;
+        private var _xmlWings : XML;
 
         //--------------------------------------------------------------------------
         //
@@ -53,6 +54,20 @@ package org.lionart.starlingmvc.wings.view
         //  Properties
         //
         //--------------------------------------------------------------------------
+
+        //----------------------------------
+        //  xmlWings
+        //----------------------------------
+
+        public function get xmlWings() : XML
+        {
+            return _xmlWings;
+        }
+
+        public function set xmlWings( value : XML ) : void
+        {
+            _xmlWings = value;
+        }
 
         //----------------------------------
         //  beanId

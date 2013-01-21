@@ -16,11 +16,10 @@
  */
 package org.lionart.starlingmvc.wings.processors
 {
-    import org.as3commons.lang.StringUtils;
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
     import org.lionart.starlingmvc.wings.ui.AssetLoader;
-    
+
     import starling.display.Button;
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;

@@ -22,6 +22,23 @@ package org.lionart.starlingmvc.wings.view
      */
     public interface IWingsView
     {
+
+        //--------------------------------------------------------------------------
+        //
+        //  Properties
+        //
+        //--------------------------------------------------------------------------
+
+        //----------------------------------
+        //  xmlWings
+        //----------------------------------
+
+        /**
+         * The view XML that will be used to build the entire view components and transitions.
+         */
+        function get xmlWings() : XML;
+        function set xmlWings( value : XML ) : void;
+
         //--------------------------------------------------------------------------
         //
         //  Methods
