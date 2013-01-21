@@ -203,18 +203,21 @@ package org.lionart.starlingmvc.wings.core
 
         wings_internal static function createViewElements( beanId : String ) : void
         {
-            viewProcessor.createElements(starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance as DisplayObjectContainer, wingsXML.views.view.(attribute("id") == beanId) as XMLList);
+            var xmlData : XML = starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance.xmlWings || wingsXML;
+            viewProcessor.createElements(starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance as DisplayObjectContainer, xmlData.views.view.(attribute("id") == beanId) as XMLList);
         }
 
         wings_internal static function applyElementsStyle( beanId : String ) : void
         {
-            styleProcessor.applyStyles(starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance as DisplayObjectContainer, wingsXML.views.view.(attribute("id") == beanId) as XMLList);
+            var xmlData : XML = starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance.xmlWings || wingsXML;
+            styleProcessor.applyStyles(starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance as DisplayObjectContainer, xmlData.views.view.(attribute("id") == beanId) as XMLList);
         }
 
         wings_internal static function playTransition( beanId : String, type : String ) : void
         {
-            var transitionName : String = wingsXML.views.view.(attribute("id") == beanId)["@" + type + "Transition"].toString();
-            tweenProcessor.playTweens(starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance as DisplayObjectContainer, wingsXML.transitions.transition.(attribute("id") == transitionName).children());
+            var xmlData : XML = starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance.xmlWings || wingsXML;
+            var transitionName : String = xmlData.views.view.(attribute("id") == beanId)["@" + type + "Transition"].toString();
+            tweenProcessor.playTweens(starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance as DisplayObjectContainer, xmlData.transitions.transition.(attribute("id") == transitionName).children());
         }
 
     }
