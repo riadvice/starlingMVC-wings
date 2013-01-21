@@ -54,6 +54,7 @@
     <classEntry path="org.lionart.starlingmvc.wings.utils.ClassUtils"/>
     <classEntry path="org.lionart.starlingmvc.wings.style.Align"/>
     <classEntry path="org.lionart.starlingmvc.wings.utils.JugglerUtils"/>
+    <classEntry path="org.lionart.starlingmvc.wings.ui.Components"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
