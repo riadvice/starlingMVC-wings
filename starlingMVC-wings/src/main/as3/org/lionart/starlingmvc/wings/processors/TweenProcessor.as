@@ -23,7 +23,6 @@ package org.lionart.starlingmvc.wings.processors
     import org.lionart.starlingmvc.wings.utils.JugglerUtils;
     import org.lionart.starlingmvc.wings.utils.XMLUtils;
 
-    import starling.core.Starling;
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
 
@@ -62,7 +61,7 @@ package org.lionart.starlingmvc.wings.processors
                         this["apply" + StringUtils.capitalize(prop)](tweenParams, props[prop], target);
                     }
                 }
-                Starling.juggler.add(JugglerUtils.createTween(target, parseFloat(time), tweenParams));
+                JugglerUtils.createTween(target, parseFloat(time), tweenParams);
             }
         }
 

@@ -17,10 +17,11 @@
 package org.lionart.starlingmvc.wings.utils
 {
     import starling.animation.Tween;
+    import starling.core.Starling;
 
     public class JugglerUtils
     {
-        public static function createTween( target : Object, time : Number, props : Object, transition : Object = "linear" ) : Tween
+        public static function createTween( target : Object, time : Number, props : Object, autoStart : Boolean = true, transition : Object = "linear" ) : Tween
         {
             var property : String;
             var tween : Tween = new Tween(target, time, transition);
@@ -34,6 +35,10 @@ package org.lionart.starlingmvc.wings.utils
                 {
                     tween.animate(property, parseFloat(props[property]));
                 }
+            }
+            if (autoStart)
+            {
+                Starling.juggler.add(tween);
             }
             return tween;
         }
