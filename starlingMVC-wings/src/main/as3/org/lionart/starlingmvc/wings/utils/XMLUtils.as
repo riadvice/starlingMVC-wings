@@ -35,11 +35,12 @@ package org.lionart.starlingmvc.wings.utils
 
         public static function cleanFromAttributes( xml : XML, attributes : Array ) : XML
         {
+            var xmlCopy : XML = xml.copy();
             for each (var value : String in attributes)
             {
-                delete xml["@" + value];
+                delete xmlCopy["@" + value];
             }
-            return xml;
+            return xmlCopy;
         }
     }
 }
