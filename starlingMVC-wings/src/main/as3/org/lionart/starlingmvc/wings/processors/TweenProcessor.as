@@ -69,11 +69,11 @@ package org.lionart.starlingmvc.wings.processors
         {
             if (!StringUtils.isAlpha(value))
             {
-                object.x = Wings.wings_internal::config.appWidht - target.width - parseFloat(value);
+                object.x = Wings.wings_internal::config.appWidth - target.width - parseFloat(value);
             }
             else if (value == "out")
             {
-                object.x = Wings.wings_internal::config.appWidht;
+                object.x = Wings.wings_internal::config.appWidth;
             }
         }
 
@@ -123,7 +123,7 @@ package org.lionart.starlingmvc.wings.processors
         {
             if (value == Align.CENTER)
             {
-                object.x = int((Wings.wings_internal::config.appWidht - target.width) * 0.5);
+                object.x = int((Wings.wings_internal::config.appWidth - target.width) * 0.5);
             }
             else if (value == Align.LEFT)
             {
@@ -131,7 +131,7 @@ package org.lionart.starlingmvc.wings.processors
             }
             else if (value == Align.RIGHT)
             {
-                object.x = int(Wings.wings_internal::config.appWidht - target.width);
+                object.x = int(Wings.wings_internal::config.appWidth - target.width);
             }
         }
 

@@ -24,7 +24,7 @@ package org.lionart.starlingmvc.wings.processors
         {
             var config : WingsConfig = new WingsConfig();
             config.appHeight = parseFloat(xml.@height);
-            config.appWidht = parseFloat(xml.@width);
+            config.appWidth = parseFloat(xml.@width);
             return config;
         }
     }

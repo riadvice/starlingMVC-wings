@@ -26,7 +26,7 @@ package org.lionart.starlingmvc.wings.core
         //--------------------------------------------------------------------------
 
         public var commandPackages : Array = [];
-        public var appWidht : Number;
+        public var appWidth : Number;
         public var appHeight : Number;
 
         public var eventClass : Class;

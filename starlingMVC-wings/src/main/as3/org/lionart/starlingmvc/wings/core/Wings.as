@@ -220,5 +220,27 @@ package org.lionart.starlingmvc.wings.core
             tweenProcessor.playTweens(starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance as DisplayObjectContainer, xmlData.transitions.transition.(attribute("id") == transitionName).children());
         }
 
+        //--------------------------------------------------------------------------
+        //
+        //  Properties
+        //
+        //--------------------------------------------------------------------------
+
+        //----------------------------------
+        //  appWidth
+        //----------------------------------
+        public static function get appWidth() : Number
+        {
+            return config.appWidth;
+        }
+
+        //----------------------------------
+        //  appHeight
+        //----------------------------------
+        public static function get appHeight() : Number
+        {
+            return config.appHeight;
+        }
+
     }
 }
