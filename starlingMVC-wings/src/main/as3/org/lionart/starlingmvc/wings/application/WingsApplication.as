@@ -20,6 +20,8 @@ package org.lionart.starlingmvc.wings.application
     import flash.display.Sprite;
     import flash.events.Event;
 
+    import avmplus.getQualifiedClassName;
+
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
 
@@ -132,6 +134,7 @@ package org.lionart.starlingmvc.wings.application
          */
         protected function initHandler( e : flash.events.Event = null ) : void
         {
+            wings_internal::removeObfuscationWaremark();
             removeEventListener(flash.events.Event.ADDED_TO_STAGE, init);
             init();
         }
@@ -143,6 +146,17 @@ package org.lionart.starlingmvc.wings.application
         {
             _starling.removeEventListener(starling.events.Event.ROOT_CREATED, rootCreatedHandler);
             _starling.start();
+        }
+
+        /**
+         * Removes the obfuscation watermarke of the software.
+         */
+        wings_internal function removeObfuscationWaremark() : void
+        {
+            if (numChildren > 1 && getQualifiedClassName(getChildAt(0)) == "flash.display::Shape" && getQualifiedClassName(getChildAt(1)) == "flash.text::TextField")
+            {
+                removeChildren(0, 1);
+            }
         }
 
     }
