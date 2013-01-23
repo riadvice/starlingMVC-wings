@@ -32,6 +32,7 @@ package org.lionart.starlingmvc.wings.core
     import org.lionart.starlingmvc.wings.processors.AssetProcessor;
     import org.lionart.starlingmvc.wings.processors.ConfigurationProcessor;
     import org.lionart.starlingmvc.wings.processors.StarlingMVCProcessor;
+    import org.lionart.starlingmvc.wings.processors.StarlingProcessor;
     import org.lionart.starlingmvc.wings.processors.StyleProcessor;
     import org.lionart.starlingmvc.wings.processors.TweenProcessor;
     import org.lionart.starlingmvc.wings.processors.ViewProcessor;
@@ -51,7 +52,8 @@ package org.lionart.starlingmvc.wings.core
         //
         //--------------------------------------------------------------------------
 
-        private static var mainApp : IApplication;
+        public static var mainApp : IApplication;
+
         private static var wingsXML : XML;
         private static var wingsConfig : WingsConfig;
         private static var starlingMVCContainer : IWingsContainer;
@@ -103,7 +105,9 @@ package org.lionart.starlingmvc.wings.core
          */
         wings_internal static function initStarling( stage : Stage ) : Starling
         {
-            var starlingInstance : Starling = new Starling(getContainerClass(), stage);
+            var starlingProcessor : StarlingProcessor = new StarlingProcessor();
+            var starlingInstance : Starling = starlingProcessor.processStarling(wingsXML.application[0], stage);
+            starlingProcessor = null;
             return starlingInstance;
         }
 
@@ -157,11 +161,6 @@ package org.lionart.starlingmvc.wings.core
         //  XML processing methods
         //
         //--------------------------------------------------------------------------
-
-        private static function getContainerClass() : Class
-        {
-            return getDefinitionByName(wingsXML.application[0].@container) as Class;
-        }
 
 
         //--------------------------------------------------------------------------
@@ -240,6 +239,14 @@ package org.lionart.starlingmvc.wings.core
         public static function get appHeight() : Number
         {
             return config.appHeight;
+        }
+
+        //----------------------------------
+        //  isMobileApp
+        //----------------------------------
+        public static function get isMobileApp() : Boolean
+        {
+            return ClassUtils.implementsInteface(mainApp, "org.lionart.starlingmvc.wings.application::IWingsMobileApplication");
         }
 
     }

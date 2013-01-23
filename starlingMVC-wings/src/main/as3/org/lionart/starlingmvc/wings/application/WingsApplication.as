@@ -129,7 +129,6 @@ package org.lionart.starlingmvc.wings.application
         {
             _starling = Wings.wings_internal::initStarling(stage);
             _starling.addEventListener(starling.events.Event.ROOT_CREATED, rootCreatedHandler);
-            _starling.start();
         }
 
         //--------------------------------------------------------------------------
@@ -147,6 +146,7 @@ package org.lionart.starlingmvc.wings.application
         protected function rootCreatedHandler( event : starling.events.Event ) : void
         {
             _starling.removeEventListener(starling.events.Event.ROOT_CREATED, rootCreatedHandler);
+            _starling.start();
         }
 
     }
