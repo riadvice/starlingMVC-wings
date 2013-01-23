@@ -14,23 +14,11 @@
    You should have received a copy of the GNU General Public License
    along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.lionart.starlingmvc.wings.core
+package org.lionart.starlingmvc.wings.layout
 {
 
-    public class WingsConfig
+    public interface ILayoutManager
     {
-        //--------------------------------------------------------------------------
-        //
-        //  Variables
-        //
-        //--------------------------------------------------------------------------
 
-        public var commandPackages : Array = [];
-        public var appWidth : Number;
-        public var appHeight : Number;
-        public var appId : String;
-
-        public var eventClass : Class;
-        public var textClass : Class;
     }
 }

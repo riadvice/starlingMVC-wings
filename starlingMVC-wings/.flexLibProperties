@@ -57,6 +57,9 @@
     <classEntry path="org.lionart.starlingmvc.wings.ui.Components"/>
     <classEntry path="org.lionart.starlingmvc.wings.layout.ILayoutArea"/>
     <classEntry path="org.lionart.starlingmvc.wings.layout.IWingsLayoutArea"/>
+    <classEntry path="org.lionart.starlingmvc.wings.layout.LayoutManager"/>
+    <classEntry path="org.lionart.starlingmvc.wings.layout.WingsLayoutArea"/>
+    <classEntry path="org.lionart.starlingmvc.wings.layout.ILayoutManager"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

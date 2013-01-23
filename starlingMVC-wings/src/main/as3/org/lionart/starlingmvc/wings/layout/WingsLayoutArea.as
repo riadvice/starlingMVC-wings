@@ -14,23 +14,37 @@
    You should have received a copy of the GNU General Public License
    along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.lionart.starlingmvc.wings.core
+package org.lionart.starlingmvc.wings.layout
 {
+    import org.lionart.starlingmvc.wings.view.IWingsView;
 
-    public class WingsConfig
+    import starling.display.Sprite;
+
+    public class WingsLayoutArea extends Sprite implements ILayoutArea, IWingsLayoutArea
     {
         //--------------------------------------------------------------------------
         //
-        //  Variables
+        //  Constructor
         //
         //--------------------------------------------------------------------------
 
-        public var commandPackages : Array = [];
-        public var appWidth : Number;
-        public var appHeight : Number;
-        public var appId : String;
+        public function WingsLayoutArea()
+        {
+            super();
+        }
 
-        public var eventClass : Class;
-        public var textClass : Class;
+        //--------------------------------------------------------------------------
+        //
+        //  Methods
+        //
+        //--------------------------------------------------------------------------
+
+        public function add( view : IWingsView ) : void
+        {
+        }
+
+        public function remove( view : IWingsView ) : void
+        {
+        }
     }
 }
