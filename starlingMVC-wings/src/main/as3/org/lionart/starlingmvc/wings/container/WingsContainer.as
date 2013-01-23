@@ -107,7 +107,7 @@ package org.lionart.starlingmvc.wings.container
         //
         //--------------------------------------------------------------------------
 
-        public function triggerEventHandler( event : Event ) : void
+        public function onTriggerEventHandler( event : Event ) : void
         {
 
         }

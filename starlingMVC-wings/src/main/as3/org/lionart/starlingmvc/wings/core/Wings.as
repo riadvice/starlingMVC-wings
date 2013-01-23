@@ -113,7 +113,7 @@ package org.lionart.starlingmvc.wings.core
 
         wings_internal static function mapCommandEvents() : void
         {
-            starlingMVCContainer.addEventListener(Event.TRIGGERED, triggerEventHandler);
+            starlingMVCContainer.addEventListener(Event.TRIGGERED, onTriggerEventHandler);
         }
 
         /**
@@ -169,7 +169,7 @@ package org.lionart.starlingmvc.wings.core
         //
         //--------------------------------------------------------------------------
 
-        private static function triggerEventHandler( event : Event ) : void
+        private static function onTriggerEventHandler( event : Event ) : void
         {
             starlingMVCContainer.preTriggerExecution();
             var trigger : XMLList = wingsXML.triggers.trigger.(@button == event.target.name);
@@ -179,7 +179,7 @@ package org.lionart.starlingmvc.wings.core
             }
             else
             {
-                starlingMVCContainer.triggerEventHandler(event);
+                starlingMVCContainer.onTriggerEventHandler(event);
             }
         }
 

@@ -46,7 +46,7 @@ package org.lionart.starlingmvc.wings.view
 
         public function WingsView()
         {
-            addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
+            addEventListener(Event.ADDED_TO_STAGE, onAddedToStageHandler);
         }
 
         //--------------------------------------------------------------------------
@@ -123,9 +123,9 @@ package org.lionart.starlingmvc.wings.view
         //
         //--------------------------------------------------------------------------
 
-        protected function addedToStageHandler( event : Event ) : void
+        protected function onAddedToStageHandler( event : Event ) : void
         {
-            removeEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
+            removeEventListener(Event.ADDED_TO_STAGE, onAddedToStageHandler);
             Wings.wings_internal::createViewElements(beanId);
         }
     }

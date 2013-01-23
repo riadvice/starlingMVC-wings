@@ -88,8 +88,8 @@ package org.lionart.starlingmvc.wings.net
         {
             _gateway = value;
             _connection = new WingsRemoteAMFConnection(_gateway);
-            _connection.addEventListener(NetStatusEvent.NET_STATUS, netStatusEventHandler);
-            _connection.addEventListener(AsyncErrorEvent.ASYNC_ERROR, asyncErrorEventHandler);
+            _connection.addEventListener(NetStatusEvent.NET_STATUS, onNetStatusEventHandler);
+            _connection.addEventListener(AsyncErrorEvent.ASYNC_ERROR, onAsyncErrorEventHandler);
         }
 
         //----------------------------------
@@ -161,12 +161,12 @@ package org.lionart.starlingmvc.wings.net
         //
         //--------------------------------------------------------------------------
 
-        protected function netStatusEventHandler( event : NetStatusEvent ) : void
+        protected function onNetStatusEventHandler( event : NetStatusEvent ) : void
         {
             // Override me
         }
 
-        protected function asyncErrorEventHandler( event : AsyncErrorEvent ) : void
+        protected function onAsyncErrorEventHandler( event : AsyncErrorEvent ) : void
         {
             // Override me
         }

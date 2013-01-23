@@ -52,6 +52,6 @@ package org.lionart.starlingmvc.wings.container
         //----------------------------------
 
         function preTriggerExecution() : void
-        function triggerEventHandler( event : Event ) : void
+        function onTriggerEventHandler( event : Event ) : void
     }
 }

@@ -57,7 +57,6 @@ package org.lionart.starlingmvc.wings.processors
             currentContainer = view;
 
             var node : XML;
-            var style : String
             for each (node in xmlElements.children.element)
             {
                 currentElement = view.getChildByName(node.@name);

@@ -20,7 +20,6 @@ package org.lionart.starlingmvc.wings.net
     import flash.utils.Dictionary;
 
     import org.lionart.starlingmvc.wings.errors.ServiceErrors;
-    import org.lionart.starlingmvc.wings.net.WingsResponder;
     import org.lionart.starlingmvc.wings.transfer.TransferObject;
 
     public class WingsDelegateResponder extends WingsResponder implements IWingsDelegateResponder
@@ -42,7 +41,7 @@ package org.lionart.starlingmvc.wings.net
         //
         //--------------------------------------------------------------------------
 
-        public function WingsDelegateResponder( value : Object = null )
+        public function WingsDelegateResponder()
         {
             _errorListeners = new Dictionary(true);
         }
