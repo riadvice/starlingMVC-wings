@@ -16,9 +16,24 @@
  */
 package org.lionart.starlingmvc.wings.layout
 {
+    import org.lionart.starlingmvc.wings.view.IWingsView;
 
     public interface IWingsLayoutArea
     {
+        //--------------------------------------------------------------------------
+        //
+        //  Methods
+        //
+        //--------------------------------------------------------------------------
 
+        /**
+         * Adds a view to the layout area.
+         */
+        function add( view : IWingsView ) : void;
+
+        /**
+         * Removes a view from the layout area.
+         */
+        function remove( view : IWingsView ) : void;
     }
 }
