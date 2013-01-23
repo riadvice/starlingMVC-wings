@@ -16,6 +16,7 @@
  */
 package org.lionart.starlingmvc.wings.utils
 {
+    import flash.utils.describeType;
     import flash.utils.getDefinitionByName;
 
     public class ClassUtils
@@ -48,6 +49,25 @@ package org.lionart.starlingmvc.wings.utils
                 }
             }
             return null;
+        }
+
+        /**
+         * Returns true if the given object implements the interface defined in interfaceName variable.
+         */
+        public static function implementsInteface( object : Object, interfaceName : String ) : Boolean
+        {
+            var desc : XML = describeType(object);
+            var node : XML;
+            var inter : String
+            for each (node in desc.implementsInterface)
+            {
+                inter = XMLList(node.@type).toString();
+                if (inter === interfaceName)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
