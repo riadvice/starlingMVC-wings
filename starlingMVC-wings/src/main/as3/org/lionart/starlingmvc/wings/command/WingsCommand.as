@@ -18,6 +18,9 @@ package org.lionart.starlingmvc.wings.command
 {
     import starling.events.Event;
 
+	/**
+	 * Wings default Command class.
+	 */
     public class WingsCommand implements ICommand, IWingsCommand
     {
         //--------------------------------------------------------------------------

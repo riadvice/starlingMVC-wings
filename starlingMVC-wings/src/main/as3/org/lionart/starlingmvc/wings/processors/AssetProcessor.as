@@ -21,6 +21,15 @@ package org.lionart.starlingmvc.wings.processors
 
     public class AssetProcessor
     {
+        //--------------------------------------------------------------------------
+        //
+        //  Methods
+        //
+        //--------------------------------------------------------------------------
+
+        /**
+         * Processes the resources portion of the xml configuration.
+         */
         public function processResources( xml : XMLList ) : void
         {
             AssetLoader.setConfig(ClassUtils.getDefinitionByNameOrNull(xml.textureClass),

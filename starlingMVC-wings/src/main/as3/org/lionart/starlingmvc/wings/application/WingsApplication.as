@@ -26,6 +26,9 @@ package org.lionart.starlingmvc.wings.application
     import starling.core.Starling;
     import starling.events.Event;
 
+    /**
+     * Base Wings application class. It contains a Starling instance.
+     */
     public class WingsApplication extends Sprite implements IApplication, IWingsApplication
     {
         //--------------------------------------------------------------------------
@@ -37,7 +40,6 @@ package org.lionart.starlingmvc.wings.application
         private var _starling : Starling;
         private var _xmlWings : XML;
         private var _mainScreen : Class;
-        private var _autoScale : Boolean;
 
         //--------------------------------------------------------------------------
         //
@@ -99,24 +101,9 @@ package org.lionart.starlingmvc.wings.application
         //  mainScreen
         //----------------------------------
 
-        /**
-         * Main screen class that will be used by starling to intialise itself
-         */
         public function get mainScreen() : Class
         {
             return _mainScreen;
-        }
-
-        //----------------------------------
-        //  autoScale
-        //----------------------------------
-
-        /**
-         * Autoscales the root sprite at startup for mobile application
-         */
-        public function get autoScale() : Boolean
-        {
-            return _autoScale;
         }
 
         //--------------------------------------------------------------------------
@@ -125,6 +112,9 @@ package org.lionart.starlingmvc.wings.application
         //
         //--------------------------------------------------------------------------
 
+        /**
+         * Application XML is processed then a Starling insance is created.
+         */
         protected function init() : void
         {
             _starling = Wings.wings_internal::initStarling(stage);
@@ -137,12 +127,18 @@ package org.lionart.starlingmvc.wings.application
         //
         //--------------------------------------------------------------------------
 
+        /**
+         * When the application is added to stage when initialise it.
+         */
         protected function initHandler( e : flash.events.Event = null ) : void
         {
             removeEventListener(flash.events.Event.ADDED_TO_STAGE, init);
             init();
         }
 
+        /**
+         * When the starling root is created we start our Starling instance.
+         */
         protected function rootCreatedHandler( event : starling.events.Event ) : void
         {
             _starling.removeEventListener(starling.events.Event.ROOT_CREATED, rootCreatedHandler);

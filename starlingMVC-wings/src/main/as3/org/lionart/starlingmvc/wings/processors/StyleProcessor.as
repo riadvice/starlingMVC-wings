@@ -52,6 +52,9 @@ package org.lionart.starlingmvc.wings.processors
         //
         //--------------------------------------------------------------------------
 
+        /**
+         * Processes style properties the views children portion of the xml configuration.
+         */
         public function applyStyles( view : DisplayObjectContainer, xmlElements : XMLList ) : void
         {
             currentContainer = view;

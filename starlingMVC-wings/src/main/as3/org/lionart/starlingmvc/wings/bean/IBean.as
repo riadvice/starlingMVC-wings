@@ -17,6 +17,11 @@
 package org.lionart.starlingmvc.wings.bean
 {
 
+    /**
+     * Every bean class should implements this interface.
+     * It will handle the unique bean id assigned in the
+     * application XML descriptor.
+     */
     public interface IBean
     {
         //--------------------------------------------------------------------------

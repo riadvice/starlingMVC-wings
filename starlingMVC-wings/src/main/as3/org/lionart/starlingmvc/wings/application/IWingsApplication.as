@@ -53,11 +53,9 @@ package org.lionart.starlingmvc.wings.application
         //  mainScreen
         //----------------------------------
 
+        /**
+         * Main screen class that will be used by starling to intialise itself
+         */
         function get mainScreen() : Class;
-
-        //----------------------------------
-        //  autoScale
-        //----------------------------------
-        function get autoScale() : Boolean;
     }
 }

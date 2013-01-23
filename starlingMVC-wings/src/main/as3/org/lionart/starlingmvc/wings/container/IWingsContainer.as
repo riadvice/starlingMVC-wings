@@ -20,6 +20,9 @@ package org.lionart.starlingmvc.wings.container
 
     import starling.events.Event;
 
+    /**
+     * The interface definition for a explicit starlingMVC-wings Container.
+     */
     public interface IWingsContainer
     {
         //--------------------------------------------------------------------------

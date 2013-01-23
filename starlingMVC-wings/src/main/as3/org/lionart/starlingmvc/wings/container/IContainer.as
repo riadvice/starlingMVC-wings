@@ -17,6 +17,9 @@
 package org.lionart.starlingmvc.wings.container
 {
 
+	/**
+	 * The interface definition for a common starlingMVC-wings Container.
+	 */
     public interface IContainer
     {
 

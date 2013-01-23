@@ -29,6 +29,11 @@ package org.lionart.starlingmvc.wings.command
         //
         //--------------------------------------------------------------------------
 
+        /**
+         * Default execution function.
+         *
+         * @param event Starling event
+         */
         function execute( event : Event = null ) : void;
     }
 }

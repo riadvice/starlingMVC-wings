@@ -28,6 +28,16 @@ package org.lionart.starlingmvc.wings.processors
 
     public class TweenProcessor
     {
+
+        //--------------------------------------------------------------------------
+        //
+        //  Methods
+        //
+        //--------------------------------------------------------------------------
+
+        /**
+         * Processes the tweens portion of the xml configuration.
+         */
         public function playTweens( view : DisplayObjectContainer, tweens : XMLList ) : void
         {
             var node : XML;

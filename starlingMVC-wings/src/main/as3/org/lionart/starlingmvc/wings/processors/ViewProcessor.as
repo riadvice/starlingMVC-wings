@@ -28,7 +28,15 @@ package org.lionart.starlingmvc.wings.processors
 
     public class ViewProcessor
     {
+        //--------------------------------------------------------------------------
+        //
+        //  Methods
+        //
+        //--------------------------------------------------------------------------
 
+        /**
+         * Processes the views portion of the xml configuration.
+         */
         public function createElements( view : DisplayObjectContainer, xmlElements : XMLList ) : void
         {
             var displayObject : DisplayObject;

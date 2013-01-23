@@ -30,6 +30,15 @@ package org.lionart.starlingmvc.wings.processors
 
     public class StarlingMVCProcessor
     {
+        //--------------------------------------------------------------------------
+        //
+        //  Methods
+        //
+        //--------------------------------------------------------------------------
+
+        /**
+         * Processes the beans portion of the xml configuration.
+         */
         public function processConfig( eventsXML : XMLList, viewsXML : XMLList ) : StarlingMVCConfig
         {
             var config : StarlingMVCConfig = new StarlingMVCConfig();

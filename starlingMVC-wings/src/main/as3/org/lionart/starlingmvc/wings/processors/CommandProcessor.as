@@ -19,8 +19,5 @@ package org.lionart.starlingmvc.wings.processors
 
     public class CommandProcessor
     {
-        public function CommandProcessor()
-        {
-        }
     }
 }

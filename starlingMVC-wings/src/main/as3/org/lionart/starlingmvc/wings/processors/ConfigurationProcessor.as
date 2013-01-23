@@ -20,6 +20,15 @@ package org.lionart.starlingmvc.wings.processors
 
     public class ConfigurationProcessor
     {
+        //--------------------------------------------------------------------------
+        //
+        //  Methods
+        //
+        //--------------------------------------------------------------------------
+
+        /**
+         * Processes the application portion of the xml configuration.
+         */
         public function processConfiguration( xml : XMLList ) : WingsConfig
         {
             var config : WingsConfig = new WingsConfig();
