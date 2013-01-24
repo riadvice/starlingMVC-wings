@@ -20,6 +20,7 @@ package org.lionart.starlingmvc.wings.layout
 
     public interface IWingsLayoutArea
     {
+
         //--------------------------------------------------------------------------
         //
         //  Methods

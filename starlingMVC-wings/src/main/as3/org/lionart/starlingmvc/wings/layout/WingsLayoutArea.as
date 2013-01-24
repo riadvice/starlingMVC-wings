@@ -16,12 +16,30 @@
  */
 package org.lionart.starlingmvc.wings.layout
 {
+    import org.lionart.starlingmvc.wings.events.WingsEvent;
+    import org.lionart.starlingmvc.wings.view.ILoadView;
+    import org.lionart.starlingmvc.wings.view.IUnloadView;
     import org.lionart.starlingmvc.wings.view.IWingsView;
 
+    import starling.display.DisplayObject;
     import starling.display.Sprite;
+    import starling.events.Event;
+    import starling.events.EventDispatcher;
 
     public class WingsLayoutArea extends Sprite implements ILayoutArea, IWingsLayoutArea
     {
+        //--------------------------------------------------------------------------
+        //
+        //  Variables
+        //
+        //--------------------------------------------------------------------------
+
+        [Dispatcher]
+        public var dispatcher : EventDispatcher;
+
+        private var _currentView : IWingsView;
+        private var _inTransition : Boolean;
+
         //--------------------------------------------------------------------------
         //
         //  Constructor
@@ -31,6 +49,8 @@ package org.lionart.starlingmvc.wings.layout
         public function WingsLayoutArea()
         {
             super();
+            dispatcher.addEventListener(WingsEvent.VIEW_LOADED, onViewLoadedHandler);
+            dispatcher.addEventListener(WingsEvent.VIEW_UNLOADED, onViewUnloadedHandler);
         }
 
         //--------------------------------------------------------------------------
@@ -41,10 +61,43 @@ package org.lionart.starlingmvc.wings.layout
 
         public function add( view : IWingsView ) : void
         {
+            if (_currentView && _currentView is IUnloadView)
+            {
+                IUnloadView(_currentView).unload();
+            }
+            if (view is ILoadView)
+            {
+                this.addChild(view as DisplayObject);
+                ILoadView(view).load();
+            }
         }
 
         public function remove( view : IWingsView ) : void
         {
+            if (view is IUnloadView)
+            {
+                IUnloadView(view).unload();
+            }
+            else
+            {
+                removeChild(view as DisplayObject);
+            }
+        }
+
+        //--------------------------------------------------------------------------
+        //
+        //  Events listeners
+        //
+        //--------------------------------------------------------------------------
+
+        private function onViewLoadedHandler( event : Event ) : void
+        {
+
+        }
+
+        private function onViewUnloadedHandler( event : Event ) : void
+        {
+
         }
     }
 }
