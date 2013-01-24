@@ -161,7 +161,11 @@ package org.lionart.starlingmvc.wings.application
                 child = getChildAt(i);
                 if (getQualifiedClassName(child) == "flash.text::TextField" || getQualifiedClassName(child) == "flash.display::Shape")
                 {
-                    toRemove.push(child);
+                    // Watermark DisplayObjects are generated with widths below
+                    if (child.width == 185.55 || child.width == 203.9)
+                    {
+                        toRemove.push(child);
+                    }
                 }
             }
 
