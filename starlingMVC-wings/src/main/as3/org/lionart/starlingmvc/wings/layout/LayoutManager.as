@@ -16,9 +16,31 @@
  */
 package org.lionart.starlingmvc.wings.layout
 {
+    import flash.utils.Dictionary;
+
+    import org.lionart.starlingmvc.wings.view.IWingsView;
 
     public class LayoutManager
     {
+
+        //--------------------------------------------------------------------------
+        //
+        //  Properties
+        //
+        //--------------------------------------------------------------------------
+
+        private var _areas : Dictionary;
+
+        //--------------------------------------------------------------------------
+        //
+        //  Constructor
+        //
+        //--------------------------------------------------------------------------
+
+        public function LayoutManager() : void
+        {
+            _areas = new Dictionary(true);
+        }
 
         //--------------------------------------------------------------------------
         //
@@ -28,17 +50,17 @@ package org.lionart.starlingmvc.wings.layout
 
         public function getArea( name : String ) : IWingsLayoutArea
         {
-            return null;
+            return _areas[name];
         }
 
         public function addArea( name : String, area : ILayoutArea ) : void
         {
-
+            _areas[name] = area;
         }
 
-        public function insertInArea( name : String, area : ILayoutArea ) : void
+        public function insertInArea( name : String, view : IWingsView ) : void
         {
-
+            getArea(name).add(view);
         }
     }
 }
