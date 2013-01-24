@@ -16,7 +16,6 @@
  */
 package org.lionart.starlingmvc.wings.layout
 {
-    import org.lionart.starlingmvc.wings.events.WingsEvent;
     import org.lionart.starlingmvc.wings.view.ILoadView;
     import org.lionart.starlingmvc.wings.view.IUnloadView;
     import org.lionart.starlingmvc.wings.view.IWingsView;
@@ -61,6 +60,7 @@ package org.lionart.starlingmvc.wings.layout
 
         public function add( view : IWingsView ) : void
         {
+            trace("adding");
             if (_currentView && _currentView is IUnloadView)
             {
                 IUnloadView(_currentView).unload();
@@ -69,6 +69,10 @@ package org.lionart.starlingmvc.wings.layout
             {
                 this.addChild(view as DisplayObject);
                 ILoadView(view).load();
+            }
+            else
+            {
+                this.addChild(view as DisplayObject);
             }
         }
 
