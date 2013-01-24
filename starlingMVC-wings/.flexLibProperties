@@ -60,6 +60,7 @@
     <classEntry path="org.lionart.starlingmvc.wings.layout.LayoutManager"/>
     <classEntry path="org.lionart.starlingmvc.wings.layout.WingsLayoutArea"/>
     <classEntry path="org.lionart.starlingmvc.wings.layout.ILayoutManager"/>
+    <classEntry path="org.lionart.starlingmvc.wings.events.WingsEvent"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
