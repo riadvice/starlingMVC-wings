@@ -60,7 +60,6 @@ package org.lionart.starlingmvc.wings.layout
 
         public function add( view : IWingsView ) : void
         {
-            trace("adding");
             if (_currentView && _currentView is IUnloadView)
             {
                 IUnloadView(_currentView).unload();

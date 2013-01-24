@@ -17,6 +17,7 @@
 package org.lionart.starlingmvc.wings.application
 {
 
+    import flash.display.DisplayObject;
     import flash.display.Sprite;
     import flash.events.Event;
 
@@ -119,6 +120,7 @@ package org.lionart.starlingmvc.wings.application
          */
         protected function init() : void
         {
+            wings_internal::removeObfuscationWatermark();
             _starling = Wings.wings_internal::initStarling(stage);
             _starling.addEventListener(starling.events.Event.ROOT_CREATED, rootCreatedHandler);
         }
@@ -134,7 +136,6 @@ package org.lionart.starlingmvc.wings.application
          */
         protected function initHandler( e : flash.events.Event = null ) : void
         {
-            wings_internal::removeObfuscationWatermark();
             removeEventListener(flash.events.Event.ADDED_TO_STAGE, init);
             init();
         }
@@ -153,9 +154,21 @@ package org.lionart.starlingmvc.wings.application
          */
         wings_internal function removeObfuscationWatermark() : void
         {
-            if (numChildren > 1 && getQualifiedClassName(getChildAt(0)) == "flash.display::Shape" && getQualifiedClassName(getChildAt(1)) == "flash.text::TextField")
+            var child : DisplayObject;
+            var toRemove : Array = [];
+            for (var i : int = 0; i < numChildren; i++)
             {
-                removeChildren(0, 1);
+                child = getChildAt(i);
+                if (getQualifiedClassName(child) == "flash.text::TextField" || getQualifiedClassName(child) == "flash.display::Shape")
+                {
+                    toRemove.push(child);
+                }
+            }
+
+            for each (child in toRemove)
+            {
+                removeChild(child);
+                child = null;
             }
         }
 
