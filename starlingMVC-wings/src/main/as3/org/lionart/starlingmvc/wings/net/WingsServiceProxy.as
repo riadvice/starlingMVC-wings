@@ -28,6 +28,8 @@ package org.lionart.starlingmvc.wings.net
     import org.lionart.starlingmvc.wings.transfer.TransferObject;
     import org.lionart.starlingmvc.wings.transfer.TransferObjectHeader;
 
+    import starling.events.EventDispatcher;
+
     public class WingsServiceProxy implements IServiceProxy, IWingsServiceProxy, IBean
     {
 
@@ -36,6 +38,9 @@ package org.lionart.starlingmvc.wings.net
         //  Variables
         //
         //--------------------------------------------------------------------------
+
+        [Dispatcher]
+        public var dispatcher : EventDispatcher;
 
         protected var _connection : WingsRemoteAMFConnection;
         protected var _gateway : String;

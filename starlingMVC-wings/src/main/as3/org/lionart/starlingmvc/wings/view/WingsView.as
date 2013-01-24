@@ -20,9 +20,11 @@ package org.lionart.starlingmvc.wings.view
     import org.lionart.starlingmvc.wings.bean.IBean;
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
+    import org.lionart.starlingmvc.wings.events.WingsEvent;
 
     import starling.display.Sprite;
     import starling.events.Event;
+    import starling.events.EventDispatcher;
 
     use namespace wings_internal;
 
@@ -34,6 +36,9 @@ package org.lionart.starlingmvc.wings.view
         //  Variables
         //
         //--------------------------------------------------------------------------
+
+        [Dispatcher]
+        public var dispatcher : EventDispatcher;
 
         private var _beanId : String;
         private var _xmlWings : XML;
@@ -115,6 +120,21 @@ package org.lionart.starlingmvc.wings.view
         public function placeElements() : void
         {
             Wings.wings_internal::applyElementsStyle(beanId);
+        }
+
+        //--------------------------------------------------------------------------
+        //
+        //  Internal methods
+        //
+        //--------------------------------------------------------------------------
+        wings_internal function viewLoaded() : void
+        {
+            dispatcher.dispatchEventWith(WingsEvent.VIEW_LOADED);
+        }
+
+        wings_internal function viewUnloaded() : void
+        {
+            dispatcher.dispatchEventWith(WingsEvent.VIEW_UNLOADED);
         }
 
         //--------------------------------------------------------------------------

@@ -19,6 +19,8 @@ package org.lionart.starlingmvc.wings.model
     import org.as3commons.lang.StringUtils;
     import org.lionart.starlingmvc.wings.bean.IBean;
 
+    import starling.events.EventDispatcher;
+
     public class WingsModel implements IModel, IWingsModel, IBean
     {
 
@@ -27,6 +29,9 @@ package org.lionart.starlingmvc.wings.model
         //  Variables
         //
         //--------------------------------------------------------------------------
+
+        [Dispatcher]
+        public var dispatcher : EventDispatcher;
 
         private var _state : int;
         private var _beanId : String;

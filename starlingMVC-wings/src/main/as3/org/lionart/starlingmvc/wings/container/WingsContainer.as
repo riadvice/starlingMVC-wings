@@ -25,6 +25,7 @@ package org.lionart.starlingmvc.wings.container
 
     import starling.display.Sprite;
     import starling.events.Event;
+    import starling.events.EventDispatcher;
 
     use namespace wings_internal;
 
@@ -36,6 +37,9 @@ package org.lionart.starlingmvc.wings.container
         //  Variables
         //
         //--------------------------------------------------------------------------
+
+        [Dispatcher]
+        public var dispatcher : EventDispatcher;
 
         private var _starlingMVC : StarlingMVC;
         private var _beanId : String;
