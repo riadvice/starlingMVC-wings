@@ -28,9 +28,11 @@ package org.lionart.starlingmvc.wings.core
     import org.lionart.starlingmvc.wings.application.IApplication;
     import org.lionart.starlingmvc.wings.bean.IBean;
     import org.lionart.starlingmvc.wings.container.IWingsContainer;
+    import org.lionart.starlingmvc.wings.layout.LayoutManager;
     import org.lionart.starlingmvc.wings.net.WingsServiceProxy;
     import org.lionart.starlingmvc.wings.processors.AssetProcessor;
     import org.lionart.starlingmvc.wings.processors.ConfigurationProcessor;
+    import org.lionart.starlingmvc.wings.processors.LayoutProcessor;
     import org.lionart.starlingmvc.wings.processors.StarlingMVCProcessor;
     import org.lionart.starlingmvc.wings.processors.StarlingProcessor;
     import org.lionart.starlingmvc.wings.processors.StyleProcessor;
@@ -143,9 +145,23 @@ package org.lionart.starlingmvc.wings.core
             IBean(container).beanId = "container";
             beans.push(new Bean(container, "container"));
 
+            // Layout manager bean
+            var layoutManager : LayoutManager = new LayoutManager();
+            beans.push(new Bean(container, "layoutManager"));
+
+            wings_internal::initLayout(layoutManager);
+
             starlingMVCProcessor.processBeans(wingsXML.beans.bean, wingsXML.commands, beans);
 
+
             return new StarlingMVC(container, config, beans);
+        }
+
+        wings_internal static function initLayout( layoutManager : LayoutManager ) : void
+        {
+            var layoutProcessor : LayoutProcessor = new LayoutProcessor();
+            layoutProcessor.processLayout(wingsXML.layout, starlingMVCContainer, layoutManager);
+            layoutProcessor = null;
         }
 
         /**
