@@ -147,14 +147,15 @@ package org.lionart.starlingmvc.wings.core
 
             // Layout manager bean
             var layoutManager : LayoutManager = new LayoutManager();
-            beans.push(new Bean(container, "layoutManager"));
-
-            wings_internal::initLayout(layoutManager);
+            beans.push(new Bean(layoutManager, "layoutManager"));
 
             starlingMVCProcessor.processBeans(wingsXML.beans.bean, wingsXML.commands, beans);
 
+            var starlingMVC : StarlingMVC = new StarlingMVC(container, config, beans);
 
-            return new StarlingMVC(container, config, beans);
+            wings_internal::initLayout(layoutManager);
+
+            return starlingMVC;
         }
 
         wings_internal static function initLayout( layoutManager : LayoutManager ) : void

@@ -49,8 +49,8 @@ package org.lionart.starlingmvc.wings.layout
         public function WingsLayoutArea()
         {
             super();
-            dispatcher.addEventListener(WingsEvent.VIEW_LOADED, onViewLoadedHandler);
-            dispatcher.addEventListener(WingsEvent.VIEW_UNLOADED, onViewUnloadedHandler);
+            //dispatcher.addEventListener(WingsEvent.VIEW_LOADED, onViewLoadedHandler);
+            //dispatcher.addEventListener(WingsEvent.VIEW_UNLOADED, onViewUnloadedHandler);
         }
 
         //--------------------------------------------------------------------------

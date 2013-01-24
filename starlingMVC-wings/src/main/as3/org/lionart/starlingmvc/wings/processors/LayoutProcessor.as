@@ -20,6 +20,8 @@ package org.lionart.starlingmvc.wings.processors
     import org.lionart.starlingmvc.wings.layout.LayoutManager;
     import org.lionart.starlingmvc.wings.layout.WingsLayoutArea;
 
+    import starling.display.DisplayObjectContainer;
+
     public class LayoutProcessor
     {
         //--------------------------------------------------------------------------
@@ -40,13 +42,13 @@ package org.lionart.starlingmvc.wings.processors
                 var area : WingsLayoutArea = new WingsLayoutArea();
                 // FIXME : styles should be processed by StyleProcessor class.
                 // TODO : assign properties dynamically
-                area.width = node.@width;
-                area.height = node.@height;
-                area.x = node.@x;
-                area.y = node.@y;
-                area.name = node.@name;
+                area.width = parseFloat(node.@width);
+                area.height = parseFloat(node.@height);
+                area.x = parseFloat(node.@x);
+                area.y = parseFloat(node.@y);
+                area.name = node.@name.toString();
                 layoutManager.addArea(area.name, area);
-                container(area);
+                DisplayObjectContainer(container).addChild(area);
             }
         }
     }
