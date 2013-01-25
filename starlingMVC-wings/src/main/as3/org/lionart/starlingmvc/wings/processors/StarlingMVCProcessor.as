@@ -96,7 +96,7 @@ package org.lionart.starlingmvc.wings.processors
 
             for each (node in xmlCommands.command)
             {
-                beans.push(new Command(Wings.wings_internal::config.eventClass[node.@event], org.lionart.starlingmvc.wings.utils.ClassUtils.findClassInPackages(node.attribute("class"), Wings.wings_internal::config.commandPackages), node.@oneTime == "true"));
+                beans.push(new Command(Wings.wings_internal::config.eventClass[node.@event], org.lionart.starlingmvc.wings.utils.ClassUtils.findClassInPackages(node.attribute("class"), Wings.wings_internal::config.commandPackages), node.@oneTime.toString() == "true"));
             }
         }
     }
