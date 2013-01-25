@@ -66,6 +66,7 @@ package org.lionart.starlingmvc.wings.layout
             }
             if (view is ILoadView)
             {
+                _currentView = view;
                 this.addChild(view as DisplayObject);
                 ILoadView(view).load();
             }
