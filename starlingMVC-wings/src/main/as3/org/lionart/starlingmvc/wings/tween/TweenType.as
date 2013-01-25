@@ -14,31 +14,18 @@
    You should have received a copy of the GNU General Public License
    along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.lionart.starlingmvc.wings.style
+package org.lionart.starlingmvc.wings.tween
 {
 
-    public class Align
+    public class TweenType
     {
-
         //--------------------------------------------------------------------------
         //
         //  Class constants
         //
         //--------------------------------------------------------------------------
 
-        public static const BOTTOM : String = "bottom";
-        public static const BOTTOM_RIGHT : String = "bottomRright";
-        public static const BOTTOM_LEFT : String = "bottomLeft";
-
-        public static const TOP : String = "top";
-        public static const TOP_RIGHT : String = "topRright";
-        public static const TOP_LEFT : String = "topLeft";
-
-        public static const LEFT : String = "left";
-        public static const RIGHT : String = "right";
-
-        public static const CENTER : String = "center";
-
-        public static const OUT : String = "out";
+        public static const LOAD : String = "load";
+        public static const UNLOAD : String = "unload";
     }
 }

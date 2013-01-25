@@ -16,12 +16,16 @@
  */
 package org.lionart.starlingmvc.wings.processors
 {
+    import flash.utils.setTimeout;
+
     import org.as3commons.lang.StringUtils;
+    import org.lionart.starlingmvc.wings.tween.TweenType;
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
     import org.lionart.starlingmvc.wings.style.Align;
     import org.lionart.starlingmvc.wings.utils.JugglerUtils;
     import org.lionart.starlingmvc.wings.utils.XMLUtils;
+    import org.lionart.starlingmvc.wings.view.WingsView;
 
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
@@ -38,11 +42,12 @@ package org.lionart.starlingmvc.wings.processors
         /**
          * Processes the tweens portion of the xml configuration.
          */
-        public function playTweens( view : DisplayObjectContainer, tweens : XMLList ) : void
+        public function playTweens( view : DisplayObjectContainer, tweens : XMLList, type : String = "none" ) : void
         {
             var node : XML;
             var target : DisplayObject;
             var time : String;
+            var maxTime : Number = 0;
             for each (node in tweens)
             {
                 if (node.@target != "self")
@@ -71,7 +76,17 @@ package org.lionart.starlingmvc.wings.processors
                         this["apply" + StringUtils.capitalize(prop)](tweenParams, props[prop], target);
                     }
                 }
+                maxTime = Math.max(maxTime, parseFloat(time) + (tweenParams.hasOwnProperty("delay") ? tweenParams["delay"] : 0));
                 JugglerUtils.createTween(target, parseFloat(time), tweenParams);
+            }
+
+            if (type == TweenType.LOAD)
+            {
+                setTimeout(WingsView(view).wings_internal::viewLoaded, maxTime * 1000);
+            }
+            else if (type == TweenType.UNLOAD)
+            {
+                setTimeout(WingsView(view).wings_internal::viewUnloaded, maxTime * 1000);
             }
         }
 

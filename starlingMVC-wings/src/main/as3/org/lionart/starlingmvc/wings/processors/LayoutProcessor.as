@@ -17,6 +17,7 @@
 package org.lionart.starlingmvc.wings.processors
 {
     import org.lionart.starlingmvc.wings.container.IWingsContainer;
+    import org.lionart.starlingmvc.wings.core.wings_internal;
     import org.lionart.starlingmvc.wings.layout.LayoutManager;
     import org.lionart.starlingmvc.wings.layout.WingsLayoutArea;
 
@@ -40,6 +41,7 @@ package org.lionart.starlingmvc.wings.processors
             {
                 //  TODO add LayoutArea with custom type
                 var area : WingsLayoutArea = new WingsLayoutArea();
+                area.wings_internal::initDispatcher(container["dispatcher"]);
                 // FIXME : styles should be processed by StyleProcessor class.
                 // TODO : assign properties dynamically
                 area.width = parseFloat(node.@width);

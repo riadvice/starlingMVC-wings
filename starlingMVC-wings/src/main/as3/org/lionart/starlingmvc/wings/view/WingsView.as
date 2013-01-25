@@ -17,6 +17,7 @@
 package org.lionart.starlingmvc.wings.view
 {
     import org.as3commons.lang.StringUtils;
+    import org.lionart.starlingmvc.wings.tween.TweenType;
     import org.lionart.starlingmvc.wings.bean.IBean;
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
@@ -103,7 +104,7 @@ package org.lionart.starlingmvc.wings.view
         public function load() : void
         {
             placeElements();
-            Wings.wings_internal::playTransition(beanId, "load");
+            Wings.wings_internal::playTransition(beanId, TweenType.LOAD);
         }
 
         /**
@@ -111,7 +112,7 @@ package org.lionart.starlingmvc.wings.view
          */
         public function unload() : void
         {
-            Wings.wings_internal::playTransition(beanId, "unload");
+            Wings.wings_internal::playTransition(beanId, TweenType.UNLOAD);
         }
 
         /**
@@ -129,12 +130,12 @@ package org.lionart.starlingmvc.wings.view
         //--------------------------------------------------------------------------
         wings_internal function viewLoaded() : void
         {
-            dispatcher.dispatchEventWith(WingsEvent.VIEW_LOADED);
+            dispatcher.dispatchEventWith(WingsEvent.VIEW_LOADED, false, this);
         }
 
         wings_internal function viewUnloaded() : void
         {
-            dispatcher.dispatchEventWith(WingsEvent.VIEW_UNLOADED);
+            dispatcher.dispatchEventWith(WingsEvent.VIEW_UNLOADED, false, this);
         }
 
         //--------------------------------------------------------------------------

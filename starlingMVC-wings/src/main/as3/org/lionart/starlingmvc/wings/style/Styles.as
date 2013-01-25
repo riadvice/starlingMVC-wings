@@ -19,6 +19,13 @@ package org.lionart.starlingmvc.wings.style
 
     public class Styles
     {
+
+        //--------------------------------------------------------------------------
+        //
+        //  Class constants
+        //
+        //--------------------------------------------------------------------------
+
         // Boolean style properties
         public static const TOUCHABLE : String = "touchable";
         public static const USE_HAND_CURSOR : String = "useHandCursor";

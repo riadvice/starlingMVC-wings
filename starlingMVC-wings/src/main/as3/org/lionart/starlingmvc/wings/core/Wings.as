@@ -233,7 +233,7 @@ package org.lionart.starlingmvc.wings.core
         {
             var xmlData : XML = starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance.xmlWings || wingsXML;
             var transitionName : String = xmlData.views.view.(attribute("id") == beanId)["@" + type + "Transition"].toString();
-            tweenProcessor.playTweens(starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance as DisplayObjectContainer, xmlData.transitions.transition.(attribute("id") == transitionName).children());
+            tweenProcessor.playTweens(starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance as DisplayObjectContainer, xmlData.transitions.transition.(attribute("id") == transitionName).children(), type);
         }
 
         //--------------------------------------------------------------------------

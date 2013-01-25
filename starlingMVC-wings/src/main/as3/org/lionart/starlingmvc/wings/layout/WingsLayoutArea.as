@@ -16,6 +16,8 @@
  */
 package org.lionart.starlingmvc.wings.layout
 {
+    import org.lionart.starlingmvc.wings.core.wings_internal;
+    import org.lionart.starlingmvc.wings.events.WingsEvent;
     import org.lionart.starlingmvc.wings.view.ILoadView;
     import org.lionart.starlingmvc.wings.view.IUnloadView;
     import org.lionart.starlingmvc.wings.view.IWingsView;
@@ -37,7 +39,6 @@ package org.lionart.starlingmvc.wings.layout
         public var dispatcher : EventDispatcher;
 
         private var _currentView : IWingsView;
-        private var _inTransition : Boolean;
 
         //--------------------------------------------------------------------------
         //
@@ -48,8 +49,6 @@ package org.lionart.starlingmvc.wings.layout
         public function WingsLayoutArea()
         {
             super();
-            //dispatcher.addEventListener(WingsEvent.VIEW_LOADED, onViewLoadedHandler);
-            //dispatcher.addEventListener(WingsEvent.VIEW_UNLOADED, onViewUnloadedHandler);
         }
 
         //--------------------------------------------------------------------------
@@ -88,6 +87,13 @@ package org.lionart.starlingmvc.wings.layout
             }
         }
 
+        wings_internal function initDispatcher( value : EventDispatcher ) : void
+        {
+            dispatcher = value;
+            dispatcher.addEventListener(WingsEvent.VIEW_LOADED, onViewLoadedHandler);
+            dispatcher.addEventListener(WingsEvent.VIEW_UNLOADED, onViewUnloadedHandler);
+        }
+
         //--------------------------------------------------------------------------
         //
         //  Events listeners
@@ -101,7 +107,7 @@ package org.lionart.starlingmvc.wings.layout
 
         private function onViewUnloadedHandler( event : Event ) : void
         {
-
+            removeChild(event.data as DisplayObject);
         }
     }
 }
