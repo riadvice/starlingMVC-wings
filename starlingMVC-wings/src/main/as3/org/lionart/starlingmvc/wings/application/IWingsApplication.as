@@ -50,6 +50,16 @@ package org.lionart.starlingmvc.wings.application
         function set starling( value : Starling ) : void;
 
         //----------------------------------
+        //  version
+        //----------------------------------
+
+        /**
+         * Starling instance.
+         */
+        function get version() : String;
+        function set version( value : String ) : void;
+
+        //----------------------------------
         //  mainScreen
         //----------------------------------
 

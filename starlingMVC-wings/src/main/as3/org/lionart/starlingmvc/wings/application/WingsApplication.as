@@ -41,6 +41,7 @@ package org.lionart.starlingmvc.wings.application
         //--------------------------------------------------------------------------
 
         private var _starling : Starling;
+        private var _version : String;
         private var _xmlWings : XML;
         private var _mainScreen : Class;
 
@@ -98,6 +99,20 @@ package org.lionart.starlingmvc.wings.application
         public function set starling( value : Starling ) : void
         {
             _starling = value;
+        }
+
+        //----------------------------------
+        //  version
+        //----------------------------------
+
+        public function get version() : String
+        {
+            return _version;
+        }
+
+        public function set version( value : String ) : void
+        {
+            _version = value;
         }
 
         //----------------------------------
