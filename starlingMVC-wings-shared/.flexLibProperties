@@ -3,6 +3,7 @@
   <includeClasses>
     <classEntry path="org.lionart.starlingmvc.wings.values.common.PlayerVO"/>
     <classEntry path="org.lionart.starlingmvc.wings.values.common.SessionVO"/>
+    <classEntry path="org.lionart.starlingmvc.wings.values.common.UserVO"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

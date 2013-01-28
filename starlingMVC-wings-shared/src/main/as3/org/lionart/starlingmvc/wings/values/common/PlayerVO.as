@@ -16,67 +16,8 @@
  */
 package org.lionart.starlingmvc.wings.values.common
 {
-    import org.lionart.starlingmvc.wings.data.ValueObject;
 
-    public class PlayerVO extends ValueObject
+    public class PlayerVO extends UserVO
     {
-        //--------------------------------------------------------------------------
-        //
-        //  Variables
-        //
-        //--------------------------------------------------------------------------
-
-        private var _id : String;
-        private var _fbid : String;
-        private var _name : String;
-
-        //--------------------------------------------------------------------------
-        //
-        //  Properties
-        //
-        //--------------------------------------------------------------------------
-
-        //----------------------------------
-        //  id
-        //----------------------------------
-
-        public function get id() : String
-        {
-            return _id;
-        }
-
-        public function set id( value : String ) : void
-        {
-            _id = value;
-        }
-
-        //----------------------------------
-        //  fbid
-        //----------------------------------
-
-        public function get fbid() : String
-        {
-            return _fbid;
-        }
-
-        public function set fbid( value : String ) : void
-        {
-            _fbid = value;
-        }
-
-        //----------------------------------
-        //  name
-        //----------------------------------
-
-        public function get name() : String
-        {
-            return _name;
-        }
-
-        public function set name( value : String ) : void
-        {
-            _name = value;
-        }
-
     }
 }
