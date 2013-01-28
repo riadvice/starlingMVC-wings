@@ -27,6 +27,7 @@ package org.lionart.starlingmvc.wings.values.common
         //--------------------------------------------------------------------------
 
         private var _sessionID : String;
+        private var _version : String;
         private var _fbID : String;
         private var _appID : String;
         private var _device : String;
