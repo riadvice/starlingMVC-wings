@@ -8,6 +8,10 @@
                         <wings:attribute name="width" use="required" type="wings:float"/>
                         <wings:attribute name="height" use="required" type="wings:float"/>
                         <wings:attribute name="container" type="wings:string" use="required"/>
+                        <wings:attribute name="appId" type="wings:string"/>
+                        <wings:attribute name="version" type="wings:string"/>
+                        <wings:attribute name="multitouchEnabled" type="wings:boolean"/>
+                        <wings:attribute name="pixelPerfect" type="wings:boolean"/>
                     </wings:complexType>
                 </wings:element>
                 <wings:element minOccurs="0" name="eventPackages">
@@ -89,12 +93,11 @@
                                     <wings:attribute name="class" type="wings:string" use="required"/>
                                     <wings:attribute form="unqualified" name="event"
                                         type="wings:string" use="required"/>
-                                    <wings:attribute name="oneTime" type="wings:string"
+                                    <wings:attribute name="oneTime" type="wings:boolean"
                                         use="optional"/>
                                 </wings:complexType>
                             </wings:element>
                         </wings:sequence>
-                        <wings:attribute name="eventClass" type="wings:string" use="optional"/>
                     </wings:complexType>
                 </wings:element>
                 <wings:element minOccurs="0" name="triggers">
@@ -125,7 +128,8 @@
                                                   <wings:complexType>
                                                   <wings:attribute name="type" type="wings:string"
                                                   use="required"/>
-                                                  <wings:attribute name="name" type="wings:string"/>
+                                                  <wings:attribute name="name" type="wings:string"
+                                                  use="required"/>
                                                   <wings:attribute name="atlas" type="wings:string"/>
                                                   <wings:attribute name="texture"
                                                   type="wings:string"/>
@@ -149,6 +153,14 @@
                                                   type="wings:boolean"/>
                                                   <wings:attribute name="visible"
                                                   type="wings:boolean"/>
+                                                  <wings:attribute name="text" type="wings:string"/>
+                                                  <wings:attribute name="fontName"
+                                                  type="wings:string"/>
+                                                  <wings:attribute name="fontSize"
+                                                  type="wings:float"/>
+                                                  <wings:attribute name="color" type="wings:integer"/>
+                                                  <wings:attribute name="bold" type="wings:boolean"
+                                                  />
                                                   </wings:complexType>
                                                   </wings:element>
                                                 </wings:sequence>
@@ -172,7 +184,26 @@
                                     <wings:sequence>
                                         <wings:element name="animation">
                                             <wings:complexType>
-                                                <wings:attribute name="newAttribute"/>
+                                                <wings:attribute name="target" type="wings:string"
+                                                  use="required"/>
+                                                <wings:attribute name="time" type="wings:float"
+                                                  use="required"/>
+                                                <wings:attribute name="transition"
+                                                  type="wings:string"/>
+                                                <wings:attribute name="delay" type="wings:float"/>
+                                                <wings:attribute name="top" type="wings:float"/>
+                                                <wings:attribute name="left" type="wings:float"/>
+                                                <wings:attribute name="right" type="wings:float"/>
+                                                <wings:attribute name="bottom" type="wings:float"/>
+                                                <wings:attribute name="width" type="wings:float"/>
+                                                <wings:attribute name="height" type="wings:float"/>
+                                                <wings:attribute name="x" type="wings:float"/>
+                                                <wings:attribute name="y" type="wings:float"/>
+                                                <wings:attribute name="scaleX" type="wings:float"/>
+                                                <wings:attribute name="scaleY" type="wings:float"/>
+                                                <wings:attribute name="skewX" type="wings:float"/>
+                                                <wings:attribute name="skewY" type="wings:float"/>
+                                                <wings:attribute name="alpha" type="wings:boolean"/>
                                             </wings:complexType>
                                         </wings:element>
                                     </wings:sequence>
@@ -181,9 +212,57 @@
                         </wings:sequence>
                     </wings:complexType>
                 </wings:element>
-                <wings:element minOccurs="0" name="resources"/>
-                <wings:element minOccurs="0" name="security"/>
-                <wings:element minOccurs="0" name="remoteClasses"/>
+                <wings:element name="layout">
+                    <wings:complexType>
+                        <wings:sequence>
+                            <wings:element name="area">
+                                <wings:complexType>
+                                    <wings:attribute name="name" type="wings:string" use="required"/>
+                                    <wings:attribute name="x" type="wings:float"/>
+                                    <wings:attribute name="y" type="wings:float"/>
+                                </wings:complexType>
+                            </wings:element>
+                        </wings:sequence>
+                    </wings:complexType>
+                </wings:element>
+                <wings:element minOccurs="0" name="resources">
+                    <wings:complexType>
+                        <wings:sequence>
+                            <wings:element name="eventClass" type="wings:string"/>
+                            <wings:element name="textureClass" type="wings:string"/>
+                            <wings:element name="soundClass" type="wings:string"/>
+                            <wings:element name="fontClass" type="wings:string"/>
+                            <wings:element name="textClass" type="wings:short"/>
+                        </wings:sequence>
+                    </wings:complexType>
+                </wings:element>
+                <wings:element minOccurs="0" name="security">
+                    <wings:complexType>
+                        <wings:sequence>
+                            <wings:element name="domainPolicies">
+                                <wings:complexType>
+                                    <wings:sequence>
+                                        <wings:element name="domainPolicy" type="wings:string"/>
+                                    </wings:sequence>
+                                </wings:complexType>
+                            </wings:element>
+                            <wings:element name="allowedDomains">
+                                <wings:complexType>
+                                    <wings:sequence>
+                                        <wings:element name="allowedDomain" type="wings:string"/>
+                                    </wings:sequence>
+                                </wings:complexType>
+                            </wings:element>
+                        </wings:sequence>
+                    </wings:complexType>
+                </wings:element>
+                <wings:element minOccurs="0" name="remoteClasses">
+                    <wings:complexType>
+                        <wings:sequence>
+                            <wings:element name="remoteClass" type="wings:string"/>
+                        </wings:sequence>
+                    </wings:complexType>
+                </wings:element>
             </wings:sequence>
         </wings:complexType>
     </wings:element>
