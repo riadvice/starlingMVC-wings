@@ -28,6 +28,9 @@ package org.lionart.starlingmvc.wings.values.common
         private var _id : String;
         private var _fbid : String;
         private var _name : String;
+        private var _firstName : String;
+        private var _lastName : String;
+        private var _password : String;
 
         //--------------------------------------------------------------------------
         //
@@ -75,6 +78,48 @@ package org.lionart.starlingmvc.wings.values.common
         public function set name( value : String ) : void
         {
             _name = value;
+        }
+
+        //----------------------------------
+        //  firstName
+        //----------------------------------
+
+        public function get firstName() : String
+        {
+            return _firstName;
+        }
+
+        public function set firstName( value : String ) : void
+        {
+            _firstName = value;
+        }
+
+        //----------------------------------
+        //  lastName
+        //----------------------------------
+
+        public function get lastName() : String
+        {
+            return _lastName;
+        }
+
+        public function set lastName( value : String ) : void
+        {
+            _lastName = value;
+        }
+
+        //----------------------------------
+        //  password
+        //----------------------------------
+
+        public function get password() : String
+        {
+            return _password;
+        }
+
+        public function set password( value : String ) : void
+        {
+            _password = value;
         }
     }
 }
