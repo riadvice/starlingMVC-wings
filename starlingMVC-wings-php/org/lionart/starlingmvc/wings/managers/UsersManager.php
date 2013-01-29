@@ -18,4 +18,9 @@
  */
 class UsersManager
 {
+
+    public function loadUser()
+    {
+    }
+
 }

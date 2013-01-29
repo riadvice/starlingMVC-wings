@@ -17,4 +17,13 @@
  */
 class SessionsManager
 {
+
+    public function saveSession()
+    {
+    }
+
+    public function updateSession()
+    {
+    }
+
 }
