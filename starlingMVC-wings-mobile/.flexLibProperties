@@ -3,6 +3,7 @@
   <includeClasses>
     <classEntry path="org.lionart.starlingmvc.wings.application.WingsMobileApplication"/>
     <classEntry path="org.lionart.starlingmvc.wings.application.IWingsMobileApplication"/>
+    <classEntry path="org.lionart.starlingmvc.wings.utils.NetworkUtils"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
