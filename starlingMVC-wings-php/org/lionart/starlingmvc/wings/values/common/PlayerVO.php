@@ -28,7 +28,7 @@ class PlayerVO extends UserVO
      *
      * @var string
      */
-    var $_explicitType = "org.lionart.starlingmvc.wings.values.common.UserVO";
+    var $_explicitType = "org.lionart.starlingmvc.wings.values.common.PlayerVO";
 
 }
 
