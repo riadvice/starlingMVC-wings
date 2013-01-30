@@ -17,12 +17,44 @@
  */
 class WingsDAO
 {
+    const TYPE = '';
 
     public function __construct()
     {
         R::setup( 'mysql:host=localhost;dbname=wings', 'root', 'admin' );
         R::freeze( true );
         R::debug( false );
+    }
+
+    public function read( $id )
+    {
+        $obj = new stdClass();
+        R::load( self::TYPE, $id )->exportToObj( $obj );
+        return $obj;
+    }
+
+    public function create( $object )
+    {
+        $bean = R::dispense ( self::TYPE );
+        $liker->created_at = ObjectUtils::currentDate ();
+    }
+
+    public function update( $object )
+    {
+    }
+
+    public function delete( $object )
+    {
+    }
+
+    protected function exportAsObject( $source )
+    {
+        $result = array();
+        foreach( array_keys( $source ) as $key => $value )
+        {
+            array_push( $result, ObjectUtils::arrayToObject( $source [$value] ) );
+        }
+        return $result;
     }
 
 }
