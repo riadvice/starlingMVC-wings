@@ -16,7 +16,7 @@
    along with this program. If not, see <http://www.gnu.org/licenses/>.
   */
 
-class ConvertionMap
+class ConversionMap
 {
     static $MAP = array(
             'SessionVO' => array(

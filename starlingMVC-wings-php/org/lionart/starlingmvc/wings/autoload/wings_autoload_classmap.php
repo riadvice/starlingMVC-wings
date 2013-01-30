@@ -21,6 +21,8 @@ $wingsDir = dirname( __DIR__ );
 $baseDir = dirname( $wingsDir );
 
 return array(
+        'ConversionMap' => $baseDir . '/wings/converters/ConversionMap.php',
+        'ObjectConverter' => $baseDir . '/wings/converters/ObjectConverter.php',
         'WingsDAO' => $baseDir . '/wings/dao/WingsDAO.php',
         'SessionDAO' => $baseDir . '/wings/dao/SessionDAO.php',
         'UserDAO' => $baseDir . '/wings/dao/UserDAO.php',
