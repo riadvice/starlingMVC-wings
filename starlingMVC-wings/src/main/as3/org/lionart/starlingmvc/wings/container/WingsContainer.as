@@ -53,6 +53,7 @@ package org.lionart.starlingmvc.wings.container
         public function WingsContainer()
         {
             super();
+            addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
             _starlingMVC = Wings.wings_internal::initStarlingMVC(this);
             Wings.wings_internal::mapCommandEvents();
         }
@@ -110,6 +111,11 @@ package org.lionart.starlingmvc.wings.container
         //  Event Handlers
         //
         //--------------------------------------------------------------------------
+
+        protected function addedToStageHandler( event : Event ) : void
+        {
+            removeEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
+        }
 
         public function onTriggerEventHandler( event : Event ) : void
         {
