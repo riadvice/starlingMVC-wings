@@ -38,6 +38,7 @@ package org.lionart.starlingmvc.wings.core
     import org.lionart.starlingmvc.wings.processors.StyleProcessor;
     import org.lionart.starlingmvc.wings.processors.TweenProcessor;
     import org.lionart.starlingmvc.wings.processors.ViewProcessor;
+    import org.lionart.starlingmvc.wings.sound.SoundManager;
     import org.lionart.starlingmvc.wings.utils.ClassUtils;
 
     import starling.core.Starling;
@@ -152,6 +153,9 @@ package org.lionart.starlingmvc.wings.core
             starlingMVCProcessor.processBeans(wingsXML.beans.bean, wingsXML.commands, beans);
 
             var starlingMVC : StarlingMVC = new StarlingMVC(container, config, beans);
+
+            // Inject dispatcher to SoundManager
+            SoundManager.getInstance()["dispatcher"] = container["dispatcher"];
 
             wings_internal::initLayout(layoutManager);
 
