@@ -26,6 +26,7 @@ class WingsService
 
     function __construct()
     {
+        @session_start();
         // Configuring environement
         date_default_timezone_set( 'Africa/Tunis' );
         

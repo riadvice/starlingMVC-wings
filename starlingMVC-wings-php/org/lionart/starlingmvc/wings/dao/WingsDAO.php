@@ -17,7 +17,7 @@
 */
 class WingsDAO
 {
-    const TYPE = '';
+    static $TYPE = '';
 
     public function __construct()
     {
@@ -29,32 +29,29 @@ class WingsDAO
     public function read( $id )
     {
         $obj = new stdClass();
-        R::load( self::TYPE, $id )->exportToObj( $obj );
-        return $obj;
+        R::load( static::$TYPE, $id )->exportToObj( $obj );
+        return ($obj->id != 0) ? $obj : null;
     }
 
     public function create( $object )
     {
-        $bean = R::dispense ( self::TYPE );
-        $liker->created_at = ObjectUtils::currentDate ();
+        $bean = R::dispense( static::$TYPE );
+        $bean->created_at = ObjectUtils::currentDate();
+        $bean->updated_at = ObjectUtils::currentDate();
+        return R::store( $bean );
     }
 
     public function update( $object )
     {
+        $bean = R::load( static::$TYPE, $object->id );
+        $bean->updated_at = ObjectUtils::currentDate();
+        return R::store( $bean );
     }
 
     public function delete( $object )
     {
-    }
-
-    protected function exportAsObject( $source )
-    {
-        $result = array();
-        foreach( array_keys( $source ) as $key => $value )
-        {
-            array_push( $result, ObjectUtils::arrayToObject( $source [$value] ) );
-        }
-        return $result;
+        $bean = R::load( static::$TYPE, $object->id );
+        return R::trash( $bean );
     }
 
 }

@@ -37,6 +37,9 @@ return array(
         'TransferObjectHeader' => $baseDir . '/wings/transfer/TransferObjectHeader.php',
         'PlayerVO' => $baseDir . '/wings/values/common/PlayerVO.php',
         'SessionVO' => $baseDir . '/wings/transfer/SessionVO.php',
-        'UserVO' => $baseDir . '/wings/transfer/UserVO.php' );
+        'CryptoUtils' => $baseDir . '/wings/utils/CryptoUtils.php',
+        'DateUtils' => $baseDir . '/wings/utils/DateUtils.php',
+        'ObjectUtils' => $baseDir . '/wings/utils/ObjectUtils.php',
+        'ServerUtils' => $baseDir . '/wings/utils/ServerUtils.php' );
 
 ?>
