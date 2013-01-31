@@ -13,12 +13,12 @@ class ObjectUtils
      */
     public static function convertToVO( $source, $class, $mapping )
     {
-        $vo = new $class ();
-        if (is_array ( $source ))
+        $vo = new $class();
+        if ( is_array( $source ) )
         {
-            $source = ObjectUtils::arrayToObject ( $source );
+            $source = ObjectUtils::arrayToObject( $source );
         }
-        foreach ( $mapping as $key => $value )
+        foreach( $mapping as $key => $value )
         {
             $vo->$value = $source->$key;
         }
@@ -27,8 +27,8 @@ class ObjectUtils
 
     public static function arrayToObject( $source )
     {
-        $obj = new stdClass ();
-        foreach ( array_keys ( $source ) as $key )
+        $obj = new stdClass();
+        foreach( array_keys( $source ) as $key )
         {
             $obj->$key = $source [$key];
         }
@@ -37,26 +37,26 @@ class ObjectUtils
 
     public static function convertToArrayVO( $source, $class, $mapping )
     {
-        $result = array ();
-        foreach ( $source as $vo )
+        $result = array();
+        foreach( $source as $vo )
         {
-            array_push ( $result, ObjectUtils::convertToVO ( $vo, $class, $mapping ) );
+            array_push( $result, ObjectUtils::convertToVO( $vo, $class, $mapping ) );
         }
         return $result;
     }
 
     public static function initArrayIfEmpty( &$array )
     {
-        $array = ! empty ( $array ) ? $array : array (
+        $array = ! empty( $array ) ? $array : array(
                 '-1' );
     }
 
     public static function implodeForQuery( $array )
     {
-        ObjectUtils::initArrayIfEmpty ( $array );
-        if (sizeof ( $array ) > 0)
+        ObjectUtils::initArrayIfEmpty( $array );
+        if ( sizeof( $array ) > 0 )
         {
-            return implode ( ',', $array );
+            return implode( ',', $array );
         }
         else
         {
@@ -64,23 +64,26 @@ class ObjectUtils
         }
     }
 
-    /**
-     * Converts an AMF Date to PHP DateTime
-     *
-     * @param unknown_type $amfDate            
-     * @return DateTime
-     */
-    public static function afmDateToDateTime( $amfDate )
+    public static function copyProperties( $source, $destination )
     {
-        $match_time = new DateTime ();
-        $match_time->setTimestamp ( $amfDate->timeStamp / 1000 );
-        return $match_time;
-    }
-
-    public static function currentDate( $timestamp = null )
-    {
-        $time = new DateTime ( $timestamp );
-        return date ( 'Y-m-d H:i:s', $time->getTimestamp () );
+        if ( is_object( $source ) )
+            foreach( get_object_vars( $source ) as $key => $value )
+            {
+                if ( $key != "_explicitType" )
+                {
+                    $destination->$key = $value;
+                }
+            }
+        else if ( is_array( $source ) )
+        {
+            foreach( array_keys( $source ) as $key => $value )
+            {
+                if ( $value != "_explicitType" )
+                {
+                    $destination->$value = $source [$value];
+                }
+            }
+        }
     }
 
 }
