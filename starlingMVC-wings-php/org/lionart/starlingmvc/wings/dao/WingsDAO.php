@@ -36,6 +36,8 @@ class WingsDAO
     public function create( $object )
     {
         $bean = R::dispense( static::$TYPE );
+        ObjectUtils::copyProperties($object, $bean);
+        $bean->id = 0;
         $bean->created_at = ObjectUtils::currentDate();
         $bean->updated_at = ObjectUtils::currentDate();
         return R::store( $bean );
@@ -44,6 +46,7 @@ class WingsDAO
     public function update( $object )
     {
         $bean = R::load( static::$TYPE, $object->id );
+        ObjectUtils::copyProperties($object, $bean);
         $bean->updated_at = ObjectUtils::currentDate();
         return R::store( $bean );
     }
