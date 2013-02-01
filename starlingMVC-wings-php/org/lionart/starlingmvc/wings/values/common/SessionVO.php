@@ -15,9 +15,7 @@
 
    You should have received a copy of the GNU General Public License
    along with this program. If not, see <http://www.gnu.org/licenses/>.
- */
-
-require_once 'ValueObject.php';
+*/
 
 /**
  * SessionVO is mostly used in mobile services to keep server sessionId and
@@ -25,7 +23,7 @@ require_once 'ValueObject.php';
  *
  * @author Ghazi Triki <ghazi.nocturne@gmail.com>
  */
-class SessionVO extends \ValueObject
+class SessionVO extends ValueObject
 {
     /**
      *

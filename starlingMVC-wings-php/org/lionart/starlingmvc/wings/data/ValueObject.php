@@ -15,7 +15,7 @@
 
    You should have received a copy of the GNU General Public License
    along with this program. If not, see <http://www.gnu.org/licenses/>.
- */
+*/
 
 /**
  * Basic Value Object for services call
@@ -29,6 +29,12 @@ class ValueObject
      * @var string
      */
     var $_explicitType = "org.lionart.starlingmvc.wings.data.ValueObject";
+    
+    /**
+     *
+     * @var string
+     */
+    var $id;
 
 }
 
