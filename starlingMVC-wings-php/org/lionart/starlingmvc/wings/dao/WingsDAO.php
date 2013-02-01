@@ -21,9 +21,6 @@ class WingsDAO
 
     public function __construct()
     {
-        R::setup( 'mysql:host=localhost;dbname=wings', 'root', 'admin' );
-        R::freeze( true );
-        R::debug( false );
     }
 
     public function read( $id )
@@ -38,8 +35,8 @@ class WingsDAO
         $bean = R::dispense( static::$TYPE );
         ObjectUtils::copyProperties($object, $bean);
         $bean->id = 0;
-        $bean->created_at = ObjectUtils::currentDate();
-        $bean->updated_at = ObjectUtils::currentDate();
+        $bean->created_at = DateUtils::currentDate();
+        $bean->updated_at = DateUtils::currentDate();
         return R::store( $bean );
     }
 
@@ -47,7 +44,7 @@ class WingsDAO
     {
         $bean = R::load( static::$TYPE, $object->id );
         ObjectUtils::copyProperties($object, $bean);
-        $bean->updated_at = ObjectUtils::currentDate();
+        $bean->updated_at = DateUtils::currentDate();
         return R::store( $bean );
     }
 
