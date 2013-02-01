@@ -12,6 +12,7 @@
                         <wings:attribute name="version" type="wings:string"/>
                         <wings:attribute name="multitouchEnabled" type="wings:boolean"/>
                         <wings:attribute name="pixelPerfect" type="wings:boolean"/>
+                        <wings:attribute name="handleLostContext" type="wings:boolean"/>
                     </wings:complexType>
                 </wings:element>
                 <wings:element minOccurs="0" name="eventPackages">

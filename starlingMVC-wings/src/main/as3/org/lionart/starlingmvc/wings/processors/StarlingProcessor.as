@@ -32,6 +32,7 @@ package org.lionart.starlingmvc.wings.processors
         public function processStarling( appXML : XML, stage : Stage ) : Starling
         {
             var viewPort : Rectangle;
+            Starling.handleLostContext = appXML.@handleLostContext == "true";
             if (Wings.isMobileApp)
             {
                 Starling.multitouchEnabled = appXML.@multitouchEnabled == "true";
