@@ -21,8 +21,8 @@ require '../vendor/autoload.php';
 
 class WingsService
 {
-    var $users_manager;
-    var $sessions_manager;
+    protected $usersManager;
+    protected $sessionsManager;
 
     function __construct()
     {
@@ -31,8 +31,8 @@ class WingsService
         date_default_timezone_set( 'Africa/Tunis' );
 
         // TODO : add logger
-        $this->users_manager = new UsersManager();
-        $this->sessions_manager = new SessionsManager();
+        $this->usersManager = new UsersManager();
+        $this->sessionsManager = new SessionsManager();
     }
 
     // -----------------------------------------------------------
