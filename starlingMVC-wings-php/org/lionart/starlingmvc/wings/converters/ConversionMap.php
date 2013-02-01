@@ -30,19 +30,19 @@ class ConversionMap
                     'data' => 'data' ),
             'UserVO' => array(
                     'id' => 'id',
-                    'fb_id' => 'fbID',
-                    'app_id' => 'appID',
-                    'name' => 'name',
+                    'fb_id' => 'fbid',
+                    'twt_id' => 'twtid',
                     'first_name' => 'firstName',
                     'last_name' => 'lastName',
+                    'email' => 'email',
                     'password' => 'password' ),
             'PlayerVO' => array(
                     'id' => 'id',
-                    'fb_id' => 'fbID',
-                    'app_id' => 'appID',
-                    'name' => 'name',
+                    'fb_id' => 'fbid',
+                    'twt_id' => 'twtid',
                     'first_name' => 'firstName',
                     'last_name' => 'lastName',
+                    'email' => 'email',
                     'password' => 'password' ) );
 
 }

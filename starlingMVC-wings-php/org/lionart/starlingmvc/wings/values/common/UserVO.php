@@ -29,31 +29,37 @@ class UserVO extends ValueObject
      * @var string
      */
     var $_explicitType = "org.lionart.starlingmvc.wings.values.common.UserVO";
-    
+
     /**
      *
      * @var string
      */
     var $fbid;
-    
+
     /**
      *
      * @var string
      */
-    var $name;
-    
+    var $twtid;
+
     /**
      *
      * @var string
      */
     var $firstName;
-    
+
     /**
      *
      * @var string
      */
     var $lastName;
-    
+
+    /**
+     *
+     * @var string
+     */
+    var $email;
+
     /**
      *
      * @var string

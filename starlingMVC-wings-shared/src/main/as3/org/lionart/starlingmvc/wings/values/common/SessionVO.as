@@ -28,7 +28,7 @@ package org.lionart.starlingmvc.wings.values.common
 
         private var _sessionID : String;
         private var _version : String;
-        private var _fbID : String;
+        private var _fbid : String;
         private var _appID : String;
         private var _device : String;
         private var _user : Object;
@@ -58,14 +58,14 @@ package org.lionart.starlingmvc.wings.values.common
         //  fbID
         //----------------------------------
 
-        public function get fbID() : String
+        public function get fbid() : String
         {
-            return _fbID;
+            return _fbid;
         }
 
-        public function set fbID( value : String ) : void
+        public function set fbid( value : String ) : void
         {
-            _fbID = value;
+            _fbid = value;
         }
 
         //----------------------------------

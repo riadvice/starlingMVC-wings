@@ -27,9 +27,11 @@ package org.lionart.starlingmvc.wings.values.common
 
         private var _id : String;
         private var _fbid : String;
+        private var _twtid : String;
         private var _name : String;
         private var _firstName : String;
         private var _lastName : String;
+        private var _email : String;
         private var _password : String;
 
         //--------------------------------------------------------------------------
@@ -65,6 +67,21 @@ package org.lionart.starlingmvc.wings.values.common
         {
             _fbid = value;
         }
+
+        //----------------------------------
+        //  twtid
+        //----------------------------------
+
+        public function get twtid() : String
+        {
+            return _twtid;
+        }
+
+        public function set twtid( value : String ) : void
+        {
+            _twtid = value;
+        }
+
 
         //----------------------------------
         //  name
@@ -121,5 +138,6 @@ package org.lionart.starlingmvc.wings.values.common
         {
             _password = value;
         }
+
     }
 }

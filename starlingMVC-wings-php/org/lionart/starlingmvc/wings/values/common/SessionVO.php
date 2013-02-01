@@ -30,44 +30,44 @@ class SessionVO extends ValueObject
      * @var string
      */
     var $_explicitType = "org.lionart.starlingmvc.wings.values.common.SessionVO";
-    
+
     /**
      *
      * @var string
      */
     var $sessionID;
-    
+
     /**
      *
      * @var string
      */
     var $version;
-    
+
     /**
      *
      * @var string
      */
-    var $fbID;
-    
+    var $fbid;
+
     /**
      *
      * @var string
      */
     var $appID;
-    
+
     /**
      *
      * @var string
      */
     var $device;
-    
+
     /**
      * User got from flash application connection
      *
      * @var stdClass
      */
     var $user;
-    
+
     /**
      * Arbitray additional data determined by the developer and application
      * needs.
