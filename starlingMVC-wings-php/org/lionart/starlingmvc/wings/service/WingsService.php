@@ -29,12 +29,12 @@ class WingsService
         @session_start();
         // Configuring environement
         date_default_timezone_set( 'Africa/Tunis' );
-        
+
         // TODO : add logger
         $this->users_manager = new UsersManager();
         $this->sessions_manager = new SessionsManager();
     }
-    
+
     // -----------------------------------------------------------
     // Session methods
     // -----------------------------------------------------------
@@ -72,11 +72,11 @@ class WingsService
     /**
      * Connect a user from mobile application and creates a session
      *
-     * @param string $fb_id            
+     * @param string $fb_id
      */
-    protected function connectMobileUser( $user )
+    protected function connectUser( $user )
     {
-        $session_id = $this->loadMobileSession( $session_id );
+        $session_id = $this->loadSession( $session_id );
         $_SESSION ['mobile'] = TRUE;
         $_SESSION ['user'] = $user;
         return $session_id;
@@ -86,9 +86,9 @@ class WingsService
      * Loads a user mobile session or creates it if not exists and returns its
      * id.
      *
-     * @param string $session_id            
+     * @param string $session_id
      */
-    protected function loadMobileSession( $session_id = null )
+    protected function loadSession( $session_id = null )
     {
         if ( is_null( $session_id ) )
         {
@@ -104,9 +104,9 @@ class WingsService
 
     /**
      *
-     * @param TransferObject $transfer            
-     * @param int $code            
-     * @param message $message            
+     * @param TransferObject $transfer
+     * @param int $code
+     * @param message $message
      * @return TransferObject
      */
     protected function buildTOHeader( TransferObject &$transfer, $code, $message )
@@ -117,9 +117,9 @@ class WingsService
 
     /**
      *
-     * @param TransferObject $transfer            
-     * @param string $message            
-     * @param int $code            
+     * @param TransferObject $transfer
+     * @param string $message
+     * @param int $code
      */
     protected function buildUnknownErrorHeader( TransferObject &$transfer, $message, $code = null )
     {
