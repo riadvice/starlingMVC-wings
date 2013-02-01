@@ -20,12 +20,56 @@
 class ObjectConverter
 {
 
-    public static function convertToBean()
+    /**
+     * Transforms an object to a typed object
+     *
+     * @param stdObject $source            
+     * @param class $class            
+     * @param array $mapping            
+     * @return ValueObject
+     */
+    public static function convertToValueObject( $source, $class, $mapping )
     {
+        $vo = new $class();
+        if ( is_array( $source ) )
+        {
+            $source = ObjectUtils::arrayToObject( $source );
+        }
+        foreach( $mapping as $key => $value )
+        {
+            $vo->$value = $source->$key;
+        }
+        return $vo;
     }
 
-    public static function convertToValueObject()
+    public static function convertToArrayOfValueObject( $source, $class, $mapping )
     {
+        $result = array();
+        foreach( $source as $obj )
+        {
+            array_push( $result, ObjectUtils::convertToValueObject( $obj, $class, $mapping ) );
+        }
+        return $result;
+    }
+
+    public static function convertToBeanSource( $source, $mapping )
+    {
+        $beanSource = new stdClass();
+        foreach( $mapping as $key => $value )
+        {
+            $beanSource->$key = $source->$value;
+        }
+        return $beanSource;
+    }
+
+    public static function convertToArrayOfBeanSource( $source, $mapping )
+    {
+        $result = array();
+        foreach( $source as $vo )
+        {
+            array_push( $result, ObjectUtils::convertToBeanSource( $vo, $mapping ) );
+        }
+        return $result;
     }
 
 }
