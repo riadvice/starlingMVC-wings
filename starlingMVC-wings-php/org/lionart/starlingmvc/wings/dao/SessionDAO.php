@@ -18,6 +18,6 @@
 
 class SessionDAO extends WingsDAO
 {
-    const TYPE = 'sessions';
+    static $TYPE = 'sessions';
 
 }

@@ -19,6 +19,6 @@
 
 class UserDAO extends WingsDAO
 {
-    const TYPE = 'users';
+    static $TYPE = 'users';
 
 }
