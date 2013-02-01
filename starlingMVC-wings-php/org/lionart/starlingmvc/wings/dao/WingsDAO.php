@@ -15,9 +15,13 @@
    You should have received a copy of the GNU General Public License
    along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
-class WingsDAO
+abstract class WingsDAO
 {
-    static $TYPE = '';
+    /**
+     *
+     * @var string
+     */
+    static $TYPE;
 
     public function __construct()
     {
@@ -33,7 +37,7 @@ class WingsDAO
     public function create( $object )
     {
         $bean = R::dispense( static::$TYPE );
-        ObjectUtils::copyProperties( $object, $bean );
+        ObjectUtils::copyProperties($object, $bean);
         $bean->id = 0;
         $bean->created_at = DateUtils::currentDate();
         $bean->updated_at = DateUtils::currentDate();
@@ -43,14 +47,14 @@ class WingsDAO
     public function update( $object )
     {
         $bean = R::load( static::$TYPE, $object->id );
-        ObjectUtils::copyProperties( $object, $bean );
+        ObjectUtils::copyProperties($object, $bean);
         $bean->updated_at = DateUtils::currentDate();
         return R::store( $bean );
     }
 
-    public function delete( $object_id )
+    public function delete( $object )
     {
-        $bean = R::load( static::$TYPE, $object_id );
+        $bean = R::load( static::$TYPE, $object->id );
         return R::trash( $bean );
     }
 
