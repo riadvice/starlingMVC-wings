@@ -16,34 +16,9 @@
    You should have received a copy of the GNU General Public License
    along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-class UsersManager
+class UsersManager extends WingsManager
 {
-    
-    /**
-     *
-     * @var UserDAO
-     */
-    private $userDao;
-
-    public function __construct()
-    {
-        $this->userDao = new UserDAO();
-    }
-
-    public function addUser( UserVO $user )
-    {
-    }
-
-    public function loadUser( string $user_id )
-    {
-    }
-
-    public function updateUser( UserVO $user )
-    {
-    }
-
-    public function deleteUser( UserVO $user )
-    {
-    }
+    static $DAO_CLASS = 'UserDAO';
+    static $VO_CLASS = 'UserVO';
 
 }

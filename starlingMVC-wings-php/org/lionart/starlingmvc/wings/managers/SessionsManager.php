@@ -15,55 +15,9 @@
    You should have received a copy of the GNU General Public License
    along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-class SessionsManager
+class SessionsManager extends WingsManager
 {
-    
-    /**
-     *
-     * @var SessionDAO
-     */
-    private $sessionDao;
-
-    public function __construct()
-    {
-        $this->sessionDao = new SessionDAO();
-    }
-
-    public function addSession( SessionVO $session )
-    {
-        $beanSource = ObjectConverter::convertToBeanSource( $session, ConversionMap::$MAP ['SessionVO'] );
-        return $this->sessionDao->create( $beanSource );
-    }
-
-    /**
-     *
-     * @param
-     *            $session_id
-     * @return SessionVO
-     */
-    public function loadSession( $session_id )
-    {
-        $obj = $this->sessionDao->read( $session_id );
-        return ObjectConverter::convertToValueObject( $obj, 'SessionVO', ConversionMap::$MAP ['SessionVO'] );
-    }
-
-    /**
-     *
-     * @param SessionVO $session            
-     */
-    public function updateSession( SessionVO $session )
-    {
-        $beanSource = ObjectConverter::convertToBeanSource( $session, ConversionMap::$MAP ['SessionVO'] );
-        return $this->sessionDao->update( $beanSource );
-    }
-
-    /**
-     *
-     * @param SessionVO $session            
-     */
-    public function deleteSession( SessionVO $session )
-    {
-        return $this->sessionDao->delete( $session->id );
-    }
+    static $DAO_CLASS = 'SessionDAO';
+    static $VO_CLASS = 'SessionVO';
 
 }
