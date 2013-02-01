@@ -18,8 +18,31 @@
  */
 class UsersManager
 {
+    
+    /**
+     *
+     * @var UserDAO
+     */
+    private $userDao;
 
-    public function loadUser()
+    public function __construct()
+    {
+        $this->userDao = new UserDAO();
+    }
+
+    public function addUser( UserVO $user )
+    {
+    }
+
+    public function loadUser( string $user_id )
+    {
+    }
+
+    public function updateUser( UserVO $user )
+    {
+    }
+
+    public function deleteUser( UserVO $user )
     {
     }
 
