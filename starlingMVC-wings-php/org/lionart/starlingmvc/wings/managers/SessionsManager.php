@@ -17,12 +17,47 @@
  */
 class SessionsManager
 {
+    
+    /**
+     *
+     * @var SessionDAO
+     */
+    private $sessionDao;
 
-    public function saveSession()
+    public function __construct()
+    {
+        $this->sessionDao = new SessionDAO();
+    }
+
+    public function addSession( SessionVO $session )
+    {
+        $beanSource = ObjectConverter::convertToBeanSource( $session, ConversionMap::$MAP ['SessionVO'] );
+        return $this->sessionDao->create( $beanSource );
+    }
+
+    /**
+     *
+     * @param string $session_id            
+     * @return SessionVO
+     */
+    public function loadSession( string $session_id )
+    {
+        $this->sessionDao->read( $session_id );
+    }
+
+    /**
+     *
+     * @param SessionVO $session            
+     */
+    public function updateSession( SessionVO $session )
     {
     }
 
-    public function updateSession()
+    /**
+     *
+     * @param SessionVO $session            
+     */
+    public function deleteSession( SessionVO $session )
     {
     }
 
