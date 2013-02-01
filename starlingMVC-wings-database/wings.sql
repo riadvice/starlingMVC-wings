@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: 127.0.0.1
--- Généré le: Mar 29 Janvier 2013 à 11:07
+-- Généré le: Ven 01 Février 2013 à 14:04
 -- Version du serveur: 5.5.27
 -- Version de PHP: 5.4.7
 
@@ -29,8 +29,12 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `sessions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `session_id` varchar(255) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `connected_with` enum('web','mobile','desktop','facebook','twitter') NOT NULL,
+  `app_id` varchar(255) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `fb_id` varchar(255) DEFAULT NULL,
+  `device` varchar(255) DEFAULT NULL,
+  `version` varchar(255) DEFAULT NULL,
+  `data` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -46,11 +50,11 @@ CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(255) DEFAULT NULL,
   `last_name` varchar(255) DEFAULT NULL,
-  `email` varchar(255) NOT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `password` varchar(32) DEFAULT NULL,
   `fb_id` varchar(255) DEFAULT NULL,
   `twt_id` varchar(255) DEFAULT NULL,
-  `created_with` enum('web','mobile','desktop','facebook','twitter') NOT NULL,
+  `creation_device` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
