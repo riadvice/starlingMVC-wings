@@ -37,12 +37,14 @@ class SessionsManager
 
     /**
      *
-     * @param string $session_id            
+     * @param
+     *            $session_id
      * @return SessionVO
      */
-    public function loadSession( string $session_id )
+    public function loadSession( $session_id )
     {
-        $this->sessionDao->read( $session_id );
+        $obj = $this->sessionDao->read( $session_id );
+        return ObjectConverter::convertToValueObject( $obj, 'SessionVO', ConversionMap::$MAP ['SessionVO'] );
     }
 
     /**
@@ -51,6 +53,8 @@ class SessionsManager
      */
     public function updateSession( SessionVO $session )
     {
+        $beanSource = ObjectConverter::convertToBeanSource( $session, ConversionMap::$MAP ['SessionVO'] );
+        return $this->sessionDao->update( $beanSource );
     }
 
     /**
@@ -59,6 +63,7 @@ class SessionsManager
      */
     public function deleteSession( SessionVO $session )
     {
+        return $this->sessionDao->delete( $session->id );
     }
 
 }
