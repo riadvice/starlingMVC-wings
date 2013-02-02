@@ -221,6 +221,14 @@ package org.lionart.starlingmvc.wings.core
         //
         //--------------------------------------------------------------------------
 
+        wings_internal static function initTheme() : void
+        {
+            if (!StringUtils.isEmpty(wingsXML.application.@theme.toString()))
+            {
+                starlingMVCContainer.theme = new (getDefinitionByName(wingsXML.application.@theme) as Class)(starlingMVCContainer["stage"]);
+            }
+        }
+
         wings_internal static function createViewElements( beanId : String ) : void
         {
             var xmlData : XML = starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance.xmlWings || wingsXML;

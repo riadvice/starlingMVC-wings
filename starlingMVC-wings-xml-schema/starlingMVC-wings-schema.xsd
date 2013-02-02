@@ -8,6 +8,7 @@
                         <wings:attribute name="width" use="required" type="wings:float"/>
                         <wings:attribute name="height" use="required" type="wings:float"/>
                         <wings:attribute name="container" type="wings:string" use="required"/>
+                        <wings:attribute name="theme" type="wings:string"/>
                         <wings:attribute name="appId" type="wings:string"/>
                         <wings:attribute name="version" type="wings:string"/>
                         <wings:attribute name="multitouchEnabled" type="wings:boolean"/>

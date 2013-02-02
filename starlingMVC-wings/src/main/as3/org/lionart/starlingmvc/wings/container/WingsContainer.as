@@ -18,6 +18,8 @@ package org.lionart.starlingmvc.wings.container
 {
     import com.creativebottle.starlingmvc.StarlingMVC;
 
+    import feathers.core.DisplayListWatcher;
+
     import org.as3commons.lang.StringUtils;
     import org.lionart.starlingmvc.wings.bean.IBean;
     import org.lionart.starlingmvc.wings.core.Wings;
@@ -43,6 +45,7 @@ package org.lionart.starlingmvc.wings.container
 
         private var _starlingMVC : StarlingMVC;
         private var _beanId : String;
+        private var _theme : DisplayListWatcher;
 
         //--------------------------------------------------------------------------
         //
@@ -68,6 +71,7 @@ package org.lionart.starlingmvc.wings.container
         //  starlingMVC
         //----------------------------------
 
+
         public function get starlingMVC() : StarlingMVC
         {
             return _starlingMVC;
@@ -89,10 +93,25 @@ package org.lionart.starlingmvc.wings.container
 
         public function set beanId( value : String ) : void
         {
+            // beanId can be set only once
             if (StringUtils.isEmpty(_beanId))
             {
                 _beanId = value;
             }
+        }
+
+        //----------------------------------
+        //  theme
+        //----------------------------------
+
+        public function get theme() : DisplayListWatcher
+        {
+            return _theme;
+        }
+
+        public function set theme( value : DisplayListWatcher ) : void
+        {
+            _theme = value;
         }
 
         //--------------------------------------------------------------------------
@@ -115,6 +134,7 @@ package org.lionart.starlingmvc.wings.container
         protected function addedToStageHandler( event : Event ) : void
         {
             removeEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
+            Wings.wings_internal::initTheme();
         }
 
         public function onTriggerEventHandler( event : Event ) : void

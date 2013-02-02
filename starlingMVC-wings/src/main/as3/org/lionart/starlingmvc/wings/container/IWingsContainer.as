@@ -18,6 +18,8 @@ package org.lionart.starlingmvc.wings.container
 {
     import com.creativebottle.starlingmvc.StarlingMVC;
 
+    import feathers.core.DisplayListWatcher;
+
     import starling.events.Event;
 
     /**
@@ -40,6 +42,16 @@ package org.lionart.starlingmvc.wings.container
          */
         function get starlingMVC() : StarlingMVC;
         function set starlingMVC( value : StarlingMVC ) : void;
+
+        //----------------------------------
+        //  theme
+        //----------------------------------
+
+        /**
+         * Feathers theme instance.
+         */
+        function get theme() : DisplayListWatcher;
+        function set theme( value : DisplayListWatcher ) : void;
 
         //--------------------------------------------------------------------------
         //
