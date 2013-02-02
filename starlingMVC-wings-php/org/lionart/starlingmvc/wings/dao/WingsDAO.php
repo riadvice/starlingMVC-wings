@@ -34,6 +34,12 @@ abstract class WingsDAO
         return ($obj->id != 0) ? $obj : null;
     }
 
+    public function readAll( $sql = null, $values = array() )
+    {
+        $beans = R::findAll( static::$TYPE, $sql, $values );
+        return R::exportAll( $beans );
+    }
+
     public function create( $object )
     {
         $bean = R::dispense( static::$TYPE );
