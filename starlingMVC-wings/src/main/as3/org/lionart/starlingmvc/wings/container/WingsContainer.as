@@ -104,6 +104,9 @@ package org.lionart.starlingmvc.wings.container
         //  theme
         //----------------------------------
 
+        /**
+         * Feathers theme.
+         */
         public function get theme() : DisplayListWatcher
         {
             return _theme;

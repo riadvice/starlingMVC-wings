@@ -248,6 +248,11 @@ package org.lionart.starlingmvc.wings.core
             tweenProcessor.playTweens(starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance as DisplayObjectContainer, xmlData.transitions.transition.(attribute("id") == transitionName).children(), type);
         }
 
+        wings_internal static function initScreens() : void
+        {
+
+        }
+
         //--------------------------------------------------------------------------
         //
         //  Properties
