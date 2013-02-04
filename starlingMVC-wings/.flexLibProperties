@@ -66,6 +66,8 @@
     <classEntry path="org.lionart.starlingmvc.wings.container.WingsFeathersContainer"/>
     <classEntry path="org.lionart.starlingmvc.wings.container.IWingsFeathersContainer"/>
     <classEntry path="org.lionart.starlingmvc.wings.processors.ScreenNavigatorProcessor"/>
+    <classEntry path="org.lionart.starlingmvc.wings.screen.WingsPanelScreen"/>
+    <classEntry path="org.lionart.starlingmvc.wings.screen.IWingsScreen"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

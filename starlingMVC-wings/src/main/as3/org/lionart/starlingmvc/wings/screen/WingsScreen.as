@@ -14,22 +14,17 @@
    You should have received a copy of the GNU General Public License
    along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.lionart.starlingmvc.wings.view
+package org.lionart.starlingmvc.wings.screen
 {
+    import feathers.controls.Screen;
+    
     import org.as3commons.lang.StringUtils;
     import org.lionart.starlingmvc.wings.bean.IBean;
-    import org.lionart.starlingmvc.wings.core.Wings;
-    import org.lionart.starlingmvc.wings.core.wings_internal;
-    import org.lionart.starlingmvc.wings.events.WingsEvent;
-    import org.lionart.starlingmvc.wings.tween.TweenType;
-
-    import starling.display.Sprite;
+    
     import starling.events.Event;
     import starling.events.EventDispatcher;
 
-    use namespace wings_internal;
-
-    public class WingsView extends Sprite implements IView, IWingsView, ILoadView, IUnloadView, IBean
+    public class WingsScreen extends Screen implements IWingsScreen, IBean
     {
 
         //--------------------------------------------------------------------------
@@ -50,7 +45,7 @@ package org.lionart.starlingmvc.wings.view
         //
         //--------------------------------------------------------------------------
 
-        public function WingsView()
+        public function WingsScreen()
         {
             addEventListener(Event.ADDED_TO_STAGE, onAddedToStageHandler);
         }
@@ -94,52 +89,6 @@ package org.lionart.starlingmvc.wings.view
 
         //--------------------------------------------------------------------------
         //
-        //  Methods
-        //
-        //--------------------------------------------------------------------------
-
-        /**
-         * @inheritDoc
-         */
-        public function load() : void
-        {
-            placeElements();
-            Wings.wings_internal::playTransition(beanId, TweenType.LOAD);
-        }
-
-        /**
-         * @inheritDoc
-         */
-        public function unload() : void
-        {
-            Wings.wings_internal::playTransition(beanId, TweenType.UNLOAD);
-        }
-
-        /**
-         * @inheritDoc
-         */
-        public function placeElements() : void
-        {
-            Wings.wings_internal::applyElementsStyle(beanId);
-        }
-
-        //--------------------------------------------------------------------------
-        //
-        //  Internal methods
-        //
-        //--------------------------------------------------------------------------
-        wings_internal function viewLoaded() : void
-        {
-            dispatcher.dispatchEventWith(WingsEvent.VIEW_LOADED, false, this);
-        }
-
-        wings_internal function viewUnloaded() : void
-        {
-            dispatcher.dispatchEventWith(WingsEvent.VIEW_UNLOADED, false, this);
-        }
-
-        //--------------------------------------------------------------------------
-        //
         //  Event handlers
         //
         //--------------------------------------------------------------------------
@@ -147,7 +96,7 @@ package org.lionart.starlingmvc.wings.view
         protected function onAddedToStageHandler( event : Event ) : void
         {
             removeEventListener(Event.ADDED_TO_STAGE, onAddedToStageHandler);
-            Wings.wings_internal::createViewElements(beanId);
         }
+
     }
 }
