@@ -35,9 +35,7 @@ package org.lionart.starlingmvc.wings.processors
             config.appHeight = parseFloat(xml.@height);
             config.appWidth = parseFloat(xml.@width);
             config.appId = xml.@appId.toString();
-            ;
             config.version = xml.@version.toString();
-            ;
             return config;
         }
     }

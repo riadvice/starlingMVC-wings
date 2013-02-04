@@ -16,6 +16,10 @@
  */
 package org.lionart.starlingmvc.wings.processors
 {
+    import feathers.controls.ScreenNavigatorItem;
+
+    import org.lionart.starlingmvc.wings.container.IWingsContainer;
+    import org.lionart.starlingmvc.wings.container.IWingsFeathersContainer;
 
     public class ScreenNavigatorProcessor
     {
@@ -28,8 +32,13 @@ package org.lionart.starlingmvc.wings.processors
         /**
          * Processes the views portion of the xml configuration for WingsFeathersContainer.
          */
-        public function processScreens( xml : XMLList ) : void
+        public function processScreens( xml : XMLList, container : IWingsFeathersContainer ) : void
         {
+            var node : XML;
+            for each (node in xml)
+            {
+                container.navigator.addScreen(node.@id.toString(), new ScreenNavigatorItem(IWingsContainer(container).starlingMVC.beans.getBeanById(node.@id).instance));
+            }
         }
     }
 }

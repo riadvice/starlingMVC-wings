@@ -81,6 +81,7 @@ package org.lionart.starlingmvc.wings.container
             super.addedToStageHandler(event);
             navigator = new ScreenNavigator();
             Wings.wings_internal::initScreens();
+            addChild(navigator);
         }
 
     }

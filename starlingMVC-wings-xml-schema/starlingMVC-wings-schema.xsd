@@ -117,6 +117,17 @@
                         <wings:attribute name="eventClass" type="wings:string" use="optional"/>
                     </wings:complexType>
                 </wings:element>
+                <wings:element minOccurs="0" name="navigation">
+                    <wings:complexType>
+                        <wings:sequence>
+                            <wings:element maxOccurs="unbounded" minOccurs="0" name="screen">
+                                <wings:complexType>
+                                    <wings:attribute name="id" type="wings:string"/>
+                                </wings:complexType>
+                            </wings:element>
+                        </wings:sequence>
+                    </wings:complexType>
+                </wings:element>
                 <wings:element maxOccurs="1" minOccurs="0" name="views">
                     <wings:complexType>
                         <wings:sequence>
@@ -214,7 +225,7 @@
                         </wings:sequence>
                     </wings:complexType>
                 </wings:element>
-                <wings:element name="layout">
+                <wings:element name="layout" minOccurs="0">
                     <wings:complexType>
                         <wings:sequence>
                             <wings:element name="area">
