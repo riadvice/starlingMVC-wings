@@ -253,7 +253,7 @@ package org.lionart.starlingmvc.wings.core
         wings_internal static function initScreens() : void
         {
             var screensProcessor : ScreenNavigatorProcessor = new ScreenNavigatorProcessor();
-            screensProcessor.processScreens(wingsXML.navigation.screen, IWingsFeathersContainer(starlingMVCContainer));
+            screensProcessor.processScreens(wingsXML.navigation.view, IWingsFeathersContainer(starlingMVCContainer));
             screensProcessor = null;
         }
 
