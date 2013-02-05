@@ -34,6 +34,10 @@ package org.lionart.starlingmvc.wings.utils
         {
             object[property] = value.toString() == "true";
         }
+        else
+        {
+            object[property] = value.toString();
+        }
     }
 }
 
