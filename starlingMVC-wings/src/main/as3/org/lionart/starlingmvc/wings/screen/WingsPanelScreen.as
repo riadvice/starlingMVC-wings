@@ -18,12 +18,12 @@ package org.lionart.starlingmvc.wings.screen
 {
     import feathers.controls.PanelScreen;
     import feathers.events.FeathersEventType;
-    
+
     import org.as3commons.lang.StringUtils;
     import org.lionart.starlingmvc.wings.bean.IBean;
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
-    
+
     import starling.events.Event;
     import starling.events.EventDispatcher;
 
@@ -98,8 +98,8 @@ package org.lionart.starlingmvc.wings.screen
         protected function onInitializeHandler( event : Event ) : void
         {
             removeEventListener(FeathersEventType.INITIALIZE, onInitializeHandler);
-			Wings.wings_internal::createViewElements(beanId);
-			Wings.wings_internal::applyElementsStyle(beanId);
+            Wings.wings_internal::createViewElements(beanId);
+            Wings.wings_internal::applyElementsStyle(beanId);
         }
     }
 }

@@ -18,11 +18,14 @@ package org.lionart.starlingmvc.wings.processors
 {
     import flash.net.getClassByAlias;
 
+    import feathers.controls.IScreen;
+
     import org.as3commons.lang.StringUtils;
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
     import org.lionart.starlingmvc.wings.screen.WingsPanelScreen;
     import org.lionart.starlingmvc.wings.ui.AssetLoader;
+    import org.lionart.starlingmvc.wings.utils.XMLUtils;
 
     import starling.display.Button;
     import starling.display.DisplayObject;
@@ -47,7 +50,7 @@ package org.lionart.starlingmvc.wings.processors
             var displayObject : DisplayObject;
             var node : XML;
 
-            if (view is WingsPanelScreen)
+            if (view is IScreen)
             {
                 var scrPanel : WingsPanelScreen = view as WingsPanelScreen;
                 scrPanel.headerProperties.title = xmlElements.header.@title;
@@ -55,6 +58,25 @@ package org.lionart.starlingmvc.wings.processors
                 {
                     var laouytClassName : String = "feathers.layout." + StringUtils.capitalize(xmlElements.layout.@type) + "Layout";
                     var layout : * = new (getClassByAlias(laouytClassName) as Class)();
+                    var props : Object = XMLUtils.xmlToObject(XMLUtils.cleanFromAttributes(xmlElements.layout[0], ["type"]));
+                    for (var property : String in props)
+                    {
+                        if (layout.hasOwnProperty(property))
+                        {
+                            if (typeof(layout[property]) == "number")
+                            {
+                                layout[property] = parseFloat(props[property])
+                            }
+                            else if (typeof(layout[property]) == "string" && property != "text")
+                            {
+                                layout[property] = props[property].toString();
+                            }
+                            else if (typeof(layout[property]) == "boolean")
+                            {
+                                layout[property] = props[property].toString() == "true";
+                            }
+                        }
+                    }
                     scrPanel.layout = layout;
                 }
             }

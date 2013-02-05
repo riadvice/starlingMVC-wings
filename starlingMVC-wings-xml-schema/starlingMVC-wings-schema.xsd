@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wings:schema elementFormDefault="qualified" xmlns:wings="http://www.w3.org/2001/XMLSchema">
+<wings:schema elementFormDefault="qualified" xmlns:wings="http://www.w3.org/2001/XMLSchema"
+    version="0.4">
     <wings:element name="wings">
         <wings:complexType>
             <wings:sequence>
