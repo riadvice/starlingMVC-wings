@@ -134,6 +134,23 @@
                             <wings:element maxOccurs="unbounded" minOccurs="0" name="view">
                                 <wings:complexType>
                                     <wings:sequence>
+                                        <wings:element minOccurs="0" name="header">
+                                            <wings:complexType>
+                                                <wings:sequence>
+                                                  <wings:element maxOccurs="unbounded" minOccurs="0"
+                                                  name="rightItems"/>
+                                                  <wings:element maxOccurs="unbounded" minOccurs="0"
+                                                  name="leftItems"/>
+                                                </wings:sequence>
+                                                <wings:attribute name="title"/>
+                                            </wings:complexType>
+                                        </wings:element>
+                                        <wings:element minOccurs="0" name="layout">
+                                            <wings:complexType>
+                                                <wings:attribute name="type" type="wings:string"
+                                                  use="required"/>
+                                            </wings:complexType>
+                                        </wings:element>
                                         <wings:element maxOccurs="1" minOccurs="0" name="children">
                                             <wings:complexType>
                                                 <wings:sequence>

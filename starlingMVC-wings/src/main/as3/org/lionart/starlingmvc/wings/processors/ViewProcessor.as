@@ -16,8 +16,12 @@
  */
 package org.lionart.starlingmvc.wings.processors
 {
+    import flash.net.getClassByAlias;
+
+    import org.as3commons.lang.StringUtils;
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
+    import org.lionart.starlingmvc.wings.screen.WingsPanelScreen;
     import org.lionart.starlingmvc.wings.ui.AssetLoader;
 
     import starling.display.Button;
@@ -28,6 +32,7 @@ package org.lionart.starlingmvc.wings.processors
 
     public class ViewProcessor
     {
+
         //--------------------------------------------------------------------------
         //
         //  Methods
@@ -41,27 +46,57 @@ package org.lionart.starlingmvc.wings.processors
         {
             var displayObject : DisplayObject;
             var node : XML;
+
+            if (view is WingsPanelScreen)
+            {
+                var scrPanel : WingsPanelScreen = view as WingsPanelScreen;
+                scrPanel.headerProperties.title = xmlElements.header.@title;
+                if (XMLList(xmlElements.child("layout")).length() != 0)
+                {
+                    var laouytClassName : String = "feathers.layout." + StringUtils.capitalize(xmlElements.layout.@type) + "Layout";
+                    var layout : * = new (getClassByAlias(laouytClassName) as Class)();
+                    scrPanel.layout = layout;
+                }
+            }
+
             for each (node in xmlElements.children.element)
             {
-                switch (node.@type.toString())
-                {
-                    case "image":
-                        displayObject = new Image(AssetLoader.getAtlas(node.@atlas).getTexture(node.@texture));
-                        displayObject.name = node.@name;
-                        break;
-                    case "button":
-                        displayObject = new Button(AssetLoader.getAtlas(node.@atlas).getTexture(node.@texture));
-                        displayObject.name = node.@name;
-                        break;
-                    case "textField":
-                        displayObject = new TextField(parseInt(node.@width), parseInt(node.@height), Wings.wings_internal::config.textClass[node.@text], node.@fontName, parseFloat(node.@fontSize), parseInt(node.@color.toString().replace(/0x|#/g, ""), 16), node.@bold == "true");
-                        displayObject.name = node.@name;
-                        break;
-                    default:
-                        break;
-                }
+                displayObject = this['create' + StringUtils.capitalize(node.@type.toString())](node);
                 view.addChild(displayObject);
             }
+        }
+
+        /**
+         * Creates a Starling Image.
+         */
+        public function createImage( node : XML ) : DisplayObject
+        {
+            var displayObject : DisplayObject;
+            displayObject = new Image(AssetLoader.getAtlas(node.@atlas).getTexture(node.@texture));
+            displayObject.name = node.@name;
+            return displayObject;
+        }
+
+        /**
+         * Creates a Starling Button.
+         */
+        public function createButton( node : XML ) : DisplayObject
+        {
+            var displayObject : DisplayObject;
+            displayObject = new Button(AssetLoader.getAtlas(node.@atlas).getTexture(node.@texture));
+            displayObject.name = node.@name;
+            return displayObject;
+        }
+
+        /**
+         * Creates a Starling TextField.
+         */
+        public function createTextField( node : XML ) : DisplayObject
+        {
+            var displayObject : DisplayObject;
+            displayObject = new TextField(parseInt(node.@width), parseInt(node.@height), Wings.wings_internal::config.textClass[node.@text], node.@fontName, parseFloat(node.@fontSize), parseInt(node.@color.toString().replace(/0x|#/g, ""), 16), node.@bold == "true");
+            displayObject.name = node.@name;
+            return displayObject;
         }
 
     }
