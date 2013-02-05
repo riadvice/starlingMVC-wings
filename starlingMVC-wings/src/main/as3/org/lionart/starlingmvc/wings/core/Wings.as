@@ -65,6 +65,7 @@ package org.lionart.starlingmvc.wings.core
         private static var viewProcessor : ViewProcessor = new ViewProcessor();
         private static var tweenProcessor : TweenProcessor = new TweenProcessor();
         private static var styleProcessor : StyleProcessor = new StyleProcessor();
+        private static var screensProcessor : ScreenNavigatorProcessor = new ScreenNavigatorProcessor();
 
         //--------------------------------------------------------------------------
         //
@@ -250,11 +251,14 @@ package org.lionart.starlingmvc.wings.core
             tweenProcessor.playTweens(starlingMVCContainer.starlingMVC.beans.getBeanById(beanId).instance as DisplayObjectContainer, xmlData.transitions.transition.(attribute("id") == transitionName).children(), type);
         }
 
+        wings_internal static function initTransitionManager() : void
+        {
+            screensProcessor.processTransitionManager(wingsXML.navigation, IWingsFeathersContainer(starlingMVCContainer));
+        }
+
         wings_internal static function initScreens() : void
         {
-            var screensProcessor : ScreenNavigatorProcessor = new ScreenNavigatorProcessor();
             screensProcessor.processScreens(wingsXML.navigation.view, IWingsFeathersContainer(starlingMVCContainer));
-            screensProcessor = null;
         }
 
         //--------------------------------------------------------------------------

@@ -34,7 +34,7 @@ package org.lionart.starlingmvc.wings.container
         //--------------------------------------------------------------------------
 
         private var _navigator : ScreenNavigator;
-        private var _transitionManager : ScreenSlidingStackTransitionManager;
+        private var _transitionManager : Object;
 
         //--------------------------------------------------------------------------
         //
@@ -60,12 +60,12 @@ package org.lionart.starlingmvc.wings.container
         //  transitionManager
         //----------------------------------
 
-        public function get transitionManager() : ScreenSlidingStackTransitionManager
+        public function get transitionManager() : Object
         {
             return _transitionManager;
         }
 
-        public function set transitionManager( value : ScreenSlidingStackTransitionManager ) : void
+        public function set transitionManager( value : Object ) : void
         {
             _transitionManager = value;
         }
@@ -81,6 +81,7 @@ package org.lionart.starlingmvc.wings.container
             super.addedToStageHandler(event);
             navigator = new ScreenNavigator();
             Wings.wings_internal::initScreens();
+			Wings.wings_internal::initTransitionManager();
             addChild(navigator);
         }
 

@@ -34,5 +34,12 @@ package org.lionart.starlingmvc.wings.container
         function get navigator() : ScreenNavigator;
         function set navigator( value : ScreenNavigator ) : void;
 
+        //----------------------------------
+        //  transitionManager
+        //----------------------------------
+
+        function get transitionManager() : Object
+        function set transitionManager( value : Object ) : void
+
     }
 }

@@ -16,6 +16,8 @@
  */
 package org.lionart.starlingmvc.wings.processors
 {
+    import flash.utils.getDefinitionByName;
+
     import feathers.controls.ScreenNavigatorItem;
 
     import org.lionart.starlingmvc.wings.container.IWingsContainer;
@@ -28,6 +30,18 @@ package org.lionart.starlingmvc.wings.processors
         //  Methods
         //
         //--------------------------------------------------------------------------
+
+        public function processTransitionManager( xml : XMLList, container : IWingsFeathersContainer ) : void
+        {
+            if (xml.@transitionManager.length() > 0)
+            {
+                var transitionClass : Class = getDefinitionByName(xml.@transitionManager.toString()) as Class;
+                container.transitionManager = new transitionClass(container.navigator);
+                container.transitionManager.delay = parseFloat(xml.@transitionDelay.toString());
+                container.transitionManager.duration = parseFloat(xml.@transitionDuration.toString());
+                container.transitionManager.ease = xml.@transitionEase.length() > 0 ? xml.@transitionEase.toString() : "easeOut";
+            }
+        }
 
         /**
          * Processes the views portion of the xml configuration for WingsFeathersContainer.
