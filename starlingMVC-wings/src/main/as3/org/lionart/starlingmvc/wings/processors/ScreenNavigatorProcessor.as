@@ -37,7 +37,13 @@ package org.lionart.starlingmvc.wings.processors
             var node : XML;
             for each (node in xml)
             {
-                container.navigator.addScreen(node.@id.toString(), new ScreenNavigatorItem(IWingsContainer(container).starlingMVC.beans.getBeanById(node.@id).instance));
+                var event : XML;
+                var events : Object = {};
+                for each (event in node.events.event)
+                {
+                    events[event.@name.toString()] = event.@navigateTo.toString();
+                }
+                container.navigator.addScreen(node.@id.toString(), new ScreenNavigatorItem(IWingsContainer(container).starlingMVC.beans.getBeanById(node.@id).instance, events));
             }
         }
     }
