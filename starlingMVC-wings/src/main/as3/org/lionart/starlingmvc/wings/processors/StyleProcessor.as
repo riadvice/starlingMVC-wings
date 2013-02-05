@@ -21,6 +21,7 @@ package org.lionart.starlingmvc.wings.processors
     import org.lionart.starlingmvc.wings.core.wings_internal;
     import org.lionart.starlingmvc.wings.style.Align;
     import org.lionart.starlingmvc.wings.utils.XMLUtils;
+    import org.lionart.starlingmvc.wings.utils.applyProperty;
 
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
@@ -68,18 +69,7 @@ package org.lionart.starlingmvc.wings.processors
                 {
                     if (currentElement.hasOwnProperty(property))
                     {
-                        if (typeof(currentElement[property]) == "number")
-                        {
-                            currentElement[property] = parseFloat(node["@" + property])
-                        }
-                        else if (typeof(currentElement[property]) == "string" && property != "text")
-                        {
-                            currentElement[property] = node["@" + property].toString();
-                        }
-                        else if (typeof(currentElement[property]) == "boolean")
-                        {
-                            currentElement[property] = node["@" + property].toString() == "true";
-                        }
+                        applyProperty(currentElement, property, styles[property]);
                     }
                     else
                     {

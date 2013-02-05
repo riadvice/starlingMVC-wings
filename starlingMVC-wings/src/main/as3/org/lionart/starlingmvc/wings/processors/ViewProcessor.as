@@ -26,6 +26,7 @@ package org.lionart.starlingmvc.wings.processors
     import org.lionart.starlingmvc.wings.screen.WingsPanelScreen;
     import org.lionart.starlingmvc.wings.ui.AssetLoader;
     import org.lionart.starlingmvc.wings.utils.XMLUtils;
+    import org.lionart.starlingmvc.wings.utils.applyProperty;
 
     import starling.display.Button;
     import starling.display.DisplayObject;
@@ -63,18 +64,7 @@ package org.lionart.starlingmvc.wings.processors
                     {
                         if (layout.hasOwnProperty(property))
                         {
-                            if (typeof(layout[property]) == "number")
-                            {
-                                layout[property] = parseFloat(props[property])
-                            }
-                            else if (typeof(layout[property]) == "string" && property != "text")
-                            {
-                                layout[property] = props[property].toString();
-                            }
-                            else if (typeof(layout[property]) == "boolean")
-                            {
-                                layout[property] = props[property].toString() == "true";
-                            }
+                            applyProperty(layout, property, props[property]);
                         }
                     }
                     scrPanel.layout = layout;
