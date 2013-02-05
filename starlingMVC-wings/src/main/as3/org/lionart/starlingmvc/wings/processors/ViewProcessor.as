@@ -18,6 +18,7 @@ package org.lionart.starlingmvc.wings.processors
 {
     import flash.net.getClassByAlias;
 
+    import feathers.controls.Button;
     import feathers.controls.IScreen;
 
     import org.as3commons.lang.StringUtils;
@@ -95,7 +96,7 @@ package org.lionart.starlingmvc.wings.processors
         public function createButton( node : XML ) : DisplayObject
         {
             var displayObject : DisplayObject;
-            displayObject = new Button(AssetLoader.getAtlas(node.@atlas).getTexture(node.@texture));
+            displayObject = new starling.display.Button(AssetLoader.getAtlas(node.@atlas).getTexture(node.@texture));
             displayObject.name = node.@name;
             return displayObject;
         }
@@ -107,6 +108,14 @@ package org.lionart.starlingmvc.wings.processors
         {
             var displayObject : DisplayObject;
             displayObject = new TextField(parseInt(node.@width), parseInt(node.@height), Wings.wings_internal::config.textClass[node.@text], node.@fontName, parseFloat(node.@fontSize), parseInt(node.@color.toString().replace(/0x|#/g, ""), 16), node.@bold == "true");
+            displayObject.name = node.@name;
+            return displayObject;
+        }
+
+        public function createFButton( node : XML ) : DisplayObject
+        {
+            var displayObject : DisplayObject;
+            displayObject = new feathers.controls.Button();
             displayObject.name = node.@name;
             return displayObject;
         }
