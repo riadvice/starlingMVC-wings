@@ -19,7 +19,6 @@ package org.lionart.starlingmvc.wings.processors
     import flash.net.getClassByAlias;
 
     import feathers.controls.Button;
-    import feathers.controls.IScreen;
 
     import org.as3commons.lang.StringUtils;
     import org.lionart.starlingmvc.wings.core.Wings;
@@ -52,7 +51,7 @@ package org.lionart.starlingmvc.wings.processors
             var displayObject : DisplayObject;
             var node : XML;
 
-            if (view is IScreen)
+            if (view is WingsPanelScreen)
             {
                 var scrPanel : WingsPanelScreen = view as WingsPanelScreen;
                 scrPanel.headerProperties.title = xmlElements.header.@title;
