@@ -90,12 +90,12 @@ package org.lionart.starlingmvc.wings.application
         //  starling
         //----------------------------------
 
-        public function get starling() : Starling
+        public function get starlingInstance() : Starling
         {
             return _starling;
         }
 
-        public function set starling( value : Starling ) : void
+        public function set starlingInstance( value : Starling ) : void
         {
             _starling = value;
         }

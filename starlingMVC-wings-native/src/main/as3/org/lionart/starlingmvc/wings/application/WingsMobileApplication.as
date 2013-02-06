@@ -37,7 +37,7 @@ package org.lionart.starlingmvc.wings.application
 
         wings_internal function activateHandler( event : Event ) : void
         {
-            starling.start();
+            starlingInstance.start();
         }
 
         /**
@@ -46,7 +46,7 @@ package org.lionart.starlingmvc.wings.application
          **/
         wings_internal function deactivateHandler( event : Event ) : void
         {
-            starling.stop();
+            starlingInstance.stop();
         }
 
     }

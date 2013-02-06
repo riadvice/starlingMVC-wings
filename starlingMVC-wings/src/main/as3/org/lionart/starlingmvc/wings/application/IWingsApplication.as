@@ -46,8 +46,8 @@ package org.lionart.starlingmvc.wings.application
         /**
          * Starling instance.
          */
-        function get starling() : Starling;
-        function set starling( value : Starling ) : void;
+        function get starlingInstance() : Starling;
+        function set starlingInstance( value : Starling ) : void;
 
         //----------------------------------
         //  mainScreen
