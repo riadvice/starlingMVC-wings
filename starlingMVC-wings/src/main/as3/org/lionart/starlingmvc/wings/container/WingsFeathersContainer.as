@@ -17,7 +17,6 @@
 package org.lionart.starlingmvc.wings.container
 {
     import feathers.controls.ScreenNavigator;
-    import feathers.motion.transitions.ScreenSlidingStackTransitionManager;
 
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
@@ -81,7 +80,7 @@ package org.lionart.starlingmvc.wings.container
             super.addedToStageHandler(event);
             navigator = new ScreenNavigator();
             Wings.wings_internal::initScreens();
-			Wings.wings_internal::initTransitionManager();
+            Wings.wings_internal::initTransitionManager();
             addChild(navigator);
         }
 
