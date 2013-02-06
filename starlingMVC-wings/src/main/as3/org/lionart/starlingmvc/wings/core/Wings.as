@@ -199,7 +199,7 @@ package org.lionart.starlingmvc.wings.core
             var trigger : XMLList = wingsXML.triggers.trigger.(@button == event.target.name);
             if (!StringUtils.isEmpty(trigger.@event.toString()))
             {
-                starlingMVCContainer.dispatchEventWith(wingsConfig.eventClass[trigger.@event]);
+                starlingMVCContainer.dispatchEventWith(wingsConfig.eventClass[trigger.@event], false, trigger.@data.toString());
             }
             else
             {
