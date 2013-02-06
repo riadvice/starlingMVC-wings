@@ -124,7 +124,7 @@ class WingsService
     protected function buildUnknownErrorHeader( TransferObject &$transfer, $message, $code = null )
     {
         // TODO : check if error code is knwon or note
-        $this->buildTOHeader( $transfer, $code ? $code : self::SERVICE_ERROR, $message );
+        $this->buildTOHeader( $transfer, $code ? $code : ServiceErrors::SERVICE_ERROR, $message );
     }
 
 }

@@ -28,7 +28,7 @@ return array(
         'UserDAO' => $baseDir . '/wings/dao/UserDAO.php',
         'ValueObject' => $baseDir . '/wings/data/ValueObject.php',
         'ObjectUtils' => $baseDir . '/wings/utils/ObjectUtils.php',
-        'ServiceErrors.php' => $baseDir . '/wings/errors/ServiceErrors.php',
+        'ServiceErrors' => $baseDir . '/wings/errors/ServiceErrors.php',
         'WingsManager' => $baseDir . '/wings/managers/WingsManager.php',
         'SessionsManager' => $baseDir . '/wings/managers/SessionsManager.php',
         'UsersManager' => $baseDir . '/wings/managers/UsersManager.php',
