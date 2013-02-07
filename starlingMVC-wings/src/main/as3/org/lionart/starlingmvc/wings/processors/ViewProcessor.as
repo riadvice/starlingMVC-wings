@@ -22,6 +22,7 @@ package org.lionart.starlingmvc.wings.processors
     import feathers.controls.Label;
     import feathers.controls.Slider;
     import feathers.controls.TextInput;
+    import feathers.controls.ToggleSwitch;
 
     import org.as3commons.lang.StringUtils;
     import org.lionart.starlingmvc.wings.core.Wings;
@@ -150,6 +151,14 @@ package org.lionart.starlingmvc.wings.processors
         {
             var displayObject : DisplayObject;
             displayObject = new TextInput();
+            displayObject.name = node.@name;
+            return displayObject;
+        }
+
+        public function createToggleSwitch( node : XML ) : DisplayObject
+        {
+            var displayObject : DisplayObject;
+            displayObject = new ToggleSwitch();
             displayObject.name = node.@name;
             return displayObject;
         }
