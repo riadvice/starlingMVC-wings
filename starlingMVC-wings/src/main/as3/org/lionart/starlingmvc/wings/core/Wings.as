@@ -228,7 +228,7 @@ package org.lionart.starlingmvc.wings.core
         {
             if (!StringUtils.isEmpty(wingsXML.application.@theme.toString()))
             {
-                starlingMVCContainer.theme = new (getDefinitionByName(wingsXML.application.@theme) as Class)(starlingMVCContainer["stage"]);
+                starlingMVCContainer.theme = new (getDefinitionByName(wingsXML.application.@theme) as Class)(starlingMVCContainer["stage"], wingsXML.application.@scaleThemeToDPI.toString() == "true");
             }
         }
 
