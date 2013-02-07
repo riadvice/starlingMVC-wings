@@ -79,6 +79,7 @@ package org.lionart.starlingmvc.wings.layout
         {
             if (view is IUnloadView)
             {
+                view["addEventListener"](WingsEvent.VIEW_UNLOADED, onViewUnloadedHandler);
                 IUnloadView(view).unload();
             }
             else
@@ -107,7 +108,8 @@ package org.lionart.starlingmvc.wings.layout
 
         private function onViewUnloadedHandler( event : Event ) : void
         {
-            removeChild(event.data as DisplayObject);
+            event.currentTarget["removeEventListener"](WingsEvent.VIEW_UNLOADED, onViewUnloadedHandler);
+            removeChild(event.currentTarget as DisplayObject);
         }
     }
 }

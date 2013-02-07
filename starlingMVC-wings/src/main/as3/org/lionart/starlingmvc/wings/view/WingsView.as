@@ -130,12 +130,12 @@ package org.lionart.starlingmvc.wings.view
         //--------------------------------------------------------------------------
         wings_internal function viewLoaded() : void
         {
-            dispatcher.dispatchEventWith(WingsEvent.VIEW_LOADED, false, this);
+            dispatchEventWith(WingsEvent.VIEW_LOADED, false, this);
         }
 
         wings_internal function viewUnloaded() : void
         {
-            dispatcher.dispatchEventWith(WingsEvent.VIEW_UNLOADED, false, this);
+            dispatchEventWith(WingsEvent.VIEW_UNLOADED, false, this);
         }
 
         //--------------------------------------------------------------------------
