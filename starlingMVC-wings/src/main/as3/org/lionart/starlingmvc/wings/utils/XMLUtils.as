@@ -20,12 +20,20 @@ package org.lionart.starlingmvc.wings.utils
 
     public class XMLUtils
     {
+        private static const SPLIT_REGEX : RegExp = /\w*=\"(\w*\s*)*\"/gm;
+
         public static function xmlToObject( value : XML ) : Object
         {
             var result : Object = {};
             var str : String = String(value.toXMLString());
-            str = str.substring(str.indexOf(" ") + 1, str.length - 2);
-            var pairs : Array = str.split(" ");
+            var pairs : Array = [];
+			var regexResult : Object = SPLIT_REGEX.exec(str);
+			while (regexResult != null)
+			{
+				pairs.push(regexResult[0]);
+				regexResult = SPLIT_REGEX.exec(str);
+			}
+            //str = str.substring(str.indexOf(" ") + 1, str.length - 2);
             for each (var pair : String in pairs)
             {
                 result[StringUtils.substringBefore(pair, "=")] = StringUtils.substringBetween(pair, "\"", "\"");
