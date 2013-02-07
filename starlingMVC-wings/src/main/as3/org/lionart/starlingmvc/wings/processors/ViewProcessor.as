@@ -19,6 +19,7 @@ package org.lionart.starlingmvc.wings.processors
     import flash.net.getClassByAlias;
 
     import feathers.controls.Button;
+    import feathers.controls.Slider;
     import feathers.controls.TextInput;
 
     import org.as3commons.lang.StringUtils;
@@ -124,6 +125,14 @@ package org.lionart.starlingmvc.wings.processors
         {
             var displayObject : DisplayObject;
             displayObject = new feathers.controls.Button();
+            displayObject.name = node.@name;
+            return displayObject;
+        }
+
+        public function createSlider( node : XML ) : DisplayObject
+        {
+            var displayObject : DisplayObject;
+            displayObject = new Slider();
             displayObject.name = node.@name;
             return displayObject;
         }
