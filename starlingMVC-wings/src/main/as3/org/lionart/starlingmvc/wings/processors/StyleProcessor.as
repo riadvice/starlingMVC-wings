@@ -67,7 +67,7 @@ package org.lionart.starlingmvc.wings.processors
                 var styles : Object = XMLUtils.xmlToObject(XMLUtils.cleanFromAttributes(node, NON_STYLE_ATTRIBUTES));
                 for (var property : String in styles)
                 {
-                    if (currentElement.hasOwnProperty(property))
+                    if (currentElement.hasOwnProperty(property) && property != "rotation")
                     {
                         applyProperty(currentElement, property, styles[property]);
                     }
