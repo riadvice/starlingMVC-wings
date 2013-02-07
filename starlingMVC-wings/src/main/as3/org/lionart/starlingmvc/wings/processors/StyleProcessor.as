@@ -83,21 +83,6 @@ package org.lionart.starlingmvc.wings.processors
         //  starling numeric objects styles
         //----------------------------------
 
-        /**
-         * Applies alpha attribute.
-         */
-        private function applyAlpha( value : String ) : void
-        {
-            currentElement.alpha = parseFloat(value);
-        }
-
-        /**
-         * Applies height property.
-         */
-        private function applyHeight( value : String ) : void
-        {
-            currentElement.height = parseFloat(value);
-        }
 
         /**
          * Applies pivotX property.
@@ -155,91 +140,6 @@ package org.lionart.starlingmvc.wings.processors
                 }
             }
         }
-
-        /**
-         * Applies scaleX property.
-         */
-        private function applyScaleX( value : String ) : void
-        {
-            currentElement.scaleX = parseFloat(value);
-        }
-
-        /**
-         * Applies scaleY property.
-         */
-        private function applyScaleY( value : String ) : void
-        {
-            currentElement.scaleY = parseFloat(value);
-        }
-
-        /**
-         * Applies skewX property.
-         */
-        private function applySkewX( value : String ) : void
-        {
-            currentElement.scaleX = parseFloat(value);
-        }
-
-        /**
-         * Applies skewY property.
-         */
-        private function applySkewY( value : String ) : void
-        {
-            currentElement.skewY = parseFloat(value);
-        }
-
-        /**
-         * Applies height property.
-         */
-        private function applyWidth( value : String ) : void
-        {
-            currentElement.height = parseFloat(value);
-        }
-
-        /**
-         * Applies x position.
-         */
-        private function applyX( value : String ) : void
-        {
-            currentElement.x = parseFloat(value);
-        }
-
-        /**
-         * Applies y position.
-         */
-        private function applyY( value : String ) : void
-        {
-            currentElement.y = parseFloat(value);
-        }
-
-        //----------------------------------
-        //  starling boolean objects styles
-        //----------------------------------
-
-        /**
-         * Applies touchable property.
-         */
-        private function applyTouchable( value : String ) : void
-        {
-            currentElement.touchable = value == "true";
-        }
-
-        /**
-         * Applies useHandCursor property.
-         */
-        private function applyUseHandCursor( value : String ) : void
-        {
-            currentElement.useHandCursor = value == "true";
-        }
-
-        /**
-         * Applies visible property.
-         */
-        private function applyVisible( value : String ) : void
-        {
-            currentElement.visible = value == "true";
-        }
-
 
         //----------------------------------
         //  raduis object styles
@@ -353,11 +253,6 @@ package org.lionart.starlingmvc.wings.processors
             {
                 currentElement.x = Wings.wings_internal::config.appWidth;
             }
-        }
-
-        private function applyText( value : String ) : void
-        {
-            currentElement["text"] = value;
         }
 
         /**
