@@ -19,6 +19,7 @@ package org.lionart.starlingmvc.wings.processors
     import flash.net.getClassByAlias;
 
     import feathers.controls.Button;
+    import feathers.controls.TextInput;
 
     import org.as3commons.lang.StringUtils;
     import org.lionart.starlingmvc.wings.core.Wings;
@@ -78,6 +79,10 @@ package org.lionart.starlingmvc.wings.processors
             }
         }
 
+        //----------------------------------
+        //  Starling controls
+        //----------------------------------
+
         /**
          * Creates a Starling Image.
          */
@@ -111,10 +116,22 @@ package org.lionart.starlingmvc.wings.processors
             return displayObject;
         }
 
+        //----------------------------------
+        //  Feathers controls
+        //----------------------------------
+
         public function createFButton( node : XML ) : DisplayObject
         {
             var displayObject : DisplayObject;
             displayObject = new feathers.controls.Button();
+            displayObject.name = node.@name;
+            return displayObject;
+        }
+
+        public function createTextInput( node : XML ) : DisplayObject
+        {
+            var displayObject : DisplayObject;
+            displayObject = new TextInput();
             displayObject.name = node.@name;
             return displayObject;
         }
