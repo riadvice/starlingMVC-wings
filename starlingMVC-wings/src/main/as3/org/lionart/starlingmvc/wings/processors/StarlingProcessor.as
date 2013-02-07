@@ -33,10 +33,9 @@ package org.lionart.starlingmvc.wings.processors
         {
             var viewPort : Rectangle;
             Starling.handleLostContext = appXML.@handleLostContext == "true";
+            Starling.multitouchEnabled = appXML.@multitouchEnabled == "true";
             if (Wings.isMobileApp)
             {
-                Starling.multitouchEnabled = appXML.@multitouchEnabled == "true";
-
                 // not necessary on iOS. Saves a lot of memory!
                 Starling.handleLostContext = Capabilities.manufacturer.indexOf("iOS") != -1;
 
