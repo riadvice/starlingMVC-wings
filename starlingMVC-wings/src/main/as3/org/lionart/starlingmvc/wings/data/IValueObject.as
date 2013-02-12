@@ -22,6 +22,8 @@ package org.lionart.starlingmvc.wings.data
      */
     public interface IValueObject
     {
+        function get id() : String
 
+        function set id( value : String ) : void
     }
 }
