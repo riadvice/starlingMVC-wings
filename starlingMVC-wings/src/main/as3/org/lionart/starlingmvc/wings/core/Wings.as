@@ -284,6 +284,22 @@ package org.lionart.starlingmvc.wings.core
         }
 
         //----------------------------------
+        //  appId
+        //----------------------------------
+        public static function get appId() : String
+        {
+            return config.appId;
+        }
+
+        //----------------------------------
+        //  version
+        //----------------------------------
+        public static function get version() : String
+        {
+            return config.version;
+        }
+
+        //----------------------------------
         //  isMobileApp
         //----------------------------------
         public static function get isMobileApp() : Boolean
