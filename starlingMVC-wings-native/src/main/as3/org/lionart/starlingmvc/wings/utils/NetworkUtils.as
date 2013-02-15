@@ -16,8 +16,27 @@
  */
 package org.lionart.starlingmvc.wings.utils
 {
+    import flash.net.NetworkInfo;
+    import flash.net.NetworkInterface;
+
+    import org.as3commons.lang.StringUtils;
 
     public final class NetworkUtils
     {
+        /**
+         * Returns true if the device has an active network connection.
+         */
+        public static function haveActiveConnection() : Boolean
+        {
+            var networks : Vector.<NetworkInterface> = NetworkInfo.networkInfo.findInterfaces();
+            for each (var network : NetworkInterface in networks)
+            {
+                if (network.active == true && !StringUtils.isEmpty(network.hardwareAddress) && network.hardwareAddress != "127.0.0.1")
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
