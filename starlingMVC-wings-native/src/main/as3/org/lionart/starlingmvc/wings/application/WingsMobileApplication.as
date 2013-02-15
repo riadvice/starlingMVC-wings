@@ -18,6 +18,7 @@ package org.lionart.starlingmvc.wings.application
 {
     import flash.desktop.NativeApplication;
     import flash.events.Event;
+    import flash.net.NetworkInfo;
 
     import org.lionart.starlingmvc.wings.core.wings_internal;
 
@@ -27,6 +28,7 @@ package org.lionart.starlingmvc.wings.application
         {
             NativeApplication.nativeApplication.addEventListener(Event.ACTIVATE, wings_internal::activateHandler);
             NativeApplication.nativeApplication.addEventListener(Event.DEACTIVATE, wings_internal::deactivateHandler);
+            NativeApplication.nativeApplication.addEventListener(Event.NETWORK_CHANGE, wings_internal::networkChangeHandler);
             super();
         }
 
@@ -47,6 +49,11 @@ package org.lionart.starlingmvc.wings.application
         wings_internal function deactivateHandler( event : Event ) : void
         {
             starlingInstance.stop();
+        }
+
+        wings_internal function networkChangeHandler( event : Event ) : void
+        {
+
         }
 
     }

@@ -34,6 +34,7 @@ return array(
         'UsersManager' => $baseDir . '/wings/managers/UsersManager.php',
         'WingsMobileService' => $baseDir . '/wings/service/WingsMobileService.php',
         'WingsService' => $baseDir . '/wings/service/WingsService.php',
+        'InitSessionTO' => $baseDir . '/wings/transfer/common/InitSessionTO.php',
         'TransferObject' => $baseDir . '/wings/transfer/TransferObject.php',
         'TransferObjectHeader' => $baseDir . '/wings/transfer/TransferObjectHeader.php',
         'UserVO' => $baseDir . '/wings/values/common/UserVO.php',
