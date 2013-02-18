@@ -128,12 +128,12 @@ package org.lionart.starlingmvc.wings.view
         //  Internal methods
         //
         //--------------------------------------------------------------------------
-        wings_internal function viewLoaded() : void
+        public function viewLoaded() : void
         {
             dispatchEventWith(WingsEvent.VIEW_LOADED, false, this);
         }
 
-        wings_internal function viewUnloaded() : void
+        public function viewUnloaded() : void
         {
             dispatchEventWith(WingsEvent.VIEW_UNLOADED, false, this);
         }

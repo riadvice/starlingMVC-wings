@@ -19,12 +19,14 @@ package org.lionart.starlingmvc.wings.processors
     import flash.utils.setTimeout;
 
     import org.as3commons.lang.StringUtils;
-    import org.lionart.starlingmvc.wings.tween.TweenType;
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
     import org.lionart.starlingmvc.wings.style.Align;
+    import org.lionart.starlingmvc.wings.tween.TweenType;
     import org.lionart.starlingmvc.wings.utils.JugglerUtils;
     import org.lionart.starlingmvc.wings.utils.XMLUtils;
+    import org.lionart.starlingmvc.wings.view.ILoadView;
+    import org.lionart.starlingmvc.wings.view.IUnloadView;
     import org.lionart.starlingmvc.wings.view.WingsView;
 
     import starling.display.DisplayObject;
@@ -82,11 +84,11 @@ package org.lionart.starlingmvc.wings.processors
 
             if (type == TweenType.LOAD)
             {
-                setTimeout(WingsView(view).wings_internal::viewLoaded, maxTime * 1000);
+                setTimeout(ILoadView(view).viewLoaded, maxTime * 1000);
             }
             else if (type == TweenType.UNLOAD)
             {
-                setTimeout(WingsView(view).wings_internal::viewUnloaded, maxTime * 1000);
+                setTimeout(IUnloadView(view).viewUnloaded, maxTime * 1000);
             }
         }
 

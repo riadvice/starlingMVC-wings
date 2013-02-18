@@ -23,11 +23,15 @@ package org.lionart.starlingmvc.wings.screen
     import org.lionart.starlingmvc.wings.bean.IBean;
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
+    import org.lionart.starlingmvc.wings.events.WingsEvent;
+    import org.lionart.starlingmvc.wings.tween.TweenType;
+    import org.lionart.starlingmvc.wings.view.ILoadView;
+    import org.lionart.starlingmvc.wings.view.IUnloadView;
 
     import starling.events.Event;
     import starling.events.EventDispatcher;
 
-    public class WingsPanelScreen extends PanelScreen implements IWingsScreen, IBean
+    public class WingsPanelScreen extends PanelScreen implements IWingsScreen, ILoadView, IUnloadView, IBean
     {
         //--------------------------------------------------------------------------
         //
@@ -91,6 +95,52 @@ package org.lionart.starlingmvc.wings.screen
 
         //--------------------------------------------------------------------------
         //
+        //  Methods
+        //
+        //--------------------------------------------------------------------------
+
+        /**
+         * @inheritDoc
+         */
+        public function load() : void
+        {
+            placeElements();
+            Wings.wings_internal::playTransition(beanId, TweenType.LOAD);
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function unload() : void
+        {
+            Wings.wings_internal::playTransition(beanId, TweenType.UNLOAD);
+        }
+
+        /**
+         * @inheritDoc
+         */
+        public function placeElements() : void
+        {
+            Wings.wings_internal::applyElementsStyle(beanId);
+        }
+
+        //--------------------------------------------------------------------------
+        //
+        //  Internal methods
+        //
+        //--------------------------------------------------------------------------
+        public function viewLoaded() : void
+        {
+            dispatchEventWith(WingsEvent.VIEW_LOADED, false, this);
+        }
+
+        public function viewUnloaded() : void
+        {
+            dispatchEventWith(WingsEvent.VIEW_UNLOADED, false, this);
+        }
+
+        //--------------------------------------------------------------------------
+        //
         //  Event handlers
         //
         //--------------------------------------------------------------------------
@@ -99,7 +149,19 @@ package org.lionart.starlingmvc.wings.screen
         {
             removeEventListener(FeathersEventType.INITIALIZE, onInitializeHandler);
             Wings.wings_internal::createViewElements(beanId);
-            Wings.wings_internal::applyElementsStyle(beanId);
+            load();
+            addEventListener(Event.ADDED_TO_STAGE, onAddedToStageHandler);
+            addEventListener(Event.REMOVED_FROM_STAGE, onRemovedFromStage);
+        }
+
+        protected function onRemovedFromStage( event : Event ) : void
+        {
+            load();
+        }
+
+        protected function onAddedToStageHandler( event : Event ) : void
+        {
+            unload();
         }
     }
 }

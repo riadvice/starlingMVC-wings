@@ -17,6 +17,7 @@
 package org.lionart.starlingmvc.wings.view
 {
 
+
     public interface ILoadView
     {
         //--------------------------------------------------------------------------
@@ -29,5 +30,7 @@ package org.lionart.starlingmvc.wings.view
          * Loads the View.
          */
         function load() : void;
+
+        function viewLoaded() : void;
     }
 }

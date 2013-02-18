@@ -16,34 +16,10 @@
  */
 package org.lionart.starlingmvc.wings.screen
 {
+    import org.lionart.starlingmvc.wings.view.IWingsView;
 
-    public interface IWingsScreen
+    public interface IWingsScreen extends IWingsView
     {
-        //--------------------------------------------------------------------------
-        //
-        //  Properties
-        //
-        //--------------------------------------------------------------------------
 
-        //----------------------------------
-        //  xmlWings
-        //----------------------------------
-
-        /**
-         * The view XML that will be used to build the entire view components and transitions.
-         */
-        function get xmlWings() : XML;
-        function set xmlWings( value : XML ) : void;
-
-        //--------------------------------------------------------------------------
-        //
-        //  Methods
-        //
-        //--------------------------------------------------------------------------
-    /**
-     * This method is used the place View elements in their
-     * initial position before they are displayed.
-     */
-         //  function placeElements() : void;
     }
 }
