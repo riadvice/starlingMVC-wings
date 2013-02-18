@@ -103,7 +103,7 @@ package org.lionart.starlingmvc.wings.processors
         public function createButton( node : XML ) : DisplayObject
         {
             var displayObject : DisplayObject;
-            displayObject = new starling.display.Button(AssetLoader.getAtlas(node.@atlas).getTexture(node.@texture));
+            displayObject = new starling.display.Button(AssetLoader.getAtlas(node.@atlas).getTexture(node.@texture), node.@text, AssetLoader.getAtlas(node.@atlas).getTexture(node.@downTexture));
             displayObject.name = node.@name;
             return displayObject;
         }

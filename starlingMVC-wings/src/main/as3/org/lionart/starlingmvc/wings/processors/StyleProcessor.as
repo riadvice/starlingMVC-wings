@@ -36,7 +36,7 @@ package org.lionart.starlingmvc.wings.processors
         //
         //--------------------------------------------------------------------------
 
-        private const NON_STYLE_ATTRIBUTES : Array = ["atlas", "name", "texture", "type"];
+        private const NON_STYLE_ATTRIBUTES : Array = ["atlas", "downTexture", "name", "texture", "type"];
 
         //--------------------------------------------------------------------------
         //
