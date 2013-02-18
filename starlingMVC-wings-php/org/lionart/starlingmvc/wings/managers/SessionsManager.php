@@ -20,4 +20,11 @@ class SessionsManager extends WingsManager
     static $DAO_CLASS = 'SessionDAO';
     static $VO_CLASS = 'SessionVO';
 
+    public function updateAtNow( $session_id )
+    {
+        $session = $this->get( $session_id );
+        $session->updatedAt = new DateTime();
+        $this->update( $session );
+    }
+
 }
