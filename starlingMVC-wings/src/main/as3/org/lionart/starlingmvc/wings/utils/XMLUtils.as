@@ -27,12 +27,12 @@ package org.lionart.starlingmvc.wings.utils
             var result : Object = {};
             var str : String = String(value.toXMLString());
             var pairs : Array = [];
-			var regexResult : Object = SPLIT_REGEX.exec(str);
-			while (regexResult != null)
-			{
-				pairs.push(regexResult[0]);
-				regexResult = SPLIT_REGEX.exec(str);
-			}
+            var regexResult : Object = SPLIT_REGEX.exec(str);
+            while (regexResult != null)
+            {
+                pairs.push(regexResult[0]);
+                regexResult = SPLIT_REGEX.exec(str);
+            }
             //str = str.substring(str.indexOf(" ") + 1, str.length - 2);
             for each (var pair : String in pairs)
             {

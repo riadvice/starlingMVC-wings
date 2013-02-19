@@ -23,5 +23,9 @@ package org.lionart.starlingmvc.wings.utils
 
         public static const MONTH_NAMES_AR : Array = ["جانفي", "فيفري", "مارس", "أفريل", "ماي", "جوان", "جويلية", "أوت", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
 
+        public static const WEEK_DAY_NAMES_EN : Array = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+        public static const WEEK_DAY_NAMES_AR : Array = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+
     }
 }
