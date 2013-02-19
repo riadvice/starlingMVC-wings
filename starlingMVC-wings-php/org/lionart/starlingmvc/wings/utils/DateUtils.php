@@ -23,14 +23,25 @@ class DateUtils
     /**
      * Converts an AMF Date to PHP DateTime
      *
-     * @param unknown_type $amfDate            
+     * @param Amfphp_Core_Amf_Types_Date $amfDate
      * @return DateTime
      */
     public static function afmDateToDateTime( $amfDate )
     {
-        $match_time = new DateTime();
-        $match_time->setTimestamp( $amfDate->timeStamp / 1000 );
-        return $match_time;
+        $date = new DateTime();
+        $date->setTimestamp( $amfDate->timeStamp / 1000 );
+        return $date;
+    }
+
+    /**
+     * Converts an PHP DateTime string to AMF Date
+     *
+     * @param string $stringDate
+     * @return Amfphp_Core_Amf_Types_Date
+     */
+    public static function dateTimeToafmDate( $stringDate )
+    {
+        return new Amfphp_Core_Amf_Types_Date( DateTime::createFromFormat( 'Y-m-d H:i:s', $stringDate )->getTimestamp() * 1000 );
     }
 
     public static function currentDate( $timestamp = null )
