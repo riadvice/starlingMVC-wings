@@ -114,7 +114,7 @@ package org.lionart.starlingmvc.wings.processors
         public function createTextField( node : XML ) : DisplayObject
         {
             var displayObject : DisplayObject;
-            displayObject = new TextField(parseInt(node.@width), parseInt(node.@height), Wings.wings_internal::config.textClass[node.@text], node.@fontName, parseFloat(node.@fontSize), parseInt(node.@color.toString().replace(/0x|#/g, ""), 16), node.@bold == "true");
+            displayObject = new TextField(parseInt(node.@width), parseInt(node.@height), Wings.wings_internal::config.textClass[node.@text], node.@fontName, parseFloat(node.@fontSize), uint("0x" + node.@color.toString().replace(/0x|#/g, "")), node.@bold == "true");
             displayObject.name = node.@name;
             return displayObject;
         }
