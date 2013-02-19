@@ -7,6 +7,7 @@
         <modifiedEntries>
           <libraryPathEntry kind="3" linkType="2" path="${PROJECT_FRAMEWORKS}/libs/asc-support.swc" useDefaultLinkType="false"/>
           <libraryPathEntry kind="3" linkType="2" path="${PROJECT_FRAMEWORKS}/libs/core.swc" useDefaultLinkType="false"/>
+          <libraryPathEntry kind="3" linkType="2" path="${PROJECT_FRAMEWORKS}/libs/textLayout.swc" useDefaultLinkType="false"/>
           <libraryPathEntry kind="1" linkType="2" path="${PROJECT_FRAMEWORKS}/locale/{locale}"/>
         </modifiedEntries>
         <excludedEntries>
