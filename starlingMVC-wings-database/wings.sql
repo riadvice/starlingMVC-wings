@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `sessions` (
   `fb_id` varchar(255) DEFAULT NULL,
   `device` varchar(255) DEFAULT NULL,
   `version` varchar(255) DEFAULT NULL,
-  `data` varchar(255) DEFAULT NULL,
+  `data` varchar(511) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
