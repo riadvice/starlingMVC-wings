@@ -20,6 +20,7 @@ package org.lionart.starlingmvc.wings.transfer
     /**
      * See transfert object.
      */
+    [RemoteClass(alias = "org.lionart.starlingmvc.wings.transfer.TransferObjectHeader")]
     public class TransferObjectHeader
     {
 

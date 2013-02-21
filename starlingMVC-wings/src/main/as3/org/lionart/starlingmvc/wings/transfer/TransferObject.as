@@ -17,6 +17,7 @@
 package org.lionart.starlingmvc.wings.transfer
 {
 
+    [RemoteClass(alias = "org.lionart.starlingmvc.wings.transfer.TransferObject")]
     public class TransferObject implements ITransferObject
     {
 
