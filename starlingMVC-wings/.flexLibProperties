@@ -70,6 +70,7 @@
     <classEntry path="org.lionart.starlingmvc.wings.screen.IWingsScreen"/>
     <classEntry path="org.lionart.starlingmvc.wings.utils.FlashPlayerUtils"/>
     <classEntry path="org.lionart.starlingmvc.wings.utils.DateUtils"/>
+    <classEntry path="org.lionart.starlingmvc.wings.utils.URLEncoding"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
