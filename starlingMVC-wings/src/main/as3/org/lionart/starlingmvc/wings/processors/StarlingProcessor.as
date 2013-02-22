@@ -37,7 +37,10 @@ package org.lionart.starlingmvc.wings.processors
             if (Wings.isMobileApp)
             {
                 // not necessary on iOS. Saves a lot of memory!
-                Starling.handleLostContext = Capabilities.manufacturer.indexOf("iOS") != -1;
+                if (Capabilities.manufacturer.indexOf("iOS") > -1)
+                {
+                    Starling.handleLostContext = false;
+                }
 
                 // create a suitable viewport for the screen size
                 // 
