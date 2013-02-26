@@ -174,6 +174,7 @@ package org.lionart.starlingmvc.wings.sound
             channel = sound.play(position, loops, new SoundTransform(volume));
             channel.addEventListener(Event.SOUND_COMPLETE, handleSoundComplete);
             paused = false;
+			dispatchEvent(new SoundManagerEvent(SoundManagerEvent.SOUND_ITEM_PLAY_START, this));
 
             //if (resumeTween && (fadeTween != null)) fadeTween.resume();
         }
