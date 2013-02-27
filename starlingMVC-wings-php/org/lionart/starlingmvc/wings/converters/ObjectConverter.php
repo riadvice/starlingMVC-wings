@@ -23,9 +23,9 @@ class ObjectConverter
     /**
      * Transforms an object to a typed object
      *
-     * @param stdObject $source            
-     * @param class $class            
-     * @param array $mapping            
+     * @param stdObject $source
+     * @param class $class
+     * @param array $mapping
      * @return ValueObject
      */
     public static function convertToValueObject( $source, $class, $mapping )
@@ -47,7 +47,7 @@ class ObjectConverter
         $result = array();
         foreach( $source as $obj )
         {
-            array_push( $result, ObjectUtils::convertToValueObject( $obj, $class, $mapping ) );
+            array_push( $result, ObjectConverter::convertToValueObject( $obj, $class, $mapping ) );
         }
         return $result;
     }
@@ -67,7 +67,7 @@ class ObjectConverter
         $result = array();
         foreach( $source as $vo )
         {
-            array_push( $result, ObjectUtils::convertToBeanSource( $vo, $mapping ) );
+            array_push( $result, ObjectConverter::convertToBeanSource( $vo, $mapping ) );
         }
         return $result;
     }
