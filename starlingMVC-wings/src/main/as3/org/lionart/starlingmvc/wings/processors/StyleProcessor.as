@@ -240,7 +240,7 @@ package org.lionart.starlingmvc.wings.processors
         {
             if (StringUtils.endsWith(value, "p"))
             {
-                currentElement.y = (parseFloat(StringUtils.remove(value, "p")) * 0.01) * Wings.appHeight;
+                currentElement.x = (parseFloat(StringUtils.remove(value, "p")) * 0.01) * Wings.appWidth;
             }
             else if (!StringUtils.isAlpha(value))
             {
@@ -259,7 +259,7 @@ package org.lionart.starlingmvc.wings.processors
         {
             if (StringUtils.endsWith(value, "p"))
             {
-                currentElement.y = Wings.wings_internal::config.appWidth - currentElement.width - (parseFloat(StringUtils.remove(value, "p")) * 0.01) * Wings.appHeight;
+                currentElement.x = Wings.wings_internal::config.appWidth - currentElement.width - (parseFloat(StringUtils.remove(value, "p")) * 0.01) * Wings.appWidth;
             }
             else if (!StringUtils.isAlpha(value))
             {
