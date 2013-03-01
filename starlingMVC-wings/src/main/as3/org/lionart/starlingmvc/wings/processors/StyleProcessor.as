@@ -200,7 +200,11 @@ package org.lionart.starlingmvc.wings.processors
          */
         private function applyTop( value : String ) : void
         {
-            if (!StringUtils.isAlpha(value))
+            if (StringUtils.endsWith(value, "p"))
+            {
+                currentElement.y = (parseFloat(StringUtils.remove(value, "p")) * 0.01) * Wings.appHeight;
+            }
+            else if (!StringUtils.isAlpha(value))
             {
                 currentElement.y = parseFloat(value);
             }
@@ -215,7 +219,11 @@ package org.lionart.starlingmvc.wings.processors
          */
         private function applyBottom( value : String ) : void
         {
-            if (!StringUtils.isAlpha(value))
+            if (StringUtils.endsWith(value, "p"))
+            {
+                currentElement.y = Wings.wings_internal::config.appHeight - currentElement.height - (parseFloat(StringUtils.remove(value, "p")) * 0.01) * Wings.appHeight;
+            }
+            else if (!StringUtils.isAlpha(value))
             {
                 currentElement.y = Wings.wings_internal::config.appHeight - currentElement.height - parseFloat(value);
             }
@@ -230,7 +238,11 @@ package org.lionart.starlingmvc.wings.processors
          */
         private function applyLeft( value : String ) : void
         {
-            if (!StringUtils.isAlpha(value))
+            if (StringUtils.endsWith(value, "p"))
+            {
+                currentElement.y = (parseFloat(StringUtils.remove(value, "p")) * 0.01) * Wings.appHeight;
+            }
+            else if (!StringUtils.isAlpha(value))
             {
                 currentElement.x = parseFloat(value);
             }
@@ -245,7 +257,11 @@ package org.lionart.starlingmvc.wings.processors
          */
         private function applyRight( value : String ) : void
         {
-            if (!StringUtils.isAlpha(value))
+            if (StringUtils.endsWith(value, "p"))
+            {
+                currentElement.y = Wings.wings_internal::config.appWidth - currentElement.width - (parseFloat(StringUtils.remove(value, "p")) * 0.01) * Wings.appHeight;
+            }
+            else if (!StringUtils.isAlpha(value))
             {
                 currentElement.x = Wings.wings_internal::config.appWidth - currentElement.width - parseFloat(value);
             }
