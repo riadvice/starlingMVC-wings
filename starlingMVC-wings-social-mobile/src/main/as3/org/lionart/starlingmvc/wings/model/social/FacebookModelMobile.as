@@ -24,9 +24,11 @@ package org.lionart.starlingmvc.wings.model.social
     import flash.events.LocationChangeEvent;
     import flash.geom.Rectangle;
     import flash.media.StageWebView;
+    import flash.net.URLRequestMethod;
 
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.facebook.FacebookEvent;
+    import org.lionart.starlingmvc.wings.facebook.Feed;
     import org.lionart.starlingmvc.wings.model.WingsModel;
 
     public class FacebookModelMobile extends WingsModel
@@ -100,10 +102,10 @@ package org.lionart.starlingmvc.wings.model.social
             FacebookMobile.login(onAuthenticateHandler, _webView.stage, _permissions, _webView);
         }
 
-        public function feedWall() : void
+        public function postOnWall( postMessage : String ) : void
         {
-            var params : Object = {access_token: _session.accessToken, message: "Ija il3ab"};
-            //FacebookMobile.api("/me/feed/", onPostStatus, params, "POST");
+            var params : Object = {access_token: _session.accessToken, message: postMessage};
+            FacebookMobile.api("/me/feed/", onPostStatus, params, URLRequestMethod.POST);
         }
 
         //--------------------------------------------------------------------------
@@ -117,7 +119,7 @@ package org.lionart.starlingmvc.wings.model.social
             if (response)
             {
                 _session = FacebookSession(response);
-                dispatcher.dispatchEventWith(FacebookEvent.FACEBOOK_INIT_SUCCESS, false, response);
+                dispatcher.dispatchEventWith(FacebookEvent.FACEBOOK_SESSION_INIT, false, response);
             }
             else if (fail)
             {
@@ -130,11 +132,25 @@ package org.lionart.starlingmvc.wings.model.social
             if (response)
             {
                 _session = FacebookSession(response);
-                dispatcher.dispatchEventWith(FacebookEvent.FACEBOOK_AUTH_SUCCESS, false, response);
+                dispatcher.dispatchEventWith(FacebookEvent.FACEBOOK_SESSION_INIT, false, response);
             }
             if (fail)
             {
                 dispatcher.dispatchEventWith(FacebookEvent.FACEBOOK_AUTH_FAIL, false, response);
+            }
+        }
+
+
+        private function onPostStatus( response : Object, fail : Object ) : void
+        {
+            if (response)
+            {
+                //var feed : Feed = Feed(response);
+                //trace(feed);
+            }
+            else if (fail)
+            {
+                //trace(fail);
             }
         }
 

@@ -29,15 +29,11 @@ package org.lionart.starlingmvc.wings.facebook
         /**
          * Event dispatched when facebook init is successfull.
          */
-        public static const FACEBOOK_INIT_SUCCESS : String = "facebookInitSuccess";
+        public static const FACEBOOK_SESSION_INIT : String = "facebookSessionInit";
         /**
          * Event dispatched when facebook init fails.
          */
         public static const FACEBOOK_INIT_FAIL : String = "facebookInitFail";
-        /**
-         * Event dispatched when facebook authenitcation is successfull.
-         */
-        public static const FACEBOOK_AUTH_SUCCESS : String = "facebookAuthSuccess";
         /**
          * Event dispatched when facebook authenitcation fails.
          */
