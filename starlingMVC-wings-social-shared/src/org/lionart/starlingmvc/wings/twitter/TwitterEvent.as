@@ -14,12 +14,18 @@
    You should have received a copy of the GNU General Public License
    along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.lionart.starlingmvc.wings.events
+package org.lionart.starlingmvc.wings.twitter
 {
     import starling.events.Event;
 
     public class TwitterEvent extends Event
     {
+        //--------------------------------------------------------------------------
+        //
+        //  Constructor
+        //
+        //--------------------------------------------------------------------------
+
         public function TwitterEvent( type : String, bubbles : Boolean = false, data : Object = null )
         {
             super(type, bubbles, data);

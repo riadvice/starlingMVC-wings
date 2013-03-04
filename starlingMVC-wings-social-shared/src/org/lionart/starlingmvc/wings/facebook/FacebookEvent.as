@@ -14,12 +14,18 @@
    You should have received a copy of the GNU General Public License
    along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.lionart.starlingmvc.wings.events
+package org.lionart.starlingmvc.wings.facebook
 {
     import starling.events.Event;
 
     public class FacebookEvent extends Event
     {
+        //--------------------------------------------------------------------------
+        //
+        //  Class constants
+        //
+        //--------------------------------------------------------------------------
+
         /**
          * Event dispatched when facebook init is successfull.
          */
@@ -36,6 +42,12 @@ package org.lionart.starlingmvc.wings.events
          * Event dispatched when facebook authenitcation fails.
          */
         public static const FACEBOOK_AUTH_FAIL : String = "facebookAuthFail";
+
+        //--------------------------------------------------------------------------
+        //
+        //  Constructor
+        //
+        //--------------------------------------------------------------------------
 
         public function FacebookEvent( type : String, bubbles : Boolean = false, data : Object = null )
         {

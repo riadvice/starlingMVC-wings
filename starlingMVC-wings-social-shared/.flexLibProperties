@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
   <includeClasses>
-    <classEntry path="org.lionart.starlingmvc.wings.events.FacebookEvent"/>
-    <classEntry path="org.lionart.starlingmvc.wings.events.TwitterEvent"/>
+    <classEntry path="org.lionart.starlingmvc.wings.facebook.FacebookEvent"/>
+    <classEntry path="org.lionart.starlingmvc.wings.twitter.TwitterEvent"/>
+    <classEntry path="org.lionart.starlingmvc.wings.facebook.FacebookPermissions"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
