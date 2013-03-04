@@ -71,8 +71,6 @@
     <classEntry path="org.lionart.starlingmvc.wings.utils.FlashPlayerUtils"/>
     <classEntry path="org.lionart.starlingmvc.wings.utils.DateUtils"/>
     <classEntry path="org.lionart.starlingmvc.wings.utils.URLEncoding"/>
-    <classEntry path="org.lionart.starlingmvc.wings.events.FacebookEvent"/>
-    <classEntry path="org.lionart.starlingmvc.wings.events.TwitterEvent"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
