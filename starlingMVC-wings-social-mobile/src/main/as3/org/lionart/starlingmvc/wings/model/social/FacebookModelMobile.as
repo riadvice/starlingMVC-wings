@@ -26,7 +26,7 @@ package org.lionart.starlingmvc.wings.model.social
     import flash.media.StageWebView;
 
     import org.lionart.starlingmvc.wings.core.Wings;
-    import org.lionart.starlingmvc.wings.events.FacebookEvent;
+    import org.lionart.starlingmvc.wings.facebook.FacebookEvent;
     import org.lionart.starlingmvc.wings.model.WingsModel;
 
     public class FacebookModelMobile extends WingsModel
@@ -72,9 +72,9 @@ package org.lionart.starlingmvc.wings.model.social
         //  permissions
         //----------------------------------
 
-        public function set permissions( value : Array ) : void
+        public function set permissions( value : String ) : void
         {
-            _permissions = value;
+            _permissions = value.split(",");
         }
 
         //--------------------------------------------------------------------------
@@ -116,6 +116,7 @@ package org.lionart.starlingmvc.wings.model.social
         {
             if (response)
             {
+                _session = FacebookSession(response);
                 dispatcher.dispatchEventWith(FacebookEvent.FACEBOOK_INIT_SUCCESS, false, response);
             }
             else if (fail)
