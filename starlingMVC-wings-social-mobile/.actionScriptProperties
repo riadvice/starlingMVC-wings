@@ -7,15 +7,15 @@
         <excludedEntries>
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/automation_charts.swc" useDefaultLinkType="false"/>
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/advancedgrids.swc" useDefaultLinkType="false"/>
-          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/charts.swc" useDefaultLinkType="false"/>
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/automation_air.swc" useDefaultLinkType="false"/>
-          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/locale/{locale}" useDefaultLinkType="false"/>
+          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/charts.swc" useDefaultLinkType="false"/>
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/netmon.swc" useDefaultLinkType="false"/>
+          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/locale/{locale}" useDefaultLinkType="false"/>
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/spark.swc" useDefaultLinkType="false"/>
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/sparkskins.swc" useDefaultLinkType="false"/>
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/rpc.swc" useDefaultLinkType="false"/>
-          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/qtp_air.swc" useDefaultLinkType="false"/>
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/videoPlayer.swc" useDefaultLinkType="false"/>
+          <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/qtp_air.swc" useDefaultLinkType="false"/>
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/flash-integration.swc" useDefaultLinkType="false"/>
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/authoringsupport.swc" useDefaultLinkType="false"/>
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/qtp.swc" useDefaultLinkType="false"/>
@@ -33,11 +33,12 @@
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/automation_agent.swc" useDefaultLinkType="false"/>
         </excludedEntries>
       </libraryPathEntry>
-      <libraryPathEntry kind="3" linkType="1" path="/Starling/bin-debug/Starling.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="/starlingMVC/bin/starlingMVC.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="/starlingMVC-wings/bin/starlingMVC-wings.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="/starlingMVC-wings-social-shared/bin/starlingMVC-wings-social-shared.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="/starlingMVC-wings-social-native/bin/starlingMVC-wings-social-native.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="2" path="/Starling/bin-debug/Starling.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="2" path="/feathers/bin/feathers.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="2" path="/starlingMVC/bin/starlingMVC.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="2" path="/starlingMVC-wings/bin/starlingMVC-wings.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="2" path="/starlingMVC-wings-social-shared/bin/starlingMVC-wings-social-shared.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="2" path="/starlingMVC-wings-native-mobile/bin/starlingMVC-wings-native-mobile.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/as3crypto.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/tweetrAIR.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/GraphAPI_Mobile_1_8_1.swc" useDefaultLinkType="false"/>

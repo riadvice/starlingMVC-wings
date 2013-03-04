@@ -28,7 +28,6 @@ package org.lionart.starlingmvc.wings.model.social
 
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.facebook.FacebookEvent;
-    import org.lionart.starlingmvc.wings.facebook.Feed;
     import org.lionart.starlingmvc.wings.model.WingsModel;
 
     public class FacebookModelMobile extends WingsModel
