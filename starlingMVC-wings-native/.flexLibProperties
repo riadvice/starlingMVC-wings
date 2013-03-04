@@ -5,7 +5,6 @@
     <classEntry path="org.lionart.starlingmvc.wings.application.IWingsMobileApplication"/>
     <classEntry path="org.lionart.starlingmvc.wings.utils.NetworkUtils"/>
     <classEntry path="org.lionart.starlingmvc.wings.utils.FileUtils"/>
-    <classEntry path="org.lionart.starlingmvc.wings.utils.DeviceUtils"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
