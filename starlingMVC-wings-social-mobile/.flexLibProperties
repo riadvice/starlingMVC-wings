@@ -2,6 +2,7 @@
 <flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
   <includeClasses>
     <classEntry path="org.lionart.starlingmvc.wings.model.social.FacebookModelMobile"/>
+    <classEntry path="org.lionart.starlingmvc.wings.model.social.TwitterModelMobile"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
