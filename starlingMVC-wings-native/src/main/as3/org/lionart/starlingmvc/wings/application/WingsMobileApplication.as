@@ -18,7 +18,6 @@ package org.lionart.starlingmvc.wings.application
 {
     import flash.desktop.NativeApplication;
     import flash.events.Event;
-    import flash.net.NetworkInfo;
 
     import org.lionart.starlingmvc.wings.core.wings_internal;
 

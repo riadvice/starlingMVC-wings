@@ -20,6 +20,7 @@ package org.lionart.starlingmvc.wings.application
     import flash.display.DisplayObject;
     import flash.display.Sprite;
     import flash.events.Event;
+    import flash.geom.Rectangle;
 
     import avmplus.getQualifiedClassName;
 
@@ -44,6 +45,8 @@ package org.lionart.starlingmvc.wings.application
         private var _xmlWings : XML;
         private var _mainScreen : Class;
 
+        protected var appScale : Number = 1;
+
         //--------------------------------------------------------------------------
         //
         //  Constructor
@@ -53,6 +56,7 @@ package org.lionart.starlingmvc.wings.application
         public function WingsApplication()
         {
             super();
+            calculateScale()
 
             Wings.wings_internal::registerApp(this);
 
@@ -147,6 +151,35 @@ package org.lionart.starlingmvc.wings.application
         {
             _starling.removeEventListener(starling.events.Event.ROOT_CREATED, rootCreatedHandler);
             _starling.start();
+        }
+
+        protected function calculateScale() : void
+        {
+            var guiSize : Rectangle = new Rectangle(0, 0, 1024, 600);
+            var deviceSize : Rectangle = new Rectangle(0, 0, Math.max(stage.fullScreenWidth, stage.fullScreenHeight), Math.min(stage.fullScreenWidth, stage.fullScreenHeight));
+            var appSize : Rectangle = guiSize.clone();
+            var appLeftOffset : Number = 0;
+            // if device is wider than GUI's aspect ratio, height determines scale
+            if ((deviceSize.width / deviceSize.height) > (guiSize.width / guiSize.height))
+            {
+                appScale = deviceSize.height / guiSize.height;
+                appSize.width = deviceSize.width / appScale;
+                appLeftOffset = Math.round((appSize.width - guiSize.width) / 2);
+            }
+            // if device is taller than GUI's aspect ratio, width determines scale
+            else
+            {
+                appScale = deviceSize.width / guiSize.width;
+                appSize.height = deviceSize.height / appScale;
+                appLeftOffset = 0;
+            }
+            // scale the entire interface
+        /*base.scale = appScale;
+           // map stays at the top left and fills the whole screen
+           base.map.x = 0; // menus are centered horizontally
+           base.menus.x = appLeftOffset;
+           //crop some menus which are designed to run off the sides of the screen
+           base.scrollRect = appSize;*/
         }
 
         /**
