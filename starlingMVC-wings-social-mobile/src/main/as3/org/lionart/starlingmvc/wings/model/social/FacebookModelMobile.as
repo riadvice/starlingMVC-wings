@@ -19,9 +19,6 @@ package org.lionart.starlingmvc.wings.model.social
     import com.facebook.graph.FacebookMobile;
     import com.facebook.graph.data.FacebookSession;
 
-    import flash.display.Stage;
-    import flash.events.Event;
-    import flash.events.LocationChangeEvent;
     import flash.geom.Rectangle;
     import flash.media.StageWebView;
     import flash.net.URLRequestMethod;
@@ -94,9 +91,8 @@ package org.lionart.starlingmvc.wings.model.social
             if (!_webView)
             {
                 _webView = new StageWebView();
-                _webView.addEventListener(LocationChangeEvent.LOCATION_CHANGE, onWebViewLocationChangeHandler);
                 _webView.stage = Wings.mainApp["stage"];
-                _webView.viewPort = new Rectangle(10, 10, 0, 0);
+                _webView.viewPort = new Rectangle(10, 10, _webView.stage.stageWidth - 20, _webView.stage.stageHeight - 20);
             }
             FacebookMobile.login(onAuthenticateHandler, _webView.stage, _permissions, _webView);
         }
@@ -150,23 +146,6 @@ package org.lionart.starlingmvc.wings.model.social
             else if (fail)
             {
                 //trace(fail);
-            }
-        }
-
-        private function onWebViewLocationChangeHandler( event : flash.events.Event ) : void
-        {
-            try
-            {
-                // FIXME
-                if (event.target && event.target.viewPort != null)
-                {
-                    var stage : Stage = Wings.mainApp["stage"];
-                    event.target.viewPort = new Rectangle(10, 10, stage.stageWidth - 20, stage.stageHeight - 20);
-                }
-            }
-            catch ( e : Error )
-            {
-                // Swallow error
             }
         }
 
