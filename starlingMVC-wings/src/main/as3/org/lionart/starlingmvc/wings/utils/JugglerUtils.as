@@ -21,10 +21,12 @@ package org.lionart.starlingmvc.wings.utils
 
     public class JugglerUtils
     {
-        public static function createTween( target : Object, time : Number, props : Object, autoStart : Boolean = true, transition : Object = "linear" ) : Tween
+        public static function createTween( target : Object, time : Number, props : Object, repeatCount : int = 1, reverse : Boolean = false, autoStart : Boolean = true, transition : Object = "linear" ) : Tween
         {
             var property : String;
             var tween : Tween = new Tween(target, time, transition);
+            tween.repeatCount = repeatCount;
+            tween.reverse = reverse;
             for (property in props)
             {
                 if (tween.hasOwnProperty(property))
