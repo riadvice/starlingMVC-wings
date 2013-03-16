@@ -40,5 +40,30 @@ package org.lionart.starlingmvc.wings.utils
 
             return caps;
         }
+
+        public static function isMac() : Boolean
+        {
+            return Capabilities.os == "MacOS" || Capabilities.os.substr(0, 6) == "Mac OS";
+        }
+
+        public static function isLinux() : Boolean
+        {
+            return Capabilities.os == "Linux";
+        }
+
+        public static function isWindows() : Boolean
+        {
+            return Capabilities.manufacturer == "Adobe Windows";
+        }
+
+        public static function isAndroid() : Boolean
+        {
+            return Capabilities.manufacturer == "Android Linux";
+        }
+
+        public static function isStandalone() : Boolean
+        {
+            return Capabilities.playerType == "Desktop";
+        }
     }
 }
