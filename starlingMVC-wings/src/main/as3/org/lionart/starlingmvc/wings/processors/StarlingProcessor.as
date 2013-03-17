@@ -22,6 +22,7 @@ package org.lionart.starlingmvc.wings.processors
     import flash.utils.getDefinitionByName;
 
     import org.lionart.starlingmvc.wings.core.Wings;
+    import org.lionart.starlingmvc.wings.utils.FlashPlayerUtils;
 
     import starling.core.Starling;
     import starling.utils.RectangleUtil;
@@ -37,7 +38,7 @@ package org.lionart.starlingmvc.wings.processors
             if (Wings.isMobileApp)
             {
                 // not necessary on iOS. Saves a lot of memory!
-                if (Capabilities.manufacturer.indexOf("iOS") > -1)
+                if (FlashPlayerUtils.isIOS())
                 {
                     Starling.handleLostContext = false;
                 }

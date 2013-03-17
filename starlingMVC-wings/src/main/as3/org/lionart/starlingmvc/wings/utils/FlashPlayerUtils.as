@@ -43,27 +43,37 @@ package org.lionart.starlingmvc.wings.utils
 
         public static function isMac() : Boolean
         {
-            return Capabilities.os == "MacOS" || Capabilities.os.substr(0, 6) == "Mac OS";
+            return Capabilities.os.indexOf("Mac") > -1;
         }
 
         public static function isLinux() : Boolean
         {
-            return Capabilities.os == "Linux";
+            return Capabilities.os.indexOf("Linux") > -1;
         }
 
         public static function isWindows() : Boolean
         {
-            return Capabilities.manufacturer == "Adobe Windows";
+            return Capabilities.manufacturer.indexOf("Windows") > -1;
         }
 
         public static function isAndroid() : Boolean
         {
-            return Capabilities.manufacturer == "Android Linux";
+            return Capabilities.manufacturer.indexOf("Android") > -1;
+        }
+
+        public static function isIOS() : Boolean
+        {
+            return Capabilities.manufacturer.indexOf("iOS") > -1;
         }
 
         public static function isStandalone() : Boolean
         {
-            return Capabilities.playerType == "Desktop";
+            return Capabilities.playerType.indexOf("Desktop") > -1;
+        }
+
+        public static function isBrowser() : Boolean
+        {
+            return Capabilities.playerType.indexOf("ActiveX") > -1 || Capabilities.playerType.indexOf("PlugIn") > -1;
         }
     }
 }
