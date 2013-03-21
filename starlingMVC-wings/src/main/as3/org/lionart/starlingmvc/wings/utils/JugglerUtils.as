@@ -35,7 +35,7 @@ package org.lionart.starlingmvc.wings.utils
                 }
                 else
                 {
-                    tween.animate(property, parseFloat(props[property]));
+                    tween.animate(property, parseNumber(props[property]));
                 }
             }
             if (autoStart)

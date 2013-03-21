@@ -22,6 +22,7 @@ package org.lionart.starlingmvc.wings.processors
     import org.lionart.starlingmvc.wings.style.Align;
     import org.lionart.starlingmvc.wings.utils.XMLUtils;
     import org.lionart.starlingmvc.wings.utils.applyProperty;
+    import org.lionart.starlingmvc.wings.utils.parseNumber;
 
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
@@ -91,7 +92,7 @@ package org.lionart.starlingmvc.wings.processors
         {
             if (!StringUtils.isAlpha(value))
             {
-                currentElement.pivotX = parseFloat(value);
+                currentElement.pivotX = parseNumber(value);
             }
             else
             {
@@ -120,7 +121,7 @@ package org.lionart.starlingmvc.wings.processors
         {
             if (!StringUtils.isAlpha(value))
             {
-                currentElement.pivotY = parseFloat(value);
+                currentElement.pivotY = parseNumber(value);
             }
             else
             {
@@ -147,10 +148,12 @@ package org.lionart.starlingmvc.wings.processors
 
         /**
          * Applies rotation property.
+         *
+         * @param string value
          */
         private function applyRotation( value : String ) : void
         {
-            currentElement.rotation = deg2rad(parseFloat(value));
+            currentElement.rotation = deg2rad(parseNumber(value));
         }
 
         //----------------------------------
@@ -202,11 +205,11 @@ package org.lionart.starlingmvc.wings.processors
         {
             if (StringUtils.endsWith(value, "p"))
             {
-                currentElement.y = (parseFloat(StringUtils.remove(value, "p")) * 0.01) * Wings.appHeight;
+                currentElement.y = (parseNumber(StringUtils.remove(value, "p")) * 0.01) * Wings.appHeight;
             }
             else if (!StringUtils.isAlpha(value))
             {
-                currentElement.y = parseFloat(value);
+                currentElement.y = parseNumber(value);
             }
             else if (value == "out")
             {
@@ -221,11 +224,11 @@ package org.lionart.starlingmvc.wings.processors
         {
             if (StringUtils.endsWith(value, "p"))
             {
-                currentElement.y = Wings.wings_internal::config.appHeight - currentElement.height - (parseFloat(StringUtils.remove(value, "p")) * 0.01) * Wings.appHeight;
+                currentElement.y = Wings.wings_internal::config.appHeight - currentElement.height - (parseNumber(StringUtils.remove(value, "p")) * 0.01) * Wings.appHeight;
             }
             else if (!StringUtils.isAlpha(value))
             {
-                currentElement.y = Wings.wings_internal::config.appHeight - currentElement.height - parseFloat(value);
+                currentElement.y = Wings.wings_internal::config.appHeight - currentElement.height - parseNumber(value);
             }
             else if (value == "out")
             {
@@ -240,11 +243,11 @@ package org.lionart.starlingmvc.wings.processors
         {
             if (StringUtils.endsWith(value, "p"))
             {
-                currentElement.x = (parseFloat(StringUtils.remove(value, "p")) * 0.01) * Wings.appWidth;
+                currentElement.x = (parseNumber(StringUtils.remove(value, "p")) * 0.01) * Wings.appWidth;
             }
             else if (!StringUtils.isAlpha(value))
             {
-                currentElement.x = parseFloat(value);
+                currentElement.x = parseNumber(value);
             }
             else if (value == "out")
             {
@@ -259,11 +262,11 @@ package org.lionart.starlingmvc.wings.processors
         {
             if (StringUtils.endsWith(value, "p"))
             {
-                currentElement.x = Wings.wings_internal::config.appWidth - currentElement.width - (parseFloat(StringUtils.remove(value, "p")) * 0.01) * Wings.appWidth;
+                currentElement.x = Wings.wings_internal::config.appWidth - currentElement.width - (parseNumber(StringUtils.remove(value, "p")) * 0.01) * Wings.appWidth;
             }
             else if (!StringUtils.isAlpha(value))
             {
-                currentElement.x = Wings.wings_internal::config.appWidth - currentElement.width - parseFloat(value);
+                currentElement.x = Wings.wings_internal::config.appWidth - currentElement.width - parseNumber(value);
             }
             else if (value == "out")
             {
@@ -276,8 +279,8 @@ package org.lionart.starlingmvc.wings.processors
          */
         private function applyScale( value : String ) : void
         {
-            currentElement.scaleX = parseFloat(value);
-            currentElement.scaleY = parseFloat(value);
+            currentElement.scaleX = parseNumber(value);
+            currentElement.scaleY = parseNumber(value);
         }
     }
 }

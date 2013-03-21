@@ -16,27 +16,18 @@
  */
 package org.lionart.starlingmvc.wings.utils
 {
+    import org.as3commons.lang.StringUtils;
+
     /**
-     * Applies a property value.
+     * Parses wings xml number.
+     * Replaces "m" by "-"
+     * Replaces "d" by "."
      */
-    public function applyProperty( object : Object, property : String, value : * ) : void
+    public function parseNumber( value : String ) : Number
     {
-        if (typeof(object[property]) == "number")
-        {
-            object[property] = parseNumber(value);
-        }
-        else if (typeof(object[property]) == "string" && property != "text")
-        {
-            object[property] = value.toString();
-        }
-        else if (typeof(object[property]) == "boolean")
-        {
-            object[property] = value.toString() == "true";
-        }
-        else
-        {
-            object[property] = value.toString();
-        }
+        value = StringUtils.replace(value, "m", "-");
+        value = StringUtils.replace(value, "d", ".");
+        return parseFloat(value);
     }
 }
 
