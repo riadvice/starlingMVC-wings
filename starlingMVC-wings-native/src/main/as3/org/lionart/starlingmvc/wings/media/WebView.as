@@ -25,8 +25,6 @@ package org.lionart.starlingmvc.wings.media
     import flash.geom.Rectangle;
     import flash.media.StageWebView;
 
-    import org.lionart.starlingmvc.wings.core.Wings;
-
     public class WebView
     {
 
@@ -55,10 +53,10 @@ package org.lionart.starlingmvc.wings.media
         //
         //--------------------------------------------------------------------------
 
-        public static function createWebView( viewport : Rectangle, closeable : Boolean = true ) : StageWebView
+        public static function createWebView( stage : Stage, viewport : Rectangle, closeable : Boolean = true ) : StageWebView
         {
             _stageWebView = new StageWebView();
-            _stageWebView.stage = Wings.mainApp["stage"];
+            _stageWebView.stage = stage;
             _stageWebView.viewPort = viewport;
             if (!_closeButton)
             {
@@ -67,10 +65,10 @@ package org.lionart.starlingmvc.wings.media
                 closeBitmap.height = 32;
                 _closeButton = new Sprite();
                 _closeButton.addChild(closeBitmap);
-                _closeButton.x = Stage(Wings.mainApp["stage"]).stageWidth - _closeButton.width;
+                _closeButton.x = stage.stageWidth - _closeButton.width;
                 _closeButton.addEventListener(TouchEvent.TOUCH_TAP, closeButtonTouched);
                 _closeButton.addEventListener(MouseEvent.CLICK, closeButtonTouched);
-                Stage(Wings.mainApp["stage"]).addChild(_closeButton);
+                stage.addChild(_closeButton);
             }
             _closeButton.visible = closeable;
             return _stageWebView;
