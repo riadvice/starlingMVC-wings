@@ -37,6 +37,7 @@
       <libraryPathEntry kind="3" linkType="2" path="/feathers/bin/feathers.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="2" path="/starlingMVC/bin/starlingMVC.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="2" path="/starlingMVC-wings/bin/starlingMVC-wings.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="/starlingMVC-wings-native/bin/starlingMVC-wings-native.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="2" path="/starlingMVC-wings-social-shared/bin/starlingMVC-wings-social-shared.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="2" path="/starlingMVC-wings-native-mobile/bin/starlingMVC-wings-native-mobile.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="/starlingMVC-wings-social-native/bin/starlingMVC-wings-social-native.swc" useDefaultLinkType="false"/>
