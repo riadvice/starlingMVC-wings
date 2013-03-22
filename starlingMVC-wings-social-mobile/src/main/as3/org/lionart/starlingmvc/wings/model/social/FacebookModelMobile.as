@@ -18,13 +18,15 @@ package org.lionart.starlingmvc.wings.model.social
 {
     import com.facebook.graph.FacebookMobile;
     import com.facebook.graph.data.FacebookSession;
-    
+
+    import flash.display.Stage;
     import flash.geom.Rectangle;
     import flash.media.StageWebView;
     import flash.net.URLRequestMethod;
-    
+
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.facebook.FacebookEvent;
+    import org.lionart.starlingmvc.wings.media.WebView;
     import org.lionart.starlingmvc.wings.model.WingsModel;
 
     public class FacebookModelMobile extends WingsModel
@@ -72,12 +74,12 @@ package org.lionart.starlingmvc.wings.model.social
         {
             _permissions = value.split(",");
         }
-        
+
         //----------------------------------
         //  session
         //----------------------------------
-        
-        public function get session( ) : FacebookSession
+
+        public function get session() : FacebookSession
         {
             return _session;
         }
@@ -95,12 +97,8 @@ package org.lionart.starlingmvc.wings.model.social
 
         public function authenticate() : void
         {
-            if (!_webView)
-            {
-                _webView = new StageWebView();
-                _webView.stage = Wings.mainApp["stage"];
-                _webView.viewPort = new Rectangle(10, 10, _webView.stage.stageWidth - 20, _webView.stage.stageHeight - 20);
-            }
+            var _stage : Stage = Wings.mainApp["stage"];
+            _webView = WebView.createWebView(_stage, new Rectangle(10, 34, _stage.stageWidth - 20, _stage.stageHeight - 54));
             FacebookMobile.login(onAuthenticateHandler, _webView.stage, _permissions, _webView);
         }
 
