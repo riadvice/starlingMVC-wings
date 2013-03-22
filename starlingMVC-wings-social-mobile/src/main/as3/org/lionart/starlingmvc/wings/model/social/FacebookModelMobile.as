@@ -18,11 +18,11 @@ package org.lionart.starlingmvc.wings.model.social
 {
     import com.facebook.graph.FacebookMobile;
     import com.facebook.graph.data.FacebookSession;
-
+    
     import flash.geom.Rectangle;
     import flash.media.StageWebView;
     import flash.net.URLRequestMethod;
-
+    
     import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.facebook.FacebookEvent;
     import org.lionart.starlingmvc.wings.model.WingsModel;
@@ -36,10 +36,8 @@ package org.lionart.starlingmvc.wings.model.social
         //--------------------------------------------------------------------------
 
         private var _applicationId : String;
-        private var _permissions : Array; /*["email", "user_birthday", "user_hometown", "user_about_me", "publish_actions"]*/
+        private var _permissions : Array;
         private var _session : FacebookSession;
-
-
         private var _webView : StageWebView;
 
         //--------------------------------------------------------------------------
@@ -73,6 +71,15 @@ package org.lionart.starlingmvc.wings.model.social
         public function set permissions( value : String ) : void
         {
             _permissions = value.split(",");
+        }
+        
+        //----------------------------------
+        //  session
+        //----------------------------------
+        
+        public function get session( ) : FacebookSession
+        {
+            return _session;
         }
 
         //--------------------------------------------------------------------------
