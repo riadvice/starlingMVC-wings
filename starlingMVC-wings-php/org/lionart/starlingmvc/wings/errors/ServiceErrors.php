@@ -27,6 +27,8 @@ class ServiceErrors
     const EMPTY_TRANSFER = 300;
     const INVALID_TRANSFERT_OBJECT = 301;
     const NO_TRANSFERT_OBJECT_HEADER = 302;
+    const NOT_SUPPORTED_VERSION = 400;
+    const INCORRECT_VERSION = 401;
     static $MESSAGES = array(
             100 => 'Erreur de service.',
             100 => 'Erreur inattendue.',
@@ -34,7 +36,9 @@ class ServiceErrors
             201 => 'Token expiré.',
             300 => 'Object de transfer vide',
             301 => 'Object de transfert invalide',
-            302 => 'Object de transfer sans entête' );
+            302 => 'Object de transfer sans entête',
+            400 => 'Version non supportée',
+            401 => 'Numéro de version incorrect' );
 
 }
 

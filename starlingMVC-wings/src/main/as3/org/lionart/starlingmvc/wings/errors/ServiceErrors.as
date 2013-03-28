@@ -30,5 +30,7 @@ package org.lionart.starlingmvc.wings.errors
         public static const EMPTY_TRANSFER : int = 300;
         public static const INVALID_TRANSFERT_OBJECT : int = 301;
         public static const NO_TRANSFERT_OBJECT_HEADER : int = 302;
+        public static const NOT_SUPPORTED_VERSION : int = 400;
+        public static const INCORRECT_VERSION : int = 401;
     }
 }
