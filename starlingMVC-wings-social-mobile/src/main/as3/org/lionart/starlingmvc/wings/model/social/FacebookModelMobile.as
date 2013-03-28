@@ -102,9 +102,9 @@ package org.lionart.starlingmvc.wings.model.social
             FacebookMobile.login(onAuthenticateHandler, _webView.stage, _permissions, _webView);
         }
 
-        public function postOnWall( postMessage : String ) : void
+        public function postOnWall( params : Object ) : void
         {
-            var params : Object = {access_token: _session.accessToken, message: postMessage};
+            params.access_token = _session.accessToken;
             FacebookMobile.api("/me/feed/", onPostStatus, params, URLRequestMethod.POST);
         }
 
