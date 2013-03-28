@@ -22,7 +22,7 @@ class ConversionMap
     static $MAP = array(
             'SessionVO' => array(
                     'id' => 'id',
-                    'session_id' => 'sessionID',
+                    'session_id' => 'sessionId',
                     'version' => 'version',
                     'fb_id' => 'fbID',
                     'app_id' => 'appID',

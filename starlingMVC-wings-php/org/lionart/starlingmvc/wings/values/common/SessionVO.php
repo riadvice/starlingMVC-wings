@@ -35,7 +35,7 @@ class SessionVO extends ValueObject
      *
      * @var string
      */
-    var $sessionID;
+    var $sessionId;
 
     /**
      *

@@ -26,7 +26,7 @@ package org.lionart.starlingmvc.wings.values.common
         //
         //--------------------------------------------------------------------------
 
-        private var _sessionID : String;
+        private var _sessionId : String;
         private var _version : String;
         private var _fbID : String;
         private var _appID : String;
@@ -41,17 +41,17 @@ package org.lionart.starlingmvc.wings.values.common
         //--------------------------------------------------------------------------
 
         //----------------------------------
-        //  sessionID
+        //  sessionId
         //----------------------------------
 
-        public function get sessionID() : String
+        public function get sessionId() : String
         {
-            return _sessionID;
+            return _sessionId;
         }
 
-        public function set sessionID( value : String ) : void
+        public function set sessionId( value : String ) : void
         {
-            _sessionID = value;
+            _sessionId = value;
         }
 
         //----------------------------------
