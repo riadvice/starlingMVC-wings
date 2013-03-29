@@ -16,11 +16,136 @@
  */
 package org.lionart.starlingmvc.wings.model.social
 {
+    import com.facebook.graph.Facebook;
+    import com.facebook.graph.data.FacebookSession;
 
-    public class FacebookModel
+    import flash.net.URLRequestMethod;
+
+    import org.lionart.starlingmvc.wings.facebook.FacebookEvent;
+    import org.lionart.starlingmvc.wings.model.WingsModel;
+
+    public class FacebookModel extends WingsModel
     {
-        public function FacebookModel()
+        //--------------------------------------------------------------------------
+        //
+        //  Variables
+        //
+        //--------------------------------------------------------------------------
+
+        private var _applicationId : String;
+        private var _permissions : Array;
+        private var _session : FacebookSession;
+
+        //--------------------------------------------------------------------------
+        //
+        //  Properties
+        //
+        //--------------------------------------------------------------------------
+
+        //----------------------------------
+        //  applicationId
+        //----------------------------------
+
+        public function set applicationId( value : String ) : void
         {
+            _applicationId = value;
+        }
+
+        //----------------------------------
+        //  manageSession
+        //----------------------------------
+
+        public function set manageSession( value : Boolean ) : void
+        {
+            //Facebook.manageSession = value;
+        }
+
+        //----------------------------------
+        //  permissions
+        //----------------------------------
+
+        public function set permissions( value : String ) : void
+        {
+            _permissions = value.split(",");
+        }
+
+        //----------------------------------
+        //  session
+        //----------------------------------
+
+        public function get session() : FacebookSession
+        {
+            return _session;
+        }
+
+        //--------------------------------------------------------------------------
+        //
+        //  Methods
+        //
+        //--------------------------------------------------------------------------
+
+        public function init() : void
+        {
+            Facebook.init(_applicationId, onFbInitHandler);
+        }
+
+        public function authenticate() : void
+        {
+            /*var _stage : Stage = Wings.mainApp["stage"];
+               _webView = WebView.createWebView(_stage, new Rectangle(10, 34, _stage.stageWidth - 20, _stage.stageHeight - 54));*/
+            Facebook.login(onAuthenticateHandler /*, _webView.stage, _permissions, _webView*/);
+        }
+
+        public function postOnWall( params : Object ) : void
+        {
+            params.access_token = _session.accessToken;
+            Facebook.api("/me/feed/", onPostStatus, params, URLRequestMethod.POST);
+        }
+
+        //--------------------------------------------------------------------------
+        //
+        //  Event handlers
+        //
+        //--------------------------------------------------------------------------
+
+        private function onFbInitHandler( response : Object, fail : Object ) : void
+        {
+            if (response)
+            {
+                _session = FacebookSession(response);
+                dispatcher.dispatchEventWith(FacebookEvent.FACEBOOK_SESSION_INIT, false, response);
+            }
+            else if (fail)
+            {
+                dispatcher.dispatchEventWith(FacebookEvent.FACEBOOK_INIT_FAIL, false, fail);
+            }
+        }
+
+        private function onAuthenticateHandler( response : Object, fail : Object ) : void
+        {
+            if (response)
+            {
+                _session = FacebookSession(response);
+                dispatcher.dispatchEventWith(FacebookEvent.FACEBOOK_SESSION_INIT, false, response);
+            }
+            if (fail)
+            {
+                dispatcher.dispatchEventWith(FacebookEvent.FACEBOOK_AUTH_FAIL, false, response);
+            }
+        }
+
+
+        private function onPostStatus( response : Object, fail : Object ) : void
+        {
+            if (response)
+            {
+                //var feed : Feed = Feed(response);
+                //trace(feed);
+            }
+            else if (fail)
+            {
+                //trace(fail);
+            }
         }
     }
 }
