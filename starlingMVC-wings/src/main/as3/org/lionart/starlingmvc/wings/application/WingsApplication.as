@@ -53,20 +53,23 @@ package org.lionart.starlingmvc.wings.application
         //
         //--------------------------------------------------------------------------
 
-        public function WingsApplication()
+        public function WingsApplication( immediateInit : Boolean = true )
         {
             super();
             calculateScale()
 
             Wings.wings_internal::registerApp(this);
 
-            if (stage != null)
+            if (immediateInit)
             {
-                init();
-            }
-            else
-            {
-                addEventListener(flash.events.Event.ADDED_TO_STAGE, initHandler);
+                if (stage != null)
+                {
+                    init();
+                }
+                else
+                {
+                    addEventListener(flash.events.Event.ADDED_TO_STAGE, initHandler);
+                }
             }
         }
 

@@ -23,12 +23,12 @@ package org.lionart.starlingmvc.wings.application
 
     public class WingsMobileApplication extends WingsApplication implements IWingsMobileApplication
     {
-        public function WingsMobileApplication()
+        public function WingsMobileApplication( immediateInit : Boolean = true )
         {
             NativeApplication.nativeApplication.addEventListener(Event.ACTIVATE, wings_internal::activateHandler);
             NativeApplication.nativeApplication.addEventListener(Event.DEACTIVATE, wings_internal::deactivateHandler);
             NativeApplication.nativeApplication.addEventListener(Event.NETWORK_CHANGE, wings_internal::networkChangeHandler);
-            super();
+            super(immediateInit);
         }
 
         override protected function init() : void
