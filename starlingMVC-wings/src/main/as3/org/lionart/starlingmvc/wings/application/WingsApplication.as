@@ -56,7 +56,7 @@ package org.lionart.starlingmvc.wings.application
         public function WingsApplication( immediateInit : Boolean = true )
         {
             super();
-            calculateScale()
+            //calculateScale()
 
             Wings.wings_internal::registerApp(this);
 
