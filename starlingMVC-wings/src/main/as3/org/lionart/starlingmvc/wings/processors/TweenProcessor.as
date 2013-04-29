@@ -27,7 +27,6 @@ package org.lionart.starlingmvc.wings.processors
     import org.lionart.starlingmvc.wings.utils.XMLUtils;
     import org.lionart.starlingmvc.wings.view.ILoadView;
     import org.lionart.starlingmvc.wings.view.IUnloadView;
-    import org.lionart.starlingmvc.wings.view.WingsView;
 
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;

@@ -56,7 +56,6 @@ package org.lionart.starlingmvc.wings.application
         public function WingsApplication( immediateInit : Boolean = true )
         {
             super();
-            //calculateScale()
 
             Wings.wings_internal::registerApp(this);
 
@@ -127,6 +126,7 @@ package org.lionart.starlingmvc.wings.application
          */
         protected function init() : void
         {
+            calculateScale();
             wings_internal::removeObfuscationWatermark();
             _starling = Wings.wings_internal::initStarling(stage);
             _starling.addEventListener(starling.events.Event.ROOT_CREATED, rootCreatedHandler);
