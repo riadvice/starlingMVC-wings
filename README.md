@@ -49,6 +49,10 @@ Note : Context should be loaded in init method, this ensures that application is
 
 ## Application Context ##
 ------------
+
+### application tag ###
+------------
+
 ```xml
 
 	<?xml version="1.0" encoding="UTF-8"?>
@@ -66,7 +70,7 @@ Note : Context should be loaded in init method, this ensures that application is
 
 ```
 
-The application tag is mandatory and contains the following properties :
+The application tag is the only mandatory tag and contains the following properties :
 
 - **width** : the width of the SWF.
 - **height** the height of the SWF.
@@ -81,23 +85,110 @@ The application tag is mandatory and contains the following properties :
 ### eventPackages tag ###
 ------------
 
+```xml
+
+    <eventPackages>
+        <eventPackage>com.company.events</eventPackage>
+    </eventPackages>
+
+```
+
+eventPackages contains a list of packages that contain Event Catalog classes. Event Catalog class does not inherit com.starling.Event class but it contains static constants that declares and defines dispatched event names.
+
+An event catalog class can be :
+
+```as3
+
+	public final class SocialSupporterEvents
+    {
+        public static const CONFIG_APP : String = "configApp";
+        public static const INIT_SESSION : String = "initSession";
+		public static const NAVIGATE_TO_LANDING : String = "goToLanding";
+		public static const CLOSE_APPLICATION : String = "closeApplication";
+	}
+
+```
+
 ### viewPackages tag ###
 ------------
+
+```xml
+
+    <viewPackages>
+        <viewPackage>com.company.views</viewPackage>
+    </viewPackages>
+
+```
 
 ### commandPackages tag ###
 ------------
 
-### application tag ###
-------------
+```xml
+
+    <commandPackages>
+        <commandPackage>com.company.commands</commandPackage>
+    </commandPackages>
+
+```
 
 ### beans tag ###
 ------------
 
+```xml
+
+	<beans>
+        <!-- Models -->
+        <bean class="com.company.models.ModelEasy" id="modelEasy">
+            <properties>
+                <property name="hit" value="5"/>
+            </properties>
+        </bean>
+        <bean class="com.company.models.UserModel" id="model"/>
+        <!-- Service classes -->
+        <bean class="com.company.GameServiceProxy" id="service">
+            <properties>
+                <property name="gateway" value="http://company.com/webservice/"/>
+                <property name="endPoint" value="GameService"/>
+                <property name="glue" value="."/>
+            </properties>
+        </bean>
+        <bean class="com.atelier216.est.socialsupporter.net.SocialSupporterDelegateResponder" id="responder"/>
+        <!-- Views -->
+        <bean class="com.company.LandingView" id="landingView"/>
+		<bean class="com.company.views.GameView" id="gameView"/>
+    </beans>
+
+```
+
 ### commands tag ###
 ------------
 
+```xml
+
+ 	<commands>
+		<command class="ConfigAppCommand" event="CONFIG_APP"/>
+		<command class="InitSessionCommand" event="INIT_SESSION"/>
+        <command class="NavigateToLandingCommand" event="NAVIGATE_TO_LANDING"/>
+        <command class="ExitCommand" event="CLOSE_APPLICATION"/>
+    </commands>
+
+```
+
 ### triggers tag ###
 ------------
+
+
+```xml
+
+	<triggers>
+        <trigger button="buttonQuit" event="CLOSE_APPLICATION" data="confirm"/>
+        <!-- Language sounds -->
+        <trigger button="btnEnglish" event="CHANGE_LANGUAGE"
+                 data="EN"/>
+	</triggers>
+
+
+```
 
 ### navigation tag ###
 ------------
