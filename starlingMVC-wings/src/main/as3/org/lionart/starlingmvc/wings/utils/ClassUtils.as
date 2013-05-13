@@ -21,7 +21,7 @@ package org.lionart.starlingmvc.wings.utils
 
     public class ClassUtils
     {
-        public static function getDefinitionByNameOrNull( name : XMLList ) : Class
+        public static function getDefinitionByNameOrNull( name : * ) : Class
         {
             try
             {

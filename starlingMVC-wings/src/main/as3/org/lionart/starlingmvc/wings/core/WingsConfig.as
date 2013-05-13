@@ -32,6 +32,5 @@ package org.lionart.starlingmvc.wings.core
         public var version : String;
 
         public var eventClass : Class;
-        public var textClass : Class;
     }
 }

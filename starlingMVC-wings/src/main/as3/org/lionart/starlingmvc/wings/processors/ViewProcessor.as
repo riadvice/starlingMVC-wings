@@ -26,9 +26,7 @@ package org.lionart.starlingmvc.wings.processors
 
     import org.as3commons.lang.StringUtils;
     import org.lionart.starlingmvc.wings.core.Wings;
-    import org.lionart.starlingmvc.wings.core.wings_internal;
     import org.lionart.starlingmvc.wings.screen.WingsPanelScreen;
-    import org.lionart.starlingmvc.wings.ui.AssetLoader;
     import org.lionart.starlingmvc.wings.utils.XMLUtils;
     import org.lionart.starlingmvc.wings.utils.applyProperty;
 
@@ -92,7 +90,7 @@ package org.lionart.starlingmvc.wings.processors
         public function createImage( node : XML ) : DisplayObject
         {
             var displayObject : DisplayObject;
-            displayObject = new Image(AssetLoader.getAtlas(node.@atlas).getTexture(node.@texture));
+            displayObject = new Image(Wings.assetManager.getTextureAtlas(node.@atlas).getTexture(node.@texture));
             displayObject.name = node.@name;
             return displayObject;
         }
@@ -103,7 +101,7 @@ package org.lionart.starlingmvc.wings.processors
         public function createButton( node : XML ) : DisplayObject
         {
             var displayObject : DisplayObject;
-            displayObject = new starling.display.Button(AssetLoader.getAtlas(node.@atlas).getTexture(node.@texture), node.@text, AssetLoader.getAtlas(node.@atlas).getTexture(node.@downTexture));
+            displayObject = new starling.display.Button(Wings.assetManager.getTextureAtlas(node.@atlas).getTexture(node.@texture), node.@text, Wings.assetManager.getTextureAtlas(node.@atlas).getTexture(node.@downTexture));
             displayObject.name = node.@name;
             return displayObject;
         }
@@ -114,7 +112,7 @@ package org.lionart.starlingmvc.wings.processors
         public function createTextField( node : XML ) : DisplayObject
         {
             var displayObject : DisplayObject;
-            displayObject = new TextField(parseInt(node.@width), parseInt(node.@height), Wings.wings_internal::config.textClass[node.@text], node.@fontName, parseFloat(node.@fontSize), uint("0x" + node.@color.toString().replace(/0x|#/g, "")), node.@bold == "true");
+            displayObject = new TextField(parseInt(node.@width), parseInt(node.@height), node.@text, node.@fontName, parseFloat(node.@fontSize), uint("0x" + node.@color.toString().replace(/0x|#/g, "")), node.@bold == "true");
             displayObject.name = node.@name;
             return displayObject;
         }

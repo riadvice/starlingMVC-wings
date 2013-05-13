@@ -65,7 +65,6 @@
     <classEntry path="org.lionart.starlingmvc.wings.transfer.TransferObject"/>
     <classEntry path="org.lionart.starlingmvc.wings.transfer.TransferObjectHeader"/>
     <classEntry path="org.lionart.starlingmvc.wings.tween.TweenType"/>
-    <classEntry path="org.lionart.starlingmvc.wings.ui.AssetLoader"/>
     <classEntry path="org.lionart.starlingmvc.wings.ui.Components"/>
     <classEntry path="org.lionart.starlingmvc.wings.utils.ClassUtils"/>
     <classEntry path="org.lionart.starlingmvc.wings.utils.DateUtils"/>

@@ -46,6 +46,7 @@ package org.lionart.starlingmvc.wings.core
     import starling.core.Starling;
     import starling.display.DisplayObjectContainer;
     import starling.events.Event;
+    import starling.utils.AssetManager;
 
     use namespace wings_internal;
 
@@ -58,6 +59,7 @@ package org.lionart.starlingmvc.wings.core
         //--------------------------------------------------------------------------
 
         public static var mainApp : IApplication;
+        private static var _assetManager : AssetManager;
 
         private static var wingsXML : XML;
         private static var wingsConfig : WingsConfig;
@@ -84,17 +86,10 @@ package org.lionart.starlingmvc.wings.core
 
             var configProcessor : ConfigurationProcessor = new ConfigurationProcessor();
             wingsConfig = configProcessor.processConfiguration(wingsXML.application);
-            wingsConfig.eventClass = ClassUtils.getDefinitionByNameOrNull(wingsXML.resources.eventClass);
-            wingsConfig.textClass = ClassUtils.getDefinitionByNameOrNull(wingsXML.resources.textClass);
+            wingsConfig.eventClass = ClassUtils.getDefinitionByNameOrNull(wingsXML.eventClass);
             configProcessor = null;
 
-            // TODO : update for Starling 1.3 using AssetManager
-            var assetProcessor : AssetProcessor = new AssetProcessor();
-            assetProcessor.processResources(wingsXML.resources);
-            assetProcessor = null;
-
             WingsServiceProxy.registerRemoteClasses();
-            wings_internal::registerRemoteClasses();
         }
 
 
@@ -120,6 +115,18 @@ package org.lionart.starlingmvc.wings.core
         wings_internal static function mapCommandEvents() : void
         {
             starlingMVCContainer.addEventListener(Event.TRIGGERED, onTriggerEventHandler);
+        }
+
+        /**
+         * Initialises Assets classes like Texures and Sounds.
+         */
+        wings_internal static function initAssets() : void
+        {
+            _assetManager = new AssetManager();
+
+            var assetProcessor : AssetProcessor = new AssetProcessor();
+            assetProcessor.processResources(wingsXML.resources);
+            assetProcessor = null;
         }
 
         /**
@@ -266,6 +273,14 @@ package org.lionart.starlingmvc.wings.core
         //  Properties
         //
         //--------------------------------------------------------------------------
+
+        //----------------------------------
+        //  appWidth
+        //----------------------------------
+        public static function get assetManager() : AssetManager
+        {
+            return _assetManager;
+        }
 
         //----------------------------------
         //  appWidth

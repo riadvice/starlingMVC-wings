@@ -57,6 +57,7 @@ package org.lionart.starlingmvc.wings.container
         {
             super();
             addEventListener(Event.ADDED_TO_STAGE, addedToStageHandler);
+            Wings.wings_internal::initAssets();
             _starlingMVC = Wings.wings_internal::initStarlingMVC(this);
             Wings.wings_internal::mapCommandEvents();
         }

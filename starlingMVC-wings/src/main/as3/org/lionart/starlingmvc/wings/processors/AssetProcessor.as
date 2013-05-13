@@ -16,7 +16,6 @@
  */
 package org.lionart.starlingmvc.wings.processors
 {
-    import org.lionart.starlingmvc.wings.ui.AssetLoader;
     import org.lionart.starlingmvc.wings.utils.ClassUtils;
 
     public class AssetProcessor
@@ -24,7 +23,6 @@ package org.lionart.starlingmvc.wings.processors
         //--------------------------------------------------------------------------
         //
         //  Methods
-        //
         //--------------------------------------------------------------------------
 
         /**
@@ -32,9 +30,14 @@ package org.lionart.starlingmvc.wings.processors
          */
         public function processResources( xml : XMLList ) : void
         {
-            AssetLoader.setConfig(ClassUtils.getDefinitionByNameOrNull(xml.textureClass),
-                ClassUtils.getDefinitionByNameOrNull(xml.movieClipClass),
-                ClassUtils.getDefinitionByNameOrNull(xml.soundClass));
+            for each (var assetClass : XML in xml[0].asset)
+            {
+                var clazz : Class = ClassUtils.getDefinitionByNameOrNull(assetClass);
+                if (clazz && clazz.hasOwnProperty("registerAssets"))
+                {
+                    clazz["registerAssets"]();
+                }
+            }
         }
     }
 }
