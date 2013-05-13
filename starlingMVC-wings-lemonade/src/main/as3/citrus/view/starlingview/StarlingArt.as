@@ -62,11 +62,6 @@ package citrus.view.starlingview {
 		 */
 		public var loader:Loader;
 
-		/**
-		 * Set it to false if you want to prevent the art to be updated. Be careful its properties (x, y, ...) won't be able to change!
-		 */
-		public var updateArtEnabled:Boolean = true;
-
 		// properties :
 
 		private static var _loopAnimation:Dictionary = new Dictionary();
@@ -82,6 +77,7 @@ package citrus.view.starlingview {
 		private var _textureAtlas:TextureAtlas;
 
 		private var _viewHasChanged:Boolean = false; // when the view changed, the animation wasn't updated if it was the same name. This var fix that.
+		private var _updateArtEnabled:Boolean = true;
 
 		public function StarlingArt(object:ISpriteView = null) {
 
@@ -157,8 +153,17 @@ package citrus.view.starlingview {
 				(_view as Armature).dispose();
 				_content.dispose();
 
-			} else if (_content is DisplayObject)
+			} else if (_content is DisplayObject) {
+				
+				/*
+                
+                // Spine commented beacuse it will not be implemented right now
+                
+                if (_view is SkeletonAnimationSprite)
+					Starling.juggler.remove(_view as SkeletonAnimationSprite);*/
+				
 				_content.dispose();
+			}
 
 		}
 
@@ -256,6 +261,8 @@ package citrus.view.starlingview {
 						Starling.juggler.add(_content as MovieClip);
 					else if (_view is PDParticleSystem)
 						Starling.juggler.add(_content as PDParticleSystem);
+					/*else if (_view is SkeletonAnimationSprite)
+						Starling.juggler.add(_view as SkeletonAnimationSprite);*/
 
 				} else if (_view is Texture) {
 
@@ -319,6 +326,8 @@ package citrus.view.starlingview {
 					(_content as AnimationSequence).changeAnimation(_animation, animLoop);
 				else if (_view is Armature)
 					(_view as Armature).animation.gotoAndPlay(value);
+				/*else if (_view is SkeletonAnimationSprite)
+					(_view as SkeletonAnimationSprite).setAnimation(_animation, animLoop);*/
 			}
 
 			_viewHasChanged = false;
@@ -424,6 +433,22 @@ package citrus.view.starlingview {
 
 		private function handleContentIOError(evt:IOErrorEvent):void {
 			throw new Error(evt.text);
+		}
+		
+		/**
+		 * Set it to false if you want to prevent the art to be updated. Be careful its properties (x, y, ...) won't be able to change!
+		 */
+		public function get updateArtEnabled():Boolean {
+			return _updateArtEnabled;
+		}
+		
+		/**
+		 * Set it to false also made the Sprite flattened!
+		 */
+		public function set updateArtEnabled(value:Boolean):void {
+			_updateArtEnabled = value;
+			
+			_updateArtEnabled ? unflatten() : flatten();
 		}
 
 	}
