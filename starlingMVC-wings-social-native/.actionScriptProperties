@@ -33,9 +33,6 @@
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/automation_agent.swc" useDefaultLinkType="false"/>
         </excludedEntries>
       </libraryPathEntry>
-      <libraryPathEntry kind="3" linkType="2" path="/Starling/bin-debug/Starling.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="2" path="/starlingMVC/bin/starlingMVC.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="/feathers/bin/feathers.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="2" path="/starlingMVC-wings/bin/starlingMVC-wings.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/as3crypto.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/tweetrAIR.swc" useDefaultLinkType="false"/>

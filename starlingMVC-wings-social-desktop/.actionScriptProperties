@@ -36,8 +36,6 @@
       <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/as3crypto.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/GraphAPI_Desktop_1_8_1.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/tweetrAIR.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="/Starling/bin-debug/Starling.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="2" path="/starlingMVC/bin/starlingMVC.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="2" path="/starlingMVC-wings/bin/starlingMVC-wings.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="2" path="/starlingMVC-wings-social-native/bin/starlingMVC-wings-social-native.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="2" path="/starlingMVC-wings-social-shared/bin/starlingMVC-wings-social-shared.swc" useDefaultLinkType="false"/>

@@ -37,9 +37,6 @@
         </excludedEntries>
       </libraryPathEntry>
       <libraryPathEntry kind="3" linkType="2" path="/starlingMVC-wings/bin/starlingMVC-wings.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="2" path="/starlingMVC/bin/starlingMVC.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="2" path="/Starling/bin-debug/Starling.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="2" path="/feathers/bin/feathers.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/SystemProperties_AS.swc" useDefaultLinkType="false"/>
     </libraryPath>
     <sourceAttachmentPath/>

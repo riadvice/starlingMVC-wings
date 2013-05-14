@@ -33,9 +33,6 @@
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/automation_agent.swc" useDefaultLinkType="false"/>
         </excludedEntries>
       </libraryPathEntry>
-      <libraryPathEntry kind="3" linkType="2" path="/Starling/bin-debug/Starling.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="2" path="/feathers/bin/feathers.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="2" path="/starlingMVC/bin/starlingMVC.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="2" path="/starlingMVC-wings/bin/starlingMVC-wings.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="/starlingMVC-wings-native/bin/starlingMVC-wings-native.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="2" path="/starlingMVC-wings-social-shared/bin/starlingMVC-wings-social-shared.swc" useDefaultLinkType="false"/>
