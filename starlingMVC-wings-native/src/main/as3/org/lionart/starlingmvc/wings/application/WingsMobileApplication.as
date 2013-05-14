@@ -25,6 +25,7 @@ package org.lionart.starlingmvc.wings.application
     {
         public function WingsMobileApplication( immediateInit : Boolean = true )
         {
+            // TODO : add pauseOnDeactivate boolean for the application
             NativeApplication.nativeApplication.addEventListener(Event.ACTIVATE, wings_internal::activateHandler);
             NativeApplication.nativeApplication.addEventListener(Event.DEACTIVATE, wings_internal::deactivateHandler);
             NativeApplication.nativeApplication.addEventListener(Event.NETWORK_CHANGE, wings_internal::networkChangeHandler);
@@ -38,7 +39,10 @@ package org.lionart.starlingmvc.wings.application
 
         wings_internal function activateHandler( event : Event ) : void
         {
-            starlingInstance.start();
+            if (starlingInstance)
+            {
+                starlingInstance.start();
+            }
         }
 
         /**
@@ -47,7 +51,10 @@ package org.lionart.starlingmvc.wings.application
          **/
         wings_internal function deactivateHandler( event : Event ) : void
         {
-            starlingInstance.stop();
+            if (starlingInstance)
+            {
+                starlingInstance.stop();
+            }
         }
 
         wings_internal function networkChangeHandler( event : Event ) : void
