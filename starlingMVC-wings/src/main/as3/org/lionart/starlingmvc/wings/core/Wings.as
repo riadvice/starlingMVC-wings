@@ -50,6 +50,17 @@ package org.lionart.starlingmvc.wings.core
 
     use namespace wings_internal;
 
+    /** The Wings class represents the core of the Wings framework.
+     *
+     *  <p>The Wings framework wraps Starling and StarlingMVC frameworks and makes
+     *  their configuration easier for developers.</p>
+     *
+     *  <p>To create a Wings-powered application, you only have to call the static
+     *  fly methods of the Wings class:</p>
+     *
+     *  <pre>Wings.fly(new XML_WINGS() as XML);</pre>
+     *
+     */
     public class Wings
     {
         //--------------------------------------------------------------------------
