@@ -18,6 +18,7 @@ package org.lionart.starlingmvc.wings.core
 {
     import com.creativebottle.starlingmvc.StarlingMVC;
     import com.creativebottle.starlingmvc.beans.Bean;
+    import com.creativebottle.starlingmvc.beans.Beans;
     import com.creativebottle.starlingmvc.config.StarlingMVCConfig;
 
     import flash.display.Stage;
@@ -331,6 +332,14 @@ package org.lionart.starlingmvc.wings.core
         public static function get isMobileApp() : Boolean
         {
             return ClassUtils.implementsInteface(mainApp, "org.lionart.starlingmvc.wings.application::IWingsMobileApplication");
+        }
+
+        //----------------------------------
+        //  beans
+        //----------------------------------
+        wings_internal static function beans() : Beans
+        {
+            return starlingMVCContainer.starlingMVC.beans;
         }
 
     }
