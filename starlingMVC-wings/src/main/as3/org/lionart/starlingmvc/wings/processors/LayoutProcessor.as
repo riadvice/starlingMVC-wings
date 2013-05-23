@@ -44,6 +44,7 @@ package org.lionart.starlingmvc.wings.processors
                 area.wings_internal::initDispatcher(container["dispatcher"]);
                 // FIXME : styles should be processed by StyleProcessor class.
                 // TODO : assign properties dynamically
+                // TODO : add percentage
                 area.width = parseFloat(node.@width);
                 area.height = parseFloat(node.@height);
                 area.x = parseFloat(node.@x);

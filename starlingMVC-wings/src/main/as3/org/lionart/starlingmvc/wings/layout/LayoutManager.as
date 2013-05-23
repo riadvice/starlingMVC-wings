@@ -18,6 +18,8 @@ package org.lionart.starlingmvc.wings.layout
 {
     import flash.utils.Dictionary;
 
+    import org.lionart.starlingmvc.wings.core.Wings;
+    import org.lionart.starlingmvc.wings.core.wings_internal;
     import org.lionart.starlingmvc.wings.view.IWingsView;
 
     public class LayoutManager
@@ -61,6 +63,12 @@ package org.lionart.starlingmvc.wings.layout
         public function insertInArea( name : String, view : IWingsView ) : void
         {
             getArea(name).add(view);
+        }
+
+        // TODO : insert a view in a area by its bean name
+        public function insertInAreaByName( areaName : String, viewName : String ) : void
+        {
+            insertInArea(areaName, Wings.wings_internal::beans().getBeanById(viewName) as IWingsView);
         }
     }
 }
