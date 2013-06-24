@@ -136,9 +136,12 @@ package org.lionart.starlingmvc.wings.core
         {
             _assetManager = new AssetManager();
 
-            var assetProcessor : AssetProcessor = new AssetProcessor();
-            assetProcessor.processResources(wingsXML.resources);
-            assetProcessor = null;
+            if (wingsXML.hasOwnProperty('resources'))
+            {
+                var assetProcessor : AssetProcessor = new AssetProcessor();
+                assetProcessor.processResources(wingsXML.resources);
+                assetProcessor = null;
+            }
         }
 
         /**
