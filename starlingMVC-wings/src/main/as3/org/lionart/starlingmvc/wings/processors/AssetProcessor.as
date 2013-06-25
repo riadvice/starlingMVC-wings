@@ -18,24 +18,55 @@ package org.lionart.starlingmvc.wings.processors
 {
     import org.lionart.starlingmvc.wings.utils.ClassUtils;
 
+    import starling.textures.Texture;
+    import starling.textures.TextureAtlas;
+    import starling.utils.AssetManager;
+
     public class AssetProcessor
     {
+
+        private var assetClasses : Array = null;
+
         //--------------------------------------------------------------------------
         //
         //  Methods
+        //
         //--------------------------------------------------------------------------
 
         /**
          * Processes the resources portion of the xml configuration.
          */
-        public function processResources( xml : XMLList ) : void
+        public function processResources( xml : XMLList, assetManager : AssetManager ) : void
         {
-            for each (var assetClass : XML in xml[0].asset)
+            assetClasses = [];
+            for each (var assetClass : XML in xml[0].assetClass)
             {
                 var clazz : Class = ClassUtils.getDefinitionByNameOrNull(assetClass);
-                if (clazz && clazz.hasOwnProperty("registerAssets"))
+                assetClasses.push(clazz);
+            }
+            processAtlases(xml, assetManager);
+            assetClasses = null;
+        }
+
+        /**
+         * Registers atlases.
+         */
+        protected function processAtlases( xml : XMLList, assetManager : AssetManager ) : void
+        {
+            for each (var atlas : XML in xml[0].atlas)
+            {
+                for each (var clazz : Class in assetClasses)
                 {
-                    clazz["registerAssets"]();
+                    if (clazz.hasOwnProperty(atlas.@bitmap))
+                    {
+                        assetManager.addTextureAtlas(atlas.@name, new TextureAtlas(Texture.fromBitmap(new clazz[atlas.@bitmap]()), new XML(new clazz[atlas.@xml]())));
+                        break;
+                    }
+                    else if (clazz.hasOwnProperty(atlas.@atf))
+                    {
+                        assetManager.addTextureAtlas(atlas.@name, new TextureAtlas(Texture.fromAtfData(new clazz[atlas.@bitmap]()), new XML(new clazz[atlas.@xml]())));
+                        break;
+                    }
                 }
             }
         }

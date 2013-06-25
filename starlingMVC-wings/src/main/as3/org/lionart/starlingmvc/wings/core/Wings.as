@@ -32,15 +32,7 @@ package org.lionart.starlingmvc.wings.core
     import org.lionart.starlingmvc.wings.container.IWingsFeathersContainer;
     import org.lionart.starlingmvc.wings.layout.LayoutManager;
     import org.lionart.starlingmvc.wings.net.WingsServiceProxy;
-    import org.lionart.starlingmvc.wings.processors.AssetProcessor;
-    import org.lionart.starlingmvc.wings.processors.ConfigurationProcessor;
-    import org.lionart.starlingmvc.wings.processors.LayoutProcessor;
-    import org.lionart.starlingmvc.wings.processors.ScreenNavigatorProcessor;
-    import org.lionart.starlingmvc.wings.processors.StarlingMVCProcessor;
-    import org.lionart.starlingmvc.wings.processors.StarlingProcessor;
-    import org.lionart.starlingmvc.wings.processors.StyleProcessor;
-    import org.lionart.starlingmvc.wings.processors.TweenProcessor;
-    import org.lionart.starlingmvc.wings.processors.ViewProcessor;
+    import org.lionart.starlingmvc.wings.processors.*;
     import org.lionart.starlingmvc.wings.sound.SoundManager;
     import org.lionart.starlingmvc.wings.utils.ClassUtils;
 
@@ -139,7 +131,7 @@ package org.lionart.starlingmvc.wings.core
             if (wingsXML.hasOwnProperty('resources'))
             {
                 var assetProcessor : AssetProcessor = new AssetProcessor();
-                assetProcessor.processResources(wingsXML.resources);
+                assetProcessor.processResources(wingsXML.resources, _assetManager);
                 assetProcessor = null;
             }
         }
