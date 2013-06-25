@@ -65,10 +65,9 @@ package org.lionart.starlingmvc.wings.layout
             getArea(name).add(view);
         }
 
-        // TODO : insert a view in a area by its bean name
         public function insertInAreaByName( areaName : String, viewName : String ) : void
         {
-            insertInArea(areaName, Wings.wings_internal::beans().getBeanById(viewName) as IWingsView);
+            insertInArea(areaName, Wings.wings_internal::beans().getBeanById(viewName).instance as IWingsView);
         }
     }
 }
