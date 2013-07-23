@@ -157,6 +157,8 @@ package org.lionart.starlingmvc.wings.net
                 case 5:
                     _connection.call.apply(_connection, [serviceName, responder as Responder, args[0], args[1], args[2], args[3], args[4]]);
                     break;
+                default:
+                    break;
             }
         }
 

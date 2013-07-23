@@ -109,6 +109,8 @@ package org.lionart.starlingmvc.wings.processors
                     case Align.RIGHT:
                         currentElement.pivotX = currentElement.width;
                         break;
+                    default:
+                        break;
                 }
             }
 
@@ -137,6 +139,8 @@ package org.lionart.starlingmvc.wings.processors
 
                     case Align.BOTTOM:
                         currentElement.pivotY = currentElement.height;
+                        break;
+                    default:
                         break;
                 }
             }
