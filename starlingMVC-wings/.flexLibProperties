@@ -73,6 +73,7 @@
     <classEntry path="org.lionart.starlingmvc.wings.utils.URLEncoding"/>
     <classEntry path="org.lionart.starlingmvc.wings.utils.XMLUtils"/>
     <classEntry path="org.lionart.starlingmvc.wings.utils.applyProperty"/>
+    <classEntry path="org.lionart.starlingmvc.wings.utils.parseNumber"/>
     <classEntry path="org.lionart.starlingmvc.wings.view.ILoadView"/>
     <classEntry path="org.lionart.starlingmvc.wings.view.IUnloadView"/>
     <classEntry path="org.lionart.starlingmvc.wings.view.IView"/>
