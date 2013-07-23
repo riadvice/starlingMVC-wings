@@ -5,6 +5,9 @@ package citrus.view.starlingview {
 	import citrus.core.IState;
 	import citrus.physics.APhysicsEngine;
 	import citrus.system.components.ViewComponent;
+	import citrus.view.ACitrusCamera;
+	import citrus.view.ACitrusView;
+	import citrus.view.ICitrusArt;
 	import citrus.view.ISpriteView;
 
 	import dragonBones.Armature;
@@ -26,8 +29,9 @@ package citrus.view.starlingview {
 	import flash.display.Loader;
 	import flash.events.Event;
 	import flash.events.IOErrorEvent;
-	import flash.geom.Point;
 	import flash.net.URLRequest;
+	import flash.system.ApplicationDomain;
+	import flash.system.LoaderContext;
 	import flash.utils.Dictionary;
 	import flash.utils.getDefinitionByName;
 
@@ -51,7 +55,7 @@ package citrus.view.starlingview {
 	 * (for adding click events, for instance), you will get an instance of this object. It extends Sprite, so you can do all the expected stuff with it, 
 	 * such as add click listeners, change the alpha, etc.</p>
 	 **/
-	public class StarlingArt extends Sprite {
+	public class StarlingArt extends Sprite implements ICitrusArt {
 
 		// The reference to your art via the view.
 		private var _content:DisplayObject;
@@ -155,13 +159,6 @@ package citrus.view.starlingview {
 
 			} else if (_content is DisplayObject) {
 				
-				/*
-                
-                // Spine commented beacuse it will not be implemented right now
-                
-                if (_view is SkeletonAnimationSprite)
-					Starling.juggler.remove(_view as SkeletonAnimationSprite);*/
-				
 				_content.dispose();
 			}
 
@@ -235,7 +232,7 @@ package citrus.view.starlingview {
 						loader = new Loader();
 						loader.contentLoaderInfo.addEventListener(Event.COMPLETE, handleContentLoaded);
 						loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, handleContentIOError);
-						loader.load(new URLRequest(classString));
+						loader.load(new URLRequest(classString), new LoaderContext(false, ApplicationDomain.currentDomain, null));
 					}
 					// view property is a fully qualified class name in string form. 
 					else {
@@ -261,8 +258,6 @@ package citrus.view.starlingview {
 						Starling.juggler.add(_content as MovieClip);
 					else if (_view is PDParticleSystem)
 						Starling.juggler.add(_content as PDParticleSystem);
-					/*else if (_view is SkeletonAnimationSprite)
-						Starling.juggler.add(_view as SkeletonAnimationSprite);*/
 
 				} else if (_view is Texture) {
 
@@ -326,8 +321,6 @@ package citrus.view.starlingview {
 					(_content as AnimationSequence).changeAnimation(_animation, animLoop);
 				else if (_view is Armature)
 					(_view as Armature).animation.gotoAndPlay(value);
-				/*else if (_view is SkeletonAnimationSprite)
-					(_view as SkeletonAnimationSprite).setAnimation(_animation, animLoop);*/
 			}
 
 			_viewHasChanged = false;
@@ -337,7 +330,7 @@ package citrus.view.starlingview {
 			return _citrusObject;
 		}
 
-		public function update(stateView:StarlingView):void {
+		public function update(stateView:ACitrusView):void {
 
 			if (_citrusObject.inverted) {
 
@@ -354,9 +347,6 @@ package citrus.view.starlingview {
 
 			var physicsDebugArt:flash.display.DisplayObject;
 
-			var cam:StarlingCamera = (stateView.camera as StarlingCamera);
-			var camPosition:Point = cam.camPos;
-
 			if (_content is StarlingPhysicsDebugView) {
 
 				(_content as StarlingPhysicsDebugView).update();
@@ -365,26 +355,26 @@ package citrus.view.starlingview {
 				// So we need to move their views here, not in the StarlingView.
 				physicsDebugArt = (Starling.current.nativeStage.getChildByName("debug view") as flash.display.DisplayObject);
 
-				if (stateView.camera.target || stateView.camera.manualPosition) {
-
-					physicsDebugArt.x = cam.camProxy.x;
-					physicsDebugArt.y = cam.camProxy.y;
-					physicsDebugArt.scaleX = physicsDebugArt.scaleY = cam.camProxy.scale;
-					physicsDebugArt.rotation = cam.camProxy.rotation * 180 / Math.PI;
-				}
-
+				physicsDebugArt.transform.matrix = stateView.camera.transformMatrix;
 				physicsDebugArt.visible = _citrusObject.visible;
 
 			} else if (_physicsComponent) {
 
-				x = _physicsComponent.x + (camPosition.x * (1 - _citrusObject.parallaxX)) + _citrusObject.offsetX * scaleX;
-				y = _physicsComponent.y + (camPosition.y * (1 - _citrusObject.parallaxY)) + _citrusObject.offsetY;
+				x = _physicsComponent.x + ( (stateView.camera.camProxy.x - _physicsComponent.x) * (1 - _citrusObject.parallaxX)) + _citrusObject.offsetX * scaleX;
+				y = _physicsComponent.y + ( (stateView.camera.camProxy.y - _physicsComponent.y) * (1 - _citrusObject.parallaxY)) + _citrusObject.offsetY;
 				rotation = deg2rad(_physicsComponent.rotation);
 
 			} else {
-
-				x = _citrusObject.x + (camPosition.x * (1 - _citrusObject.parallaxX)) + _citrusObject.offsetX * scaleX;
-				y = _citrusObject.y + (camPosition.y * (1 - _citrusObject.parallaxY)) + _citrusObject.offsetY;
+				if (stateView.camera.parallaxMode == ACitrusCamera.PARALLAX_MODE_DEPTH)
+				{
+					x = _citrusObject.x + ( (stateView.camera.camProxy.x - _citrusObject.x) * (1 - _citrusObject.parallaxX)) + _citrusObject.offsetX * scaleX;
+					y = _citrusObject.y + ( (stateView.camera.camProxy.y - _citrusObject.y) * (1 - _citrusObject.parallaxY)) + _citrusObject.offsetY;
+				}
+				else
+				{
+					x = _citrusObject.x + ( (stateView.camera.camProxy.x + stateView.camera.camProxy.offset.x) * (1 - _citrusObject.parallaxX)) + _citrusObject.offsetX * scaleX;
+					y = _citrusObject.y + ( (stateView.camera.camProxy.y + stateView.camera.camProxy.offset.y) * (1 - _citrusObject.parallaxY)) + _citrusObject.offsetY;
+				}
 				rotation = deg2rad(_citrusObject.rotation);
 			}
 
@@ -447,7 +437,6 @@ package citrus.view.starlingview {
 		 */
 		public function set updateArtEnabled(value:Boolean):void {
 			_updateArtEnabled = value;
-			
 			_updateArtEnabled ? unflatten() : flatten();
 		}
 

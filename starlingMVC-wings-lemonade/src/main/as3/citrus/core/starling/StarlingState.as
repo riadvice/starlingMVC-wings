@@ -10,7 +10,9 @@ package citrus.core.starling {
 	import citrus.system.components.ViewComponent;
 	import citrus.view.ACitrusView;
 	import citrus.view.starlingview.StarlingView;
-
+	
+	import org.lionart.starlingmvc.wings.application.LemonadeEngine;
+	
 	import starling.display.Sprite;
 
 	/**
@@ -30,6 +32,9 @@ package citrus.core.starling {
 		public function StarlingState() {
 			
 			_ce = CitrusEngine.getInstance();
+			
+			if (!(_ce as LemonadeEngine) || !(_ce as LemonadeEngine).starlingInstance())
+				throw new Error("Your Main " + _ce + " class doesn't extend StarlingCitrusEngine, or you didn't call its setUpStarling function");
 
 			_realState = new MediatorState();
 		}
@@ -97,17 +102,6 @@ package citrus.core.starling {
 		public function addPoolObject(poolObject:PoolObject):PoolObject {
 
 			return _realState.addPoolObject(poolObject);
-		}
-
-		/**
-		 * Call this function each time you make an operation (add or delete) on the PoolObject to refresh its graphics.
-		 * @param poolObject the PoolObject which need to refresh its graphics.
-		 * @param nmbrToDelete a number of graphics to delete.
-		 * @param startIndex PoolObject's index position to start the deletion.
-		 */
-		public function refreshPoolObjectArt(poolObject:PoolObject, nmbrToDelete:uint = 0, startIndex:uint = 0):void {
-
-			_realState.refreshPoolObjectArt(poolObject, nmbrToDelete, startIndex);
 		}
 
 		/**

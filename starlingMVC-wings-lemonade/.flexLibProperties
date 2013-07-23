@@ -1,7 +1,63 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
   <includeClasses>
+    <classEntry path="citrus.core.starling.StarlingState"/>
+    <classEntry path="citrus.input.controllers.starling.ScreenTouch"/>
+    <classEntry path="citrus.input.controllers.starling.VirtualButton"/>
+    <classEntry path="citrus.input.controllers.starling.VirtualJoystick"/>
+    <classEntry path="citrus.objects.Box2DPhysicsObject"/>
+    <classEntry path="citrus.objects.complex.box2dstarling.Bridge"/>
+    <classEntry path="citrus.objects.complex.box2dstarling.FluidBox"/>
+    <classEntry path="citrus.objects.complex.box2dstarling.Pool"/>
+    <classEntry path="citrus.objects.complex.box2dstarling.Rope"/>
+    <classEntry path="citrus.objects.platformer.box2d.Cannon"/>
+    <classEntry path="citrus.objects.platformer.box2d.Coin"/>
+    <classEntry path="citrus.objects.platformer.box2d.Crate"/>
+    <classEntry path="citrus.objects.platformer.box2d.Enemy"/>
+    <classEntry path="citrus.objects.platformer.box2d.Hero"/>
+    <classEntry path="citrus.objects.platformer.box2d.Hills"/>
+    <classEntry path="citrus.objects.platformer.box2d.Missile"/>
+    <classEntry path="citrus.objects.platformer.box2d.MovingPlatform"/>
+    <classEntry path="citrus.objects.platformer.box2d.Platform"/>
+    <classEntry path="citrus.objects.platformer.box2d.RevolvingPlatform"/>
+    <classEntry path="citrus.objects.platformer.box2d.Reward"/>
+    <classEntry path="citrus.objects.platformer.box2d.RewardBox"/>
+    <classEntry path="citrus.objects.platformer.box2d.Sensor"/>
+    <classEntry path="citrus.objects.platformer.box2d.Teleporter"/>
+    <classEntry path="citrus.objects.platformer.box2d.Treadmill"/>
+    <classEntry path="citrus.physics.box2d.Box2D"/>
+    <classEntry path="citrus.physics.box2d.Box2DContactListener"/>
+    <classEntry path="citrus.physics.box2d.Box2DDebugArt"/>
+    <classEntry path="citrus.physics.box2d.Box2DShapeMaker"/>
+    <classEntry path="citrus.physics.box2d.Box2DUtils"/>
+    <classEntry path="citrus.physics.box2d.IBox2DPhysicsObject"/>
+    <classEntry path="citrus.system.components.box2d.Box2DComponent"/>
+    <classEntry path="citrus.system.components.box2d.CollisionComponent"/>
+    <classEntry path="citrus.system.components.box2d.MovementComponent"/>
+    <classEntry path="citrus.system.components.box2d.hero.HeroCollisionComponent"/>
+    <classEntry path="citrus.system.components.box2d.hero.HeroMovementComponent"/>
+    <classEntry path="citrus.system.components.box2d.hero.HeroPhysicsComponent"/>
+    <classEntry path="citrus.system.components.box2d.hero.HeroViewComponent"/>
+    <classEntry path="citrus.ui.starling.LifeBar"/>
+    <classEntry path="citrus.view.starlingview.AnimationSequence"/>
+    <classEntry path="citrus.view.starlingview.StarlingArt"/>
+    <classEntry path="citrus.view.starlingview.StarlingCamera"/>
+    <classEntry path="citrus.view.starlingview.StarlingPhysicsDebugView"/>
+    <classEntry path="citrus.view.starlingview.StarlingSpriteDebugArt"/>
+    <classEntry path="citrus.view.starlingview.StarlingTile"/>
+    <classEntry path="citrus.view.starlingview.StarlingTileSystem"/>
+    <classEntry path="citrus.view.starlingview.StarlingView"/>
     <classEntry path="org.lionart.starlingmvc.wings.application.LemonadeEngine"/>
+    <classEntry path="starling.extensions.filters.ThresholdFilter"/>
+    <classEntry path="starling.extensions.particles.ColorArgb"/>
+    <classEntry path="starling.extensions.particles.PDParticle"/>
+    <classEntry path="starling.extensions.particles.PDParticleSystem"/>
+    <classEntry path="starling.extensions.particles.Particle"/>
+    <classEntry path="starling.extensions.particles.ParticleDesignerPS"/>
+    <classEntry path="starling.extensions.particles.ParticleSystem"/>
+    <classEntry path="starling.extensions.textureAtlas.DynamicAtlas"/>
+    <classEntry path="starling.extensions.textureAtlas.TextureItem"/>
+    <classEntry path="starling.extensions.utils.Line"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

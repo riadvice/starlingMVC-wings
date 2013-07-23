@@ -33,13 +33,13 @@
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/automation_agent.swc" useDefaultLinkType="false"/>
         </excludedEntries>
       </libraryPathEntry>
-      <libraryPathEntry kind="3" linkType="1" path="/starlingMVC-wings/bin/starlingMVC-wings.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/CitrusEngineV3-1-6-Core.swc" sourcepath="D:/open-source/Citrus-Engine/src" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/DragonBones-2.1.1.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/CitrusEngineV3-1-7-Core.swc" sourcepath="D:/open-source/Citrus-Engine/src" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/DragonBones-2.2.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/Box2D.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="/starlingMVC-wings/bin/starlingMVC-wings.swc" useDefaultLinkType="false"/>
     </libraryPath>
     <sourceAttachmentPath>
-      <sourceAttachmentPathEntry kind="3" linkType="1" path="${WINGS_REPO}/CitrusEngineV3-1-6-Core.swc" sourcepath="D:/open-source/Citrus-Engine/src" useDefaultLinkType="false"/>
+      <sourceAttachmentPathEntry kind="3" linkType="1" path="${WINGS_REPO}/CitrusEngineV3-1-7-Core.swc" sourcepath="D:/open-source/Citrus-Engine/src" useDefaultLinkType="false"/>
     </sourceAttachmentPath>
   </compiler>
   <applications>

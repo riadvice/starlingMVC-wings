@@ -143,8 +143,10 @@ package org.lionart.starlingmvc.wings.application
 
             if (_state)
             {
+
                 if (_starling)
                 {
+
                     _starling.stage.removeChild(_state as StarlingState);
 
                     // Remove Box2D or Nape debug view
@@ -216,10 +218,10 @@ package org.lionart.starlingmvc.wings.application
         override protected function handleEnterFrame( e : flash.events.Event ) : void
         {
 
-            if (_newState)
+            if (_starling && _starling.isStarted && _starling.context)
             {
 
-                if (_starling.isStarted && _starling.context)
+                if (_newState)
                 {
 
                     if (_state)
@@ -229,7 +231,7 @@ package org.lionart.starlingmvc.wings.application
                         {
 
                             _state.destroy();
-                            _starling.stage.removeChild(_state as StarlingState);
+                            _starling.stage.removeChild(_state as StarlingState, true);
 
                             // Remove Box2D or Nape debug view
                             var debugView : DisplayObject = _starling.nativeStage.getChildByName("debug view");
@@ -254,9 +256,26 @@ package org.lionart.starlingmvc.wings.application
                         _state = _newState;
                         _newState = null;
 
-                        _starling.stage.addChildAt(_state as StarlingState, _stateDisplayIndex);
-                        _state.initialize();
+                        if (_futureState)
+                        {
+                            _futureState = null;
+                        }
+                        else
+                        {
+                            _starling.stage.addChildAt(_state as StarlingState, _stateDisplayIndex);
+                            _state.initialize();
+                        }
                     }
+                }
+
+                if (_stateTransitionning && _stateTransitionning is StarlingState)
+                {
+
+                    _futureState = _stateTransitionning;
+                    _stateTransitionning = null;
+
+                    _starling.stage.addChildAt(_futureState as StarlingState, _stateDisplayIndex);
+                    _futureState.initialize();
                 }
 
             }
