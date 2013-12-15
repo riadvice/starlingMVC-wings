@@ -16,15 +16,39 @@
  */
 package org.lionart.starlingmvc.wings.processors
 {
+    import org.as3commons.lang.StringUtils;
     import org.lionart.starlingmvc.wings.container.IWingsContainer;
+    import org.lionart.starlingmvc.wings.core.Wings;
     import org.lionart.starlingmvc.wings.core.wings_internal;
+    import org.lionart.starlingmvc.wings.layout.ILayoutArea;
     import org.lionart.starlingmvc.wings.layout.LayoutManager;
     import org.lionart.starlingmvc.wings.layout.WingsLayoutArea;
+    import org.lionart.starlingmvc.wings.utils.XMLUtils;
+    import org.lionart.starlingmvc.wings.utils.parseNumber;
 
     import starling.display.DisplayObjectContainer;
 
+    use namespace wings_internal;
+
     public class LayoutProcessor
     {
+
+        //--------------------------------------------------------------------------
+        //
+        //  Class constants
+        //
+        //--------------------------------------------------------------------------
+
+        private const NON_STYLE_ATTRIBUTES : Array = ["name"];
+
+        //--------------------------------------------------------------------------
+        //
+        //  Variables
+        //
+        //--------------------------------------------------------------------------
+
+        private var area : WingsLayoutArea;
+
         //--------------------------------------------------------------------------
         //
         //  Methods
@@ -40,18 +64,48 @@ package org.lionart.starlingmvc.wings.processors
             for each (node in xmlElements.area)
             {
                 //  TODO add LayoutArea with custom type
-                var area : WingsLayoutArea = new WingsLayoutArea();
+                area = new WingsLayoutArea();
                 area.wings_internal::initDispatcher(container["dispatcher"]);
-                // FIXME : styles should be processed by StyleProcessor class.
-                // TODO : assign properties dynamically
-                // TODO : add percentage
-                area.width = parseFloat(node.@width);
-                area.height = parseFloat(node.@height);
-                area.x = parseFloat(node.@x);
-                area.y = parseFloat(node.@y);
                 area.name = node.@name.toString();
+
+                // TODO : x, y and other positioning values are not applied yet
+                var styles : Object = XMLUtils.xmlToObject(XMLUtils.cleanFromAttributes(node, NON_STYLE_ATTRIBUTES));
+                for (var property : String in styles)
+                {
+                    this["apply" + StringUtils.capitalize(property)](node["@" + property]);
+                }
                 layoutManager.addArea(area.name, area);
                 DisplayObjectContainer(container).addChild(area);
+            }
+        }
+
+        /**
+         * Applies width style.
+         */
+        private function applyWidth( value : String ) : void
+        {
+            if (StringUtils.endsWith(value, "p"))
+            {
+                area.x = (parseNumber(StringUtils.remove(value, "p")) * 0.01) * Wings.appWidth;
+            }
+            else if (!StringUtils.isAlpha(value))
+            {
+                area.x = parseNumber(value);
+            }
+        }
+
+        /**
+         * Applies height style.
+         */
+        private function applyHeight( value : String ) : void
+        {
+            if (StringUtils.endsWith(value, "p"))
+            {
+                area.x = (parseNumber(StringUtils.remove(value, "p")) * 0.01) * Wings.appHeight;
+            }
+            else if (!StringUtils.isAlpha(value))
+            {
+                area.x = parseNumber(value);
             }
         }
     }
