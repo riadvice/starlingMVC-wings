@@ -37,9 +37,9 @@
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/automation_agent.swc" useDefaultLinkType="false"/>
         </excludedEntries>
       </libraryPathEntry>
-      <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/starling-1.4.1.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/starlingMVC-1.1.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/feathers-1.2.0-dev.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="/Starling/bin-debug/Starling.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="/starlingMVC/bin/starlingMVC.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="/feathers/bin/feathers.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/as3commons-lang-0.3.7.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/as3commons-logging-2.7.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/as3commons-reflect-1.6.4.swc" useDefaultLinkType="false"/>
