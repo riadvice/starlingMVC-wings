@@ -2,6 +2,7 @@
 ------------
 
 StarlingMVC-wings is an IOC framework layered on [Starling Framework](http://gamua.com/starling/) and [Starling-MVC](htp://starlingMVC.org/) with most common utils for game and application developement for desktop and mobile. It adds the this features to StarlingMVC :
+
 * XML Configuration for Starling instance creation.
 * XML Configuration to configure Starling-MVC beans.
 * Maps Starling Event.TRIGGERED with a custom event.
@@ -14,18 +15,23 @@ StarlingMVC-wings Framework is provided under the [Apache License 2.0](http://ww
 
 ## Requirements ##
 ------------
-* [AIR SDK 3.7 with ActionScript Compiler 2.0](http://www.adobe.com/devnet/air/air-sdk-download.html)
-* [Starling 1.3](http://gamua.com/starling/)
+* [AIR SDK 20.0 with ActionScript Compiler 2.0](http://www.adobe.com/devnet/air/air-sdk-download.html)
+* [Starling 1.7](http://gamua.com/starling/)
 * [Starling-MVC 1.1](http://starlingMVC.org/)
-* [feathers 1.0.1](http://feathersui.com/)
+* [feathers 2.3.0](http://feathersui.com/)
 
 ## Contributors ##
 ------------
-* [Ghazi Triki](mailto:ghazi.nocturne@gmail.com)
+* [Ghazi Triki](mailto:ghazi.triki@riadvice.tn)
+
+## Special Thanks ##
+
+I dedicate a special thank to Mehdi Larguech and Mohamed Habib Mesbah, my ex-managers at [Atelier 216](http://atelier216.net/) for giving me the authorisation to share this project with the open source community.
 
 Setup
 ------------
 Getting your Starling project configured to work with StarlingMVC-wings requires only a few lines of code. From your base application display root class, you need to add one line containing your XML file.
+
 
 ```as3
 package

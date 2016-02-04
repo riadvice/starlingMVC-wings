@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
   <includeClasses>
-    <classEntry path="org.lionart.starlingmvc.wings.facebook.FacebookEvent"/>
-    <classEntry path="org.lionart.starlingmvc.wings.facebook.FacebookPermissions"/>
-    <classEntry path="org.lionart.starlingmvc.wings.facebook.Feed"/>
-    <classEntry path="org.lionart.starlingmvc.wings.twitter.TwitterEvent"/>
-    <classEntry path="org.lionart.starlingmvc.wings.twitter.TwitterURLDefaults"/>
+    <classEntry path="com.riadvice.starlingmvc.wings.facebook.FacebookEvent"/>
+    <classEntry path="com.riadvice.starlingmvc.wings.facebook.FacebookPermissions"/>
+    <classEntry path="com.riadvice.starlingmvc.wings.facebook.Feed"/>
+    <classEntry path="com.riadvice.starlingmvc.wings.twitter.TwitterEvent"/>
+    <classEntry path="com.riadvice.starlingmvc.wings.twitter.TwitterURLDefaults"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

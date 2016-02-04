@@ -1,5 +1,8 @@
 package citrus.view.starlingview {
 
+	import citrus.utils.Mobile;
+	import flash.display3D.Context3DTextureFormat;
+	import citrus.utils.AssetCache;
 	import citrus.core.CitrusEngine;
 	import citrus.math.MathUtils;
 	import citrus.view.ISpriteView;
@@ -28,6 +31,7 @@ package citrus.view.starlingview {
 		private var _followMe:ISpriteView; // the object that is tracked
 		
 		private var _imagesMC:MovieClip;
+		private var _imagesBitmap:Bitmap;
 		private var _imagesArray:Array;
 		private var _liveTiles:Array = [];
 		
@@ -47,11 +51,14 @@ package citrus.view.starlingview {
 		public var loadInDistance:Number = 1.8;
 		public var unloadDistance:Number = 2.0;
 		
-		// timer to call updates, every second should be fine
-		private var _timer:Timer = new Timer(1000);
+		// timer to call updates
+		public var updateInterval:uint = 1000;
+		private var _timer:Timer;
 		
 		// test for maximum memory use
 		private var maxInRam:Number = 0;
+		
+		private var assetCache:AssetCache;
 		
 		
 		public function StarlingTileSystem(images:*, bodyToFollow:ISpriteView = null) {
@@ -62,11 +69,15 @@ package citrus.view.starlingview {
 			
 			if (images is MovieClip) {
 				_imagesMC = images;
+			} else if (images is Bitmap) {
+				_imagesBitmap = images;
 			} else if (images is Array) {
 				_imagesArray = images;
 			} else {
 				trace("StarlingTileSystem images source error!");
 			}
+			
+			assetCache = new AssetCache();
 		}
 		
 		public function init():void {
@@ -79,6 +90,8 @@ package citrus.view.starlingview {
 			
 			if (_imagesMC) {
 				tilesFromMovieclip(_imagesMC);
+			} else if (_imagesBitmap) {
+				tilesFromBitmap(_imagesBitmap);
 			} else if (_imagesArray) {
 				tilesFromArray(_imagesArray);
 			}
@@ -88,6 +101,7 @@ package citrus.view.starlingview {
 				onTimer();
 				
 				// start up the timer
+				_timer = new Timer(updateInterval);
 				_timer.addEventListener(TimerEvent.TIMER, onTimer);
 				_timer.start();
 			} else {
@@ -101,23 +115,27 @@ package citrus.view.starlingview {
 		*/
 		private function tilesFromMovieclip(mc:MovieClip):void {
 			
-			//trace("getting from movieclip");
 			var mcBitmapData:BitmapData = new BitmapData(mc.width, mc.height, true, 0x000000);
 			mcBitmapData.draw(mc);
 			
-			var numColumns:uint = Math.ceil(mc.width / tileWidth);
-			var numRows:uint = Math.ceil(mc.height / tileHeight);
+			tilesFromBitmapData(mcBitmapData, mc.width, mc.height);
+		}
+		
+		/*
+		 * gathers the tiles from a bitmap via BitmapData
+		 * 
+		 */
+		private function tilesFromBitmap(bitmap:Bitmap):void {
 			
-			var pWidth:Number = (numColumns * tileWidth) / numColumns;
-			var pHeight:Number = (numRows * tileHeight) / numRows;
+			tilesFromBitmapData(bitmap.bitmapData, bitmap.width, bitmap.height);
+		}
+		
+		private function tilesFromBitmapData(bitmapDataSource:BitmapData, width:uint, height:uint):void {
 			
-			//trace("mc:", mc.width, "x", mc.height);
-			//trace("rows:", numRows);
-			//trace("columns:", numColumns);
+			var numColumns:uint = Math.ceil(width / tileWidth);
+			var numRows:uint = Math.ceil(height / tileHeight);
 			
 			var bitmapData:BitmapData;
-			var bitmap:Bitmap;
-			var rect:Rectangle;
 			var array:Array = [];
 			
 			for (var ri:uint = 0; ri < numRows; ri ++) {
@@ -125,11 +143,11 @@ package citrus.view.starlingview {
 				array[ri] = [];
 				
 				for (var ci:uint = 0; ci < numColumns; ci ++) {
-					bitmapData = new BitmapData(pWidth, pHeight, true);
-					rect = new Rectangle(ci * pWidth, ri * pHeight, pWidth, pHeight);
-					bitmapData.copyPixels(mcBitmapData, rect, new Point(0, 0));
-					bitmap = new Bitmap(bitmapData);
-					array[ri][ci] = bitmap;
+				
+					bitmapData = new BitmapData(tileWidth, tileHeight, true);
+					bitmapData.copyPixels(bitmapDataSource, new Rectangle(ci * tileWidth, ri * tileHeight, tileWidth, tileHeight), new Point(0, 0));
+					array[ri][ci] = new Bitmap(bitmapData);
+					
 				}
 			}
 			
@@ -172,7 +190,7 @@ package citrus.view.starlingview {
 							if (atf) {
 								
 								// load in as bytearray
-								var byteArray:ByteArray = new row[c] as ByteArray;
+								var byteArray:ByteArray = row[c] as ByteArray;
 								if (byteArray) {
 									
 									tile.myATF = byteArray;
@@ -196,13 +214,12 @@ package citrus.view.starlingview {
 							}
 						}
 						
-						_liveTiles.push(tile);
-						
-						
+						_liveTiles.push(tile);						
 						
 					}
 				}
 			}
+
 		}
 		
 		private function onTimer(e:TimerEvent = null):void {
@@ -213,7 +230,6 @@ package citrus.view.starlingview {
 			var numInRam:uint = 0;
 			var viewRootX:Number = StarlingView(_ce.state.view).viewRoot.x;
 			var viewRootY:Number = StarlingView(_ce.state.view).viewRoot.y;
-			
 			var ll:uint = _liveTiles.length;
 			for (var t:uint = 0; t < ll; t ++) {
 				// get a tile
@@ -274,13 +290,24 @@ package citrus.view.starlingview {
 		
 		// loops through all tiles and loads into memory
 		public function loadAll():void {
-			
 			for each (var tile:StarlingTile in _liveTiles) {
 				tile.isInRAM = true;
 				if (atf) {
 					tile.myTexture = Texture.fromAtfData(tile.myATF);
 				} else {
-					tile.myTexture = Texture.fromBitmap(tile.myBitmap, false);
+					// if we have used this botmap before, then just reuse the texture we already created, otherwise, create a new texture from thie bitmap
+					if (assetCache.itemExists(tile.myBitmap)) {
+						tile.myTexture = assetCache.getItem(tile.myBitmap);
+					} else {
+						
+						var compression:String = Context3DTextureFormat.COMPRESSED_ALPHA;
+						
+						if (Mobile.isAndroid() || Mobile.isIOS())
+							compression = Context3DTextureFormat["BGRA_PACKED"] ? Context3DTextureFormat["BGRA_PACKED"] : Context3DTextureFormat.BGRA;
+						
+						tile.myTexture = Texture.fromBitmap(tile.myBitmap, false, false, 1, compression);
+						assetCache.add(tile.myBitmap, tile.myTexture);
+					}
 				}
 				
 				var img:Image = new Image(tile.myTexture);
@@ -312,8 +339,12 @@ package citrus.view.starlingview {
 		
 		public function destroy():void {
 			
-			_timer.removeEventListener(TimerEvent.TIMER, onTimer);
-			_timer.reset();
+			if (_timer) {
+			
+				_timer.removeEventListener(TimerEvent.TIMER, onTimer);
+				_timer.reset();
+			}
+			
 			removeEventListeners();
 			removeAll();
 			removeChildren(0, -1, true);
@@ -325,8 +356,11 @@ package citrus.view.starlingview {
 				_imagesArray = null;
 			}
 			_imagesMC = null;
+			_imagesBitmap = null;
 			_liveTiles.length = 0;
 			_liveTiles = null;
+			
+			assetCache.reset();
 		}
 		
 	}

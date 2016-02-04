@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
   <includeClasses>
+    <classEntry path="citrus.core.starling.CitrusStarlingJuggler"/>
     <classEntry path="citrus.core.starling.StarlingState"/>
+    <classEntry path="citrus.core.starling.ViewportMode"/>
     <classEntry path="citrus.input.controllers.starling.ScreenTouch"/>
     <classEntry path="citrus.input.controllers.starling.VirtualButton"/>
     <classEntry path="citrus.input.controllers.starling.VirtualJoystick"/>
@@ -39,6 +41,15 @@
     <classEntry path="citrus.system.components.box2d.hero.HeroPhysicsComponent"/>
     <classEntry path="citrus.system.components.box2d.hero.HeroViewComponent"/>
     <classEntry path="citrus.ui.starling.LifeBar"/>
+    <classEntry path="citrus.ui.starling.UI"/>
+    <classEntry path="citrus.ui.starling.UIElement"/>
+    <classEntry path="citrus.ui.starling.UIGroup"/>
+    <classEntry path="citrus.ui.starling.UILives"/>
+    <classEntry path="citrus.ui.starling.UIScore"/>
+    <classEntry path="citrus.ui.starling.basic.BasicUI"/>
+    <classEntry path="citrus.ui.starling.basic.BasicUIElement"/>
+    <classEntry path="citrus.ui.starling.basic.BasicUIHearts"/>
+    <classEntry path="citrus.ui.starling.basic.BasicUILayout"/>
     <classEntry path="citrus.view.starlingview.AnimationSequence"/>
     <classEntry path="citrus.view.starlingview.StarlingArt"/>
     <classEntry path="citrus.view.starlingview.StarlingCamera"/>
@@ -47,7 +58,7 @@
     <classEntry path="citrus.view.starlingview.StarlingTile"/>
     <classEntry path="citrus.view.starlingview.StarlingTileSystem"/>
     <classEntry path="citrus.view.starlingview.StarlingView"/>
-    <classEntry path="org.lionart.starlingmvc.wings.application.LemonadeEngine"/>
+    <classEntry path="com.riadvice.starlingmvc.wings.application.LemonadeEngine"/>
     <classEntry path="starling.extensions.filters.ThresholdFilter"/>
     <classEntry path="starling.extensions.particles.ColorArgb"/>
     <classEntry path="starling.extensions.particles.PDParticle"/>

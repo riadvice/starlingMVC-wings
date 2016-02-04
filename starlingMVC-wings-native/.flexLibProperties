@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
   <includeClasses>
-    <classEntry path="org.lionart.starlingmvc.wings.application.WingsMobileApplication"/>
-    <classEntry path="org.lionart.starlingmvc.wings.application.IWingsMobileApplication"/>
-    <classEntry path="org.lionart.starlingmvc.wings.utils.NetworkUtils"/>
-    <classEntry path="org.lionart.starlingmvc.wings.utils.FileUtils"/>
-    <classEntry path="org.lionart.starlingmvc.wings.media.WebView"/>
+    <classEntry path="com.riadvice.starlingmvc.wings.application.IWingsMobileApplication"/>
+    <classEntry path="com.riadvice.starlingmvc.wings.application.WingsMobileApplication"/>
+    <classEntry path="com.riadvice.starlingmvc.wings.media.WebView"/>
+    <classEntry path="com.riadvice.starlingmvc.wings.utils.FileUtils"/>
+    <classEntry path="com.riadvice.starlingmvc.wings.utils.NetworkUtils"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

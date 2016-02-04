@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 Ghazi Triki <ghazi.nocturne@gmail.com>
+   Copyright (C) 2013-2016 RIADVICE <ghazi.triki@riadvice.tn>
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -16,8 +16,8 @@
  */
 package
 {
-    import org.lionart.starlingmvc.wings.application.WingsApplication;
-    import org.lionart.starlingmvc.wings.core.Wings;
+    import com.riadvice.starlingmvc.wings.application.WingsApplication;
+    import com.riadvice.starlingmvc.wings.core.Wings;
 
     public class Flash extends WingsApplication
     {
