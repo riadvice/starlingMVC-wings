@@ -18,7 +18,7 @@ package com.riadvice.starlingmvc.wings.container
 {
     import com.creativebottle.starlingmvc.StarlingMVC;
 
-    import feathers.core.DisplayListWatcher;
+    import feathers.themes.StyleNameFunctionTheme;
 
     import starling.events.Event;
 
@@ -50,8 +50,8 @@ package com.riadvice.starlingmvc.wings.container
         /**
          * Feathers theme instance.
          */
-        function get theme() : DisplayListWatcher;
-        function set theme( value : DisplayListWatcher ) : void;
+        function get theme() : StyleNameFunctionTheme;
+        function set theme( value : StyleNameFunctionTheme ) : void;
 
         //--------------------------------------------------------------------------
         //

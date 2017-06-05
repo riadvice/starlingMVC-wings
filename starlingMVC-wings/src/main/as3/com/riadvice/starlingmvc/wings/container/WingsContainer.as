@@ -17,13 +17,13 @@
 package com.riadvice.starlingmvc.wings.container
 {
     import com.creativebottle.starlingmvc.StarlingMVC;
-
-    import feathers.core.DisplayListWatcher;
-
-    import org.as3commons.lang.StringUtils;
     import com.riadvice.starlingmvc.wings.bean.IBean;
     import com.riadvice.starlingmvc.wings.core.Wings;
     import com.riadvice.starlingmvc.wings.core.wings_internal;
+
+    import feathers.themes.StyleNameFunctionTheme;
+
+    import org.as3commons.lang.StringUtils;
 
     import starling.display.Sprite;
     import starling.events.Event;
@@ -45,7 +45,7 @@ package com.riadvice.starlingmvc.wings.container
 
         private var _starlingMVC : StarlingMVC;
         private var _beanId : String;
-        private var _theme : DisplayListWatcher;
+        private var _theme : StyleNameFunctionTheme;
 
         //--------------------------------------------------------------------------
         //
@@ -108,12 +108,12 @@ package com.riadvice.starlingmvc.wings.container
         /**
          * Feathers theme.
          */
-        public function get theme() : DisplayListWatcher
+        public function get theme() : StyleNameFunctionTheme
         {
             return _theme;
         }
 
-        public function set theme( value : DisplayListWatcher ) : void
+        public function set theme( value : StyleNameFunctionTheme ) : void
         {
             _theme = value;
         }

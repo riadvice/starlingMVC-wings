@@ -19,14 +19,14 @@ package com.riadvice.starlingmvc.wings.processors
     import com.creativebottle.starlingmvc.beans.Bean;
     import com.creativebottle.starlingmvc.commands.Command;
     import com.creativebottle.starlingmvc.config.StarlingMVCConfig;
-
-    import flash.utils.getDefinitionByName;
-
-    import org.as3commons.lang.ClassUtils;
     import com.riadvice.starlingmvc.wings.bean.IBean;
     import com.riadvice.starlingmvc.wings.core.Wings;
     import com.riadvice.starlingmvc.wings.core.wings_internal;
     import com.riadvice.starlingmvc.wings.utils.ClassUtils;
+
+    import flash.utils.getDefinitionByName;
+
+    import org.as3commons.lang.ClassUtils;
 
     public class StarlingMVCProcessor
     {

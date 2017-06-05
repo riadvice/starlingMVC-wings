@@ -16,7 +16,6 @@
  */
 package com.riadvice.starlingmvc.wings.processors
 {
-
     public class SecurityProcessor
     {
     }

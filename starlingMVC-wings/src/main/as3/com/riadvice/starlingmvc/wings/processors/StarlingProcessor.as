@@ -16,13 +16,12 @@
  */
 package com.riadvice.starlingmvc.wings.processors
 {
+    import com.riadvice.starlingmvc.wings.core.Wings;
+
     import flash.display.Stage;
     import flash.geom.Rectangle;
     import flash.system.Capabilities;
     import flash.utils.getDefinitionByName;
-
-    import com.riadvice.starlingmvc.wings.core.Wings;
-    import com.riadvice.starlingmvc.wings.utils.FlashPlayerUtils;
 
     import starling.core.Starling;
     import starling.utils.RectangleUtil;
@@ -33,16 +32,9 @@ package com.riadvice.starlingmvc.wings.processors
         public function processStarling( appXML : XML, stage : Stage ) : Starling
         {
             var viewPort : Rectangle;
-            Starling.handleLostContext = appXML.@handleLostContext == "true";
             Starling.multitouchEnabled = appXML.@multitouchEnabled == "true";
             if (Wings.isMobileApp)
             {
-                // not necessary on iOS. Saves a lot of memory!
-                if (FlashPlayerUtils.isIOS())
-                {
-                    Starling.handleLostContext = false;
-                }
-
                 // create a suitable viewport for the screen size
                 // 
                 // we develop the game in a *fixed* coordinate system; the game might 

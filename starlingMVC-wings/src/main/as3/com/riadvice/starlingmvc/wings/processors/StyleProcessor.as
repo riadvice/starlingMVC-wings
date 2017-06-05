@@ -16,13 +16,14 @@
  */
 package com.riadvice.starlingmvc.wings.processors
 {
-    import org.as3commons.lang.StringUtils;
     import com.riadvice.starlingmvc.wings.core.Wings;
     import com.riadvice.starlingmvc.wings.core.wings_internal;
     import com.riadvice.starlingmvc.wings.style.Align;
     import com.riadvice.starlingmvc.wings.utils.XMLUtils;
     import com.riadvice.starlingmvc.wings.utils.applyProperty;
     import com.riadvice.starlingmvc.wings.utils.parseNumber;
+
+    import org.as3commons.lang.StringUtils;
 
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;

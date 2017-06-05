@@ -16,6 +16,11 @@
  */
 package com.riadvice.starlingmvc.wings.processors
 {
+    import com.riadvice.starlingmvc.wings.core.Wings;
+    import com.riadvice.starlingmvc.wings.screen.WingsPanelScreen;
+    import com.riadvice.starlingmvc.wings.utils.XMLUtils;
+    import com.riadvice.starlingmvc.wings.utils.applyProperty;
+
     import flash.net.getClassByAlias;
 
     import feathers.controls.Button;
@@ -25,16 +30,13 @@ package com.riadvice.starlingmvc.wings.processors
     import feathers.controls.ToggleSwitch;
 
     import org.as3commons.lang.StringUtils;
-    import com.riadvice.starlingmvc.wings.core.Wings;
-    import com.riadvice.starlingmvc.wings.screen.WingsPanelScreen;
-    import com.riadvice.starlingmvc.wings.utils.XMLUtils;
-    import com.riadvice.starlingmvc.wings.utils.applyProperty;
 
     import starling.display.Button;
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
     import starling.display.Image;
     import starling.text.TextField;
+    import starling.text.TextFormat;
 
     public class ViewProcessor
     {
@@ -112,7 +114,7 @@ package com.riadvice.starlingmvc.wings.processors
         public function createTextField( node : XML ) : DisplayObject
         {
             var displayObject : DisplayObject;
-            displayObject = new TextField(parseInt(node.@width), parseInt(node.@height), node.@text, node.@fontName, parseFloat(node.@fontSize), uint("0x" + node.@color.toString().replace(/0x|#/g, "")), node.@bold == "true");
+            displayObject = new TextField(parseInt(node.@width), parseInt(node.@height), node.@text, new TextFormat(node.@fontName, parseFloat(node.@fontSize), uint("0x" + node.@color.toString().replace(/0x|#/g, ""))));
             displayObject.name = node.@name;
             return displayObject;
         }

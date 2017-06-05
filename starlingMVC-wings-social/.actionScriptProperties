@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <actionScriptProperties analytics="false" mainApplicationPath="starlingMVC-wings-social.as" projectUUID="898113df-d800-46d8-a20a-c8b592ee03f0" version="11">
-  <compiler additionalCompilerArguments="-locale en_US&#13;&#10;-swf-version=31&#13;&#10;-keep-as3-metadata+=Dispatcher&#13;&#10;-keep-as3-metadata+=EventHandler&#13;&#10;-keep-as3-metadata+=Inject&#13;&#10;-keep-as3-metadata+=Juggler&#13;&#10;-keep-as3-metadata+=PostConstruct&#13;&#10;-keep-as3-metadata+=ViewAdded&#13;&#10;-keep-as3-metadata+=ViewRemoved" autoRSLOrdering="true" copyDependentFiles="false" fteInMXComponents="false" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="false" htmlHistoryManagement="false" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="bin" removeUnusedRSL="true" sourceFolderPath="src/main/as3" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="false" useDebugRSLSwfs="true" useFlashSDK="true" verifyDigests="true" warn="true">
+  <compiler additionalCompilerArguments="-locale en_US&#13;&#10;-swf-version=36&#13;&#10;-keep-as3-metadata+=Dispatcher&#13;&#10;-keep-as3-metadata+=EventHandler&#13;&#10;-keep-as3-metadata+=Inject&#13;&#10;-keep-as3-metadata+=Juggler&#13;&#10;-keep-as3-metadata+=PostConstruct&#13;&#10;-keep-as3-metadata+=ViewAdded&#13;&#10;-keep-as3-metadata+=ViewRemoved" autoRSLOrdering="true" copyDependentFiles="false" fteInMXComponents="false" generateAccessible="false" htmlExpressInstall="true" htmlGenerate="false" htmlHistoryManagement="false" htmlPlayerVersionCheck="true" includeNetmonSwc="false" outputFolderPath="bin" removeUnusedRSL="true" sourceFolderPath="src/main/as3" strict="true" targetPlayerVersion="0.0.0" useApolloConfig="false" useDebugRSLSwfs="true" useFlashSDK="true" verifyDigests="true" warn="true">
     <compilerSourcePath/>
     <libraryPath defaultLinkType="0">
       <libraryPathEntry kind="4" path="">
@@ -33,9 +33,9 @@
           <libraryPathEntry kind="3" linkType="1" path="${PROJECT_FRAMEWORKS}/libs/air/airspark.swc" useDefaultLinkType="false"/>
         </excludedEntries>
       </libraryPathEntry>
-      <libraryPathEntry kind="3" linkType="1" path="${WINGS_RPO}/as3crypto.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${WINGS_RPO}/tweetrWEB.swc" useDefaultLinkType="false"/>
-      <libraryPathEntry kind="3" linkType="1" path="${WINGS_RPO}/GraphAPI_Web_1_8_1.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/as3crypto.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/tweetrWEB.swc" useDefaultLinkType="false"/>
+      <libraryPathEntry kind="3" linkType="1" path="${WINGS_REPO}/GraphAPI_Web_1_8_1.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="/starlingMVC-wings-social-shared/bin/starlingMVC-wings-social-shared.swc" useDefaultLinkType="false"/>
       <libraryPathEntry kind="3" linkType="1" path="/starlingMVC-wings/bin/starlingMVC-wings.swc" useDefaultLinkType="false"/>
     </libraryPath>

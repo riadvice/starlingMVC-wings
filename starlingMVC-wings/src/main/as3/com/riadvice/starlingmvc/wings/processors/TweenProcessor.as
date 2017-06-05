@@ -16,9 +16,6 @@
  */
 package com.riadvice.starlingmvc.wings.processors
 {
-    import flash.utils.setTimeout;
-
-    import org.as3commons.lang.StringUtils;
     import com.riadvice.starlingmvc.wings.core.Wings;
     import com.riadvice.starlingmvc.wings.core.wings_internal;
     import com.riadvice.starlingmvc.wings.style.Align;
@@ -27,6 +24,10 @@ package com.riadvice.starlingmvc.wings.processors
     import com.riadvice.starlingmvc.wings.utils.XMLUtils;
     import com.riadvice.starlingmvc.wings.view.ILoadView;
     import com.riadvice.starlingmvc.wings.view.IUnloadView;
+
+    import flash.utils.setTimeout;
+
+    import org.as3commons.lang.StringUtils;
 
     import starling.display.DisplayObject;
     import starling.display.DisplayObjectContainer;
