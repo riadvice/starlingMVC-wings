@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013-2016 RIADVICE <ghazi.triki@riadvice.tn>
+   Copyright (C) 2013-2017 RIADVICE <ghazi.triki@riadvice.tn>
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
